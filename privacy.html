@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — BudgetDaily</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1d1d1f;
+            --muted: #6e6e73;
+            --accent: #007aff;
+            --border: #d2d2d7;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1d1d1f;
+                --text: #f5f5f7;
+                --muted: #a1a1a6;
+                --accent: #0a84ff;
+                --border: #424245;
+            }
+        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 680px; margin: 0 auto; padding: 60px 24px; }
+        .back { display: inline-block; margin-bottom: 24px; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+        .back:hover { text-decoration: underline; }
+        h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
+        .updated { font-size: 0.9rem; color: var(--muted); margin-bottom: 32px; }
+        .intro { font-size: 1rem; margin-bottom: 32px; color: var(--muted); }
+        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
+        h3 { font-size: 1.05rem; font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
+        p { margin-bottom: 12px; font-size: 0.95rem; }
+        ul { margin: 8px 0 12px 24px; font-size: 0.95rem; }
+        li { margin-bottom: 6px; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+        strong { font-weight: 600; }
+        .contact { margin-top: 32px; font-size: 0.9rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="./" class="back">&larr; BudgetDaily</a>
+        <h1>Privacy Policy</h1>
+        <p class="updated"><strong>Last updated:</strong> April 2026</p>
+        <p class="intro">This Privacy Policy describes how BudgetDaily ("the App", "we", "our", or "us") handles your information. BudgetDaily is developed by Ivan Ting and is available on the Apple App Store. We built BudgetDaily with privacy as a core principle. Your financial data belongs to you — it stays on your device and, if you choose, in your private iCloud account. We do not collect, transmit, or sell your data.</p>
+
+        <hr>
+
+        <h2>1. Information We Collect</h2>
+        <p><strong>We do not collect any personal data.</strong> The App does not have external servers, analytics services, or advertising networks. No data is transmitted to us or any third party.</p>
+        <p>All information you enter into BudgetDaily — including accounts, transactions, budgets, and categories — is created and stored entirely on your device.</p>
+
+        <hr>
+
+        <h2>2. Data Storage</h2>
+
+        <h3>2.1 On-Device Storage</h3>
+        <p>All app data is stored locally on your device using Apple's SwiftData framework. This data remains under your control and is protected by your device's built-in security features (passcode, Face ID, Touch ID, and device encryption).</p>
+        <p>Sensitive credentials, such as your app lock PIN, are stored in the iOS Keychain, which provides hardware-backed encryption. Your PIN is never stored in plain text — it is hashed using SHA-256 with a unique salt via Apple's CryptoKit framework before storage.</p>
+
+        <h3>2.2 iCloud Sync (Pro Feature, Optional)</h3>
+        <p>If you subscribe to BudgetDaily Pro and enable iCloud Sync, your app data is synced to your private iCloud account using Apple's CloudKit framework. This data is:</p>
+        <ul>
+            <li>Stored in <strong>your personal iCloud account</strong>, not on any server we operate.</li>
+            <li>Protected by Apple's iCloud security and encryption standards.</li>
+            <li>Subject to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
+        </ul>
+        <p>You can disable iCloud Sync at any time in the App's settings. Disabling sync does not delete data already stored in your iCloud account — you can manage that through your device's iCloud settings.</p>
+
+        <h3>2.3 Auto Cloud Backup (Pro Feature, Optional)</h3>
+        <p>BudgetDaily Pro offers automatic cloud backups stored in your private iCloud container. These backups are accessible only to you and are governed by Apple's iCloud terms and security practices.</p>
+
+        <hr>
+
+        <h2>3. Budget Sharing</h2>
+        <p>BudgetDaily allows you to share budgets with other people you choose. When you share a budget:</p>
+        <ul>
+            <li>You explicitly select the recipients.</li>
+            <li>Shared budgets are transmitted via Apple's CloudKit framework.</li>
+            <li>Recipients receive <strong>read-only</strong> access to the shared budget data.</li>
+            <li>No data is sent to any server outside Apple's ecosystem.</li>
+        </ul>
+        <p>You can revoke sharing at any time. Only the data within the shared budget is visible to recipients — your other accounts, transactions, and personal information are never shared.</p>
+
+        <hr>
+
+        <h2>4. Biometric Data (Face ID / Touch ID)</h2>
+        <p>BudgetDaily offers an optional app lock feature using Face ID or Touch ID. When you enable this feature:</p>
+        <ul>
+            <li>Biometric authentication is handled entirely by Apple's Local Authentication framework.</li>
+            <li><strong>Your biometric data is never accessed, stored, or transmitted by BudgetDaily.</strong> The App only receives a success or failure response from the operating system.</li>
+            <li>Biometric data remains in the device's Secure Enclave and is never available to any app.</li>
+        </ul>
+
+        <hr>
+
+        <h2>5. Subscriptions and Purchases</h2>
+        <p>BudgetDaily Pro is offered as an auto-renewable subscription at AUD $1.49/month. Subscription transactions are processed entirely by Apple through the App Store. We do not have access to your payment information, Apple ID, or billing details.</p>
+        <p>Family Sharing is supported for up to 5 family members through Apple's Family Sharing system.</p>
+        <p>For information about how Apple handles purchase data, see <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
+
+        <hr>
+
+        <h2>6. Third-Party Services</h2>
+        <p>BudgetDaily does not integrate any third-party analytics, tracking, advertising, or data collection services.</p>
+        <p>The only third-party services involved are Apple platform services:</p>
+        <ul>
+            <li><strong>Apple CloudKit</strong> — for optional iCloud Sync, cloud backup, and budget sharing.</li>
+            <li><strong>Apple StoreKit</strong> — for subscription management and in-app purchases.</li>
+            <li><strong>Apple Local Authentication</strong> — for biometric app lock.</li>
+        </ul>
+        <p>These services are governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> and <a href="https://www.apple.com/legal/internet-services/itunes/">Apple's Terms of Service</a>.</p>
+
+        <hr>
+
+        <h2>7. Children's Privacy</h2>
+        <p>BudgetDaily is not directed at children under the age of 13 (or the applicable age of digital consent in your jurisdiction). We do not knowingly collect any information from children. Since the App does not collect data from any user, there is no risk of children's data being gathered.</p>
+        <p>If you are a parent or guardian and believe your child has used the App in a way that concerns you, please contact us at the address below.</p>
+
+        <hr>
+
+        <h2>8. Data Retention</h2>
+        <p>Since all data is stored locally on your device or in your private iCloud account, data retention is entirely under your control:</p>
+        <ul>
+            <li><strong>On-device data</strong> is retained until you delete it within the App, delete the App, or erase your device.</li>
+            <li><strong>iCloud data</strong> is retained in your iCloud account until you delete it through the App or through your iCloud account settings.</li>
+            <li><strong>We retain no data</strong> because we never receive any data.</li>
+        </ul>
+
+        <hr>
+
+        <h2>9. Your Rights</h2>
+        <p>Because BudgetDaily does not collect or store your data on any external server, traditional data-subject rights (access, correction, deletion, portability) are inherently satisfied — your data is already entirely in your possession.</p>
+        <p>You can:</p>
+        <ul>
+            <li><strong>View all your data</strong> directly within the App at any time.</li>
+            <li><strong>Delete any or all data</strong> within the App.</li>
+            <li><strong>Export your data</strong> using the App's backup features.</li>
+            <li><strong>Delete all cloud data</strong> by removing iCloud data through your device's Settings app.</li>
+            <li><strong>Stop all syncing</strong> by disabling iCloud Sync in the App's settings.</li>
+            <li><strong>Uninstall the App</strong> to remove all on-device data.</li>
+        </ul>
+
+        <hr>
+
+        <h2>10. Security Measures</h2>
+        <p>BudgetDaily employs the following security measures to protect your data:</p>
+        <ul>
+            <li><strong>iOS Keychain</strong> for encrypted storage of sensitive credentials.</li>
+            <li><strong>CryptoKit (SHA-256 + salt)</strong> for secure PIN hashing — your PIN is never stored in plain text.</li>
+            <li><strong>Apple's Secure Enclave</strong> for biometric authentication processing.</li>
+            <li><strong>Apple's iCloud encryption</strong> for any data you choose to sync.</li>
+            <li><strong>No external network calls</strong> — the App does not communicate with any server outside Apple's ecosystem.</li>
+        </ul>
+
+        <hr>
+
+        <h2>11. Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time. If we make material changes, we will notify you by updating the "Last updated" date at the top of this document and, where appropriate, through an in-app notice.</p>
+        <p>We encourage you to review this Privacy Policy periodically. Your continued use of the App after changes are posted constitutes your acceptance of the updated policy.</p>
+
+        <hr>
+
+        <h2>12. Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+        <p><strong>Ivan Ting</strong><br>Email: <a href="mailto:budgetdaily@protonmail.com">budgetdaily@protonmail.com</a></p>
+
+        <div class="contact">
+            <p><em>This Privacy Policy is effective as of April 2026.</em></p>
+        </div>
+    </div>
+</body>
+</html>
