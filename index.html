@@ -593,6 +593,38 @@ footer {
     justify-content: center;
   }
   #lightbox-close:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    z-index: 1001;
+    user-select: none;
+  }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.28); }
+  .lightbox-nav:disabled { opacity: 0.25; cursor: default; }
+  #lightbox-prev { left: 20px; }
+  #lightbox-next { right: 68px; }
+  #lightbox-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    font-family: var(--sans);
+  }
 </style>
 </head>
 <body>
@@ -988,18 +1020,36 @@ footer {
   <!-- Lightbox -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
     <button id="lightbox-close" aria-label="Close">✕</button>
+    <button id="lightbox-prev" class="lightbox-nav" aria-label="Previous">&#8249;</button>
     <img id="lightbox-img" src="" alt="">
+    <button id="lightbox-next" class="lightbox-nav" aria-label="Next">&#8250;</button>
+    <div id="lightbox-counter"></div>
   </div>
   <script>
     (function () {
       const lb = document.getElementById('lightbox');
       const lbImg = document.getElementById('lightbox-img');
       const lbClose = document.getElementById('lightbox-close');
+      const lbPrev = document.getElementById('lightbox-prev');
+      const lbNext = document.getElementById('lightbox-next');
+      const lbCounter = document.getElementById('lightbox-counter');
 
-      document.querySelectorAll('.phone-frame img').forEach(img => {
+      const images = Array.from(document.querySelectorAll('.phone-frame img'));
+      let currentIndex = 0;
+
+      function show(index) {
+        currentIndex = index;
+        const img = images[index];
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbPrev.disabled = index === 0;
+        lbNext.disabled = index === images.length - 1;
+        lbCounter.textContent = (index + 1) + ' / ' + images.length;
+      }
+
+      images.forEach((img, i) => {
         img.addEventListener('click', () => {
-          lbImg.src = img.src;
-          lbImg.alt = img.alt;
+          show(i);
           lb.classList.add('open');
           document.body.style.overflow = 'hidden';
         });
@@ -1010,9 +1060,16 @@ footer {
         document.body.style.overflow = '';
       }
 
+      lbPrev.addEventListener('click', e => { e.stopPropagation(); if (currentIndex > 0) show(currentIndex - 1); });
+      lbNext.addEventListener('click', e => { e.stopPropagation(); if (currentIndex < images.length - 1) show(currentIndex + 1); });
       lbClose.addEventListener('click', close);
       lb.addEventListener('click', e => { if (e.target === lb) close(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft' && currentIndex > 0) show(currentIndex - 1);
+        if (e.key === 'ArrowRight' && currentIndex < images.length - 1) show(currentIndex + 1);
+      });
     })();
   </script>
 
