@@ -1,252 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service — BudgetDaily</title>
-    <link rel="icon" type="image/png" href="icon.png">
-    <link rel="apple-touch-icon" href="icon.png">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --text: #1d1d1f;
-            --muted: #6e6e73;
-            --accent: #007aff;
-            --border: #d2d2d7;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #1d1d1f;
-                --text: #f5f5f7;
-                --muted: #a1a1a6;
-                --accent: #0a84ff;
-                --border: #424245;
-            }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — BudgetDaily</title>
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: oklch(0.13 0.006 150);
+  --dark2: oklch(0.18 0.008 150);
+  --sage: oklch(0.65 0.07 145);
+  --sage-light: oklch(0.78 0.05 145);
+  --sage-dim: oklch(0.65 0.07 145 / 0.12);
+  --bg: oklch(0.975 0.004 80);
+  --bg2: oklch(0.95 0.008 140);
+  --surface: oklch(1 0 0);
+  --border: oklch(0.9 0.006 140);
+  --text: oklch(0.16 0.006 150);
+  --text2: oklch(0.45 0.01 150);
+  --text3: oklch(0.65 0.008 150);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-        .container { max-width: 680px; margin: 0 auto; padding: 60px 24px; }
-        .back { display: inline-block; margin-bottom: 24px; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
-        .back:hover { text-decoration: underline; }
-        h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
-        .updated { font-size: 0.9rem; color: var(--muted); margin-bottom: 32px; }
-        .intro { font-size: 1rem; margin-bottom: 32px; color: var(--muted); }
-        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
-        h3 { font-size: 1.05rem; font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
-        p { margin-bottom: 12px; font-size: 0.95rem; }
-        ul { margin: 8px 0 12px 24px; font-size: 0.95rem; }
-        li { margin-bottom: 6px; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
-        strong { font-weight: 600; }
-        .contact { margin-top: 32px; font-size: 0.9rem; color: var(--muted); }
-    </style>
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  background: oklch(0.13 0.006 150 / 0.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid oklch(1 0 0 / 0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
+.nav-logo span { font-size: 0.92rem; font-weight: 700; color: white; letter-spacing: -0.01em; }
+.nav-back { font-size: 0.82rem; font-weight: 600; color: var(--sage); text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(--sage-light); }
+
+.page-wrap { max-width: 720px; margin: 0 auto; padding: 112px 32px 80px; }
+
+.page-header { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+.page-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+.page-title { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--text); margin-bottom: 14px; }
+.page-meta { font-size: 0.82rem; color: var(--text3); font-weight: 500; margin-bottom: 12px; }
+.page-intro { font-size: 1rem; color: var(--text2); line-height: 1.7; max-width: 580px; }
+
+/* TOC */
+.toc {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 48px;
+}
+.toc-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 14px;
+}
+.toc-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 24px;
+}
+.toc-list li a {
+  font-size: 0.85rem;
+  color: var(--sage);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.toc-list li a:hover { color: var(--sage-light); }
+
+.doc-section { margin-bottom: 44px; }
+.doc-section h2 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); scroll-margin-top: 80px; }
+.doc-section h3 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-top: 22px; margin-bottom: 8px; letter-spacing: -0.01em; }
+.doc-section p { font-size: 0.93rem; color: var(--text2); margin-bottom: 12px; line-height: 1.75; }
+.doc-section ul { margin: 8px 0 14px 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.doc-section li { font-size: 0.9rem; color: var(--text2); padding-left: 20px; position: relative; line-height: 1.65; }
+.doc-section li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+.doc-section a { color: var(--sage); text-decoration: none; font-weight: 500; }
+.doc-section a:hover { color: var(--sage-light); text-decoration: underline; }
+strong { font-weight: 700; color: var(--text); }
+
+footer {
+  background: var(--dark2);
+  border-top: 1px solid oklch(1 0 0 / 0.05);
+  padding: 28px 40px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  margin-top: 80px;
+}
+.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.footer-logo img { width: 26px; height: 26px; border-radius: 7px; }
+.footer-logo span { font-size: 0.85rem; font-weight: 700; color: oklch(0.7 0.01 150); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { color: oklch(0.45 0.01 150); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
+.footer-links a:hover { color: var(--sage-light); }
+.footer-copy { font-size: 0.72rem; color: oklch(0.35 0.008 150); }
+
+@media (max-width: 600px) {
+  .site-nav { padding: 14px 20px; }
+  .page-wrap { padding: 96px 20px 60px; }
+  .page-title { font-size: 2rem; }
+  .toc-list { grid-template-columns: 1fr; }
+  footer { padding: 24px 20px; justify-content: center; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <a href="./" class="back">&larr; BudgetDaily</a>
-        <h1>Terms of Service</h1>
-        <p class="updated"><strong>Last updated:</strong> April 2026</p>
-        <p class="intro">These Terms of Service ("Terms") govern your use of the BudgetDaily mobile application ("the App", "BudgetDaily"), developed by Ivan Ting ("we", "our", or "us"). By downloading, installing, or using BudgetDaily, you agree to be bound by these Terms. Please read these Terms carefully before using the App.</p>
 
-        <hr>
+<nav class="site-nav">
+  <a href="./" class="nav-logo">
+    <img src="icon.png" alt="BudgetDaily">
+    <span>BudgetDaily</span>
+  </a>
+  <a href="./" class="nav-back">← Back</a>
+</nav>
 
-        <h2>1. Acceptance of Terms</h2>
-        <p>By accessing or using BudgetDaily, you confirm that you are at least 13 years of age (or the applicable age of digital consent in your jurisdiction) and that you agree to these Terms. If you do not agree, you must not use the App.</p>
-        <p>These Terms constitute an agreement between you and Ivan Ting only, and not with Apple, Inc. ("Apple"). Apple is not responsible for the App or its content. You acknowledge that you have reviewed Apple's <a href="https://www.apple.com/legal/internet-services/itunes/">Media Services Terms and Conditions</a>, and that your use of BudgetDaily is also subject to those terms.</p>
+<div class="page-wrap">
+  <div class="page-header">
+    <p class="page-eyebrow">Legal</p>
+    <h1 class="page-title">Terms of Service</h1>
+    <p class="page-meta">Last updated: April 2026</p>
+    <p class="page-intro">These Terms govern your use of BudgetDaily, developed by Ivan Ting. By downloading or using the App, you agree to these Terms. Please read them carefully.</p>
+  </div>
 
-        <hr>
+  <div class="toc">
+    <p class="toc-label">Contents</p>
+    <ol class="toc-list">
+      <li><a href="#s1">1. Acceptance of Terms</a></li>
+      <li><a href="#s2">2. Description of Service</a></li>
+      <li><a href="#s3">3. Subscription Terms</a></li>
+      <li><a href="#s4">4. Refund Policy</a></li>
+      <li><a href="#s5">5. User Responsibilities</a></li>
+      <li><a href="#s6">6. Data and Data Loss</a></li>
+      <li><a href="#s7">7. Intellectual Property</a></li>
+      <li><a href="#s8">8. Disclaimers</a></li>
+      <li><a href="#s9">9. Limitation of Liability</a></li>
+      <li><a href="#s10">10. Third-Party Services</a></li>
+      <li><a href="#s11">11. Termination</a></li>
+      <li><a href="#s12">12. Changes to Terms</a></li>
+      <li><a href="#s13">13. Governing Law</a></li>
+      <li><a href="#s17">17. Contact Us</a></li>
+    </ol>
+  </div>
 
-        <h2>2. Description of Service</h2>
-        <p>BudgetDaily is a personal finance budgeting app that allows you to track accounts, transactions, budgets, and categories. All data is stored locally on your device using Apple's SwiftData framework, with optional cloud features available through a paid subscription.</p>
-        <p><strong>BudgetDaily is not a financial institution, bank, or licensed financial advisor.</strong> The App is a tool for personal budget tracking and does not provide financial, investment, tax, or legal advice. Any financial decisions you make based on information in the App are your sole responsibility.</p>
+  <div class="doc-section" id="s1">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using BudgetDaily, you confirm that you are at least 13 years of age and agree to these Terms. These Terms constitute an agreement between you and Ivan Ting only — not with Apple, Inc. Apple is not responsible for the App or its content.</p>
+  </div>
 
-        <hr>
+  <div class="doc-section" id="s2">
+    <h2>2. Description of Service</h2>
+    <p>BudgetDaily is a personal finance budgeting app for tracking accounts, transactions, budgets, and categories. All data is stored locally on your device with optional cloud features via paid subscription.</p>
+    <p><strong>BudgetDaily is not a financial institution, bank, or licensed financial advisor.</strong> It is a personal budgeting tool only. Any financial decisions you make based on information in the App are your sole responsibility.</p>
+  </div>
 
-        <h2>3. Subscription Terms</h2>
+  <div class="doc-section" id="s3">
+    <h2>3. Subscription Terms</h2>
+    <h3>BudgetDaily Pro</h3>
+    <p>BudgetDaily Pro is an auto-renewable subscription offering: unlimited accounts and budgets, custom categories, iCloud Sync, Auto Cloud Backup, Shared Budgets, and Home Screen Widgets. Current pricing is displayed in the App and App Store listing.</p>
+    <h3>Auto-Renewal</h3>
+    <p>Your subscription automatically renews monthly unless cancelled at least 24 hours before the end of the current period. Your Apple ID is charged for renewal within 24 hours before the period ends.</p>
+    <h3>Free Trial</h3>
+    <p>If a free trial is offered, any unused portion is forfeited when you purchase a subscription.</p>
+    <h3>Family Sharing</h3>
+    <p>BudgetDaily Pro supports Apple Family Sharing for up to 5 family members, subject to Apple's Family Sharing terms.</p>
+    <h3>Managing Your Subscription</h3>
+    <p>Manage or cancel at any time via <strong>Settings → [Your Name] → Subscriptions → BudgetDaily</strong>. Cancellation takes effect at the end of the current billing period.</p>
+    <h3>Price Changes</h3>
+    <p>We may change subscription pricing at any time. Apple will notify you before your next renewal and you must affirmatively consent to continue.</p>
+  </div>
 
-        <h3>3.1 BudgetDaily Pro</h3>
-        <p>BudgetDaily offers a Pro subscription with the following features:</p>
-        <ul>
-            <li>Unlimited accounts, budgets, and custom categories</li>
-            <li>iCloud Sync</li>
-            <li>Auto Cloud Backup &amp; Data Restoration</li>
-            <li>Shared Budgets</li>
-            <li>Home Screen Widgets</li>
-        </ul>
-        <p>The subscription is billed as an auto-renewable subscription through Apple's App Store. The current price is displayed in the App and on the App Store listing.</p>
+  <div class="doc-section" id="s4">
+    <h2>4. Refund Policy</h2>
+    <p>All payments are processed by Apple through the App Store. To request a refund, contact Apple directly at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> or <a href="https://support.apple.com">support.apple.com</a>. Refund eligibility is determined by Apple.</p>
+  </div>
 
-        <h3>3.2 Auto-Renewal</h3>
-        <p>Your subscription automatically renews each month unless you cancel it at least 24 hours before the end of the current billing period. Your Apple ID account will be charged for renewal within 24 hours prior to the end of the current period at the same price.</p>
+  <div class="doc-section" id="s5">
+    <h2>5. User Responsibilities</h2>
+    <p>By using BudgetDaily, you agree to:</p>
+    <ul>
+      <li>Use the App only for lawful purposes and in accordance with these Terms.</li>
+      <li>Maintain the security of your device and any app lock PIN you configure.</li>
+      <li>Not attempt to reverse-engineer, decompile, or tamper with the App.</li>
+      <li>Not use the App to store or transmit unlawful or harmful content.</li>
+      <li>Take responsibility for backing up your own data.</li>
+    </ul>
+  </div>
 
-        <h3>3.3 Free Trial</h3>
-        <p>If a free trial is offered, the unused portion of any free trial period will be forfeited when you purchase a subscription.</p>
+  <div class="doc-section" id="s6">
+    <h2>6. Data and Data Loss</h2>
+    <h3>Your Data</h3>
+    <p>You retain full ownership of all data you enter into BudgetDaily. We do not access, collect, or store your data on any server.</p>
+    <h3>Data Loss Disclaimer</h3>
+    <p><strong>We cannot guarantee against data loss.</strong> Data may be lost due to device failure, OS updates, iCloud disruptions, accidental deletion, or software bugs. <strong>You are solely responsible for maintaining backups.</strong> We strongly recommend enabling Auto Cloud Backup (Pro) or regularly exporting your data.</p>
+    <h3>Account Deletion</h3>
+    <p>Deleting the App removes all locally stored data. iCloud data can be managed through your device's iCloud settings. We do not retain any copy of your data and cannot recover it after deletion.</p>
+  </div>
 
-        <h3>3.4 Family Sharing</h3>
-        <p>BudgetDaily Pro supports Apple Family Sharing for up to 5 family members. Family Sharing eligibility and management are subject to Apple's Family Sharing terms.</p>
+  <div class="doc-section" id="s7">
+    <h2>7. Intellectual Property</h2>
+    <p>BudgetDaily and all its design, code, graphics, and icons are the intellectual property of Ivan Ting. You are granted a limited, personal, non-commercial licence to use the App on Apple devices you own or control. You retain ownership of all data you create within the App.</p>
+  </div>
 
-        <h3>3.5 Managing Your Subscription</h3>
-        <p>You can manage or cancel your subscription at any time through your device's Settings:</p>
-        <p><strong>Settings &gt; [Your Name] &gt; Subscriptions &gt; BudgetDaily</strong></p>
-        <p>Cancellation takes effect at the end of the current billing period. You will retain access to Pro features until that date.</p>
+  <div class="doc-section" id="s8">
+    <h2>8. Disclaimers</h2>
+    <p><strong>BudgetDaily is not a financial advisor.</strong> It does not provide financial, investment, tax, or legal advice, connect to bank accounts, or guarantee the accuracy of calculations. Consult a qualified professional for financial advice.</p>
+    <p><strong>The App is provided "AS IS"</strong> without warranties of any kind, including implied warranties of merchantability or fitness for a particular purpose. We do not warrant that the App will be uninterrupted or error-free.</p>
+  </div>
 
-        <h3>3.6 Price Changes</h3>
-        <p>We may change subscription pricing at any time. Apple will notify you of any price increase before your next renewal. You must affirmatively consent to the new price to continue your subscription, as required by App Store policy.</p>
+  <div class="doc-section" id="s9">
+    <h2>9. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, Ivan Ting shall not be liable for indirect, incidental, special, or consequential damages including data loss or financial losses. Our total aggregate liability shall not exceed the amount you paid for the App in the preceding 12 months. Nothing in these Terms excludes liability that cannot be limited under applicable law.</p>
+  </div>
 
-        <hr>
+  <div class="doc-section" id="s10">
+    <h2>10. Third-Party Services</h2>
+    <p>BudgetDaily relies solely on Apple platform services: <strong>Apple CloudKit</strong> (iCloud Sync, backup, sharing), <strong>Apple StoreKit</strong> (subscriptions), and <strong>Apple Local Authentication</strong> (biometric lock). No third-party analytics, advertising, or tracking services are integrated.</p>
+  </div>
 
-        <h2>4. Refund Policy</h2>
-        <p>All purchases and subscription payments are processed by Apple through the App Store. We do not process payments directly and do not have access to your payment information.</p>
-        <p>To request a refund, you must contact Apple directly:</p>
-        <ul>
-            <li>Visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a></li>
-            <li>Or contact Apple Support at <a href="https://support.apple.com">support.apple.com</a></li>
-        </ul>
-        <p>Refund eligibility is determined by Apple in accordance with their refund policies and applicable consumer protection laws.</p>
+  <div class="doc-section" id="s11">
+    <h2>11. Termination</h2>
+    <p>You may stop using the App at any time by deleting it and cancelling any active subscription. We reserve the right to modify, suspend, or discontinue the App at any time without liability.</p>
+  </div>
 
-        <hr>
+  <div class="doc-section" id="s12">
+    <h2>12. Changes to These Terms</h2>
+    <p>We may update these Terms from time to time. Changes are reflected by updating the "Last updated" date above. Continued use of the App after changes constitutes acceptance of the revised Terms.</p>
+  </div>
 
-        <h2>5. User Responsibilities</h2>
-        <p>By using BudgetDaily, you agree to:</p>
-        <ul>
-            <li>Use the App only for lawful purposes and in accordance with these Terms.</li>
-            <li>Maintain the security of your device, including any passcode, Face ID, Touch ID, or app lock PIN you configure.</li>
-            <li>Ensure that any data you enter into the App is accurate to the best of your knowledge.</li>
-            <li>Not attempt to reverse-engineer, decompile, disassemble, or otherwise tamper with the App.</li>
-            <li>Not use the App to store or transmit any unlawful, harmful, or objectionable content through shared budgets.</li>
-            <li>Take responsibility for backing up your own data.</li>
-            <li>Confirm that you are not located in a country subject to a U.S. Government embargo or designated as a "terrorist supporting" country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
-        </ul>
+  <div class="doc-section" id="s13">
+    <h2>13. Governing Law</h2>
+    <p>These Terms are governed by the laws of the State of Victoria, Australia. Any disputes are subject to the exclusive jurisdiction of the courts of Victoria, Australia.</p>
+  </div>
 
-        <hr>
+  <div class="doc-section" id="s14">
+    <h2>14. Severability &amp; Entire Agreement</h2>
+    <p>If any provision is found unenforceable, the remaining provisions remain in full effect. These Terms, together with our <a href="privacy.html">Privacy Policy</a> and Apple's Licensed Application EULA, constitute the entire agreement between you and Ivan Ting regarding BudgetDaily.</p>
+  </div>
 
-        <h2>6. Data and Data Loss</h2>
+  <div class="doc-section" id="s17">
+    <h2>Contact Us</h2>
+    <p>Questions about these Terms? Contact us at <a href="/cdn-cgi/l/email-protection#fd9f88999a9889999c949184bd8d8f92899293909c9491d39e9290"><span class="__cf_email__" data-cfemail="a9cbdccdceccddcdc8c0c5d0e9d9dbc6ddc6c7c4c8c0c587cac6c4">[email&#160;protected]</span></a>.</p>
+    <p><strong>Ivan Ting</strong> — Developer, BudgetDaily</p>
+  </div>
+</div>
 
-        <h3>6.1 Your Data</h3>
-        <p>You retain full ownership of all data you enter into BudgetDaily. We do not access, collect, or store your data on any server. Your data resides on your device and, if you enable iCloud features, in your private iCloud account.</p>
+<footer>
+  <a href="./" class="footer-logo">
+    <img src="icon.png" alt="BudgetDaily">
+    <span>BudgetDaily</span>
+  </a>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="support.html">Support</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Ivan Ting</p>
+</footer>
 
-        <h3>6.2 Data Loss Disclaimer</h3>
-        <p>The App is provided as-is. <strong>We cannot guarantee against data loss.</strong> Data may be lost due to, but not limited to:</p>
-        <ul>
-            <li>Device failure, loss, theft, or damage.</li>
-            <li>Operating system updates or malfunctions.</li>
-            <li>iCloud service disruptions or account issues.</li>
-            <li>App deletion (intentional or accidental).</li>
-            <li>Software bugs.</li>
-        </ul>
-        <p><strong>You are solely responsible for maintaining backups of your data.</strong> We strongly recommend enabling Auto Cloud Backup (Pro feature) or regularly exporting your data. We are not liable for any data loss, corruption, or inability to recover data, regardless of the cause.</p>
-
-        <h3>6.3 Account Deletion</h3>
-        <p>Deleting the App from your device removes all locally stored data. iCloud data can be managed through your device's iCloud settings. We do not retain any copy of your data and cannot recover it after deletion.</p>
-
-        <hr>
-
-        <h2>7. Intellectual Property</h2>
-
-        <h3>7.1 Our Rights</h3>
-        <p>BudgetDaily, including its design, code, graphics, icons, and documentation, is the intellectual property of Ivan Ting and is protected by applicable copyright, trademark, and intellectual property laws.</p>
-        <p>You are granted a limited, non-exclusive, non-transferable, revocable licence to use the App on any Apple-branded device that you own or control, for personal, non-commercial purposes, in accordance with these Terms and Apple's Media Services Terms and Conditions. You may not distribute or make the App available over a network where it could be used by multiple devices at the same time. Family Sharing is permitted to the extent enabled by Apple's Family Sharing feature.</p>
-        <p>Ivan Ting is solely responsible for the investigation, defence, settlement, and discharge of any third-party intellectual property infringement claims relating to the App or your possession and use of it.</p>
-
-        <h3>7.2 Your Content</h3>
-        <p>You retain ownership of all data and content you create within the App. We claim no rights to your data.</p>
-
-        <h3>7.3 Feedback</h3>
-        <p>If you provide feedback, suggestions, or ideas about the App, you grant us the right to use that feedback without obligation or compensation to you.</p>
-
-        <hr>
-
-        <h2>8. Disclaimers</h2>
-
-        <h3>8.1 No Financial Advice</h3>
-        <p><strong>BudgetDaily is not a financial advisor, accountant, or licensed professional.</strong> The App is a personal budgeting tool only. It does not:</p>
-        <ul>
-            <li>Provide financial, investment, tax, or legal advice.</li>
-            <li>Make recommendations about spending, saving, or investing.</li>
-            <li>Connect to bank accounts or financial institutions.</li>
-            <li>Guarantee the accuracy of any calculations or budgets.</li>
-        </ul>
-        <p>Any decisions you make based on information displayed in the App are entirely your responsibility. For financial advice, consult a qualified professional.</p>
-
-        <h3>8.2 "As Is" Provision</h3>
-        <p><strong>YOUR USE OF THE APP IS AT YOUR SOLE RISK.</strong> The App is provided on an "AS IS" and "AS AVAILABLE" basis, without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
-        <p>We do not represent or warrant that the App will be accurate, reliable, uninterrupted, error-free, or free of harmful components. No information obtained through the App creates any warranty not expressly stated in these Terms.</p>
-
-        <h3>8.3 Warranty and Apple's Remedy</h3>
-        <p>In the event that the App fails to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the App to you. To the maximum extent permitted by applicable law, Apple will have no other warranty obligation with respect to the App. Any other claims, losses, liabilities, damages, costs, or expenses attributable to any failure to conform to any warranty are Ivan Ting's sole responsibility.</p>
-
-        <hr>
-
-        <h2>9. Limitation of Liability</h2>
-        <p>To the maximum extent permitted by applicable law:</p>
-        <ul>
-            <li><strong>Ivan Ting shall not be liable</strong> for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data, loss of profits, or financial losses arising from your use of the App.</li>
-            <li><strong>Our total aggregate liability</strong> for any claims arising from or related to the App shall not exceed the amount you paid for the App or subscription in the twelve (12) months preceding the claim.</li>
-            <li><strong>Nothing in these Terms</strong> excludes or limits liability that cannot be excluded or limited under applicable law, including liability for fraud, death, or personal injury caused by negligence.</li>
-        </ul>
-        <p>Ivan Ting, not Apple, is responsible for addressing any claims by you or any third party relating to the App or your possession and use of it, including: (a) product liability claims; (b) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (c) claims arising under consumer protection or similar legislation.</p>
-
-        <hr>
-
-        <h2>10. Third-Party Services</h2>
-        <p>BudgetDaily relies on the following Apple platform services:</p>
-        <ul>
-            <li><strong>Apple CloudKit</strong> — for iCloud Sync, cloud backup, and budget sharing.</li>
-            <li><strong>Apple StoreKit</strong> — for subscription management.</li>
-            <li><strong>Apple Local Authentication</strong> — for biometric app lock.</li>
-        </ul>
-        <p>Your use of these services is subject to Apple's own terms and privacy policies, and you agree to comply with those applicable third-party terms when using the App. We are not responsible for the availability, reliability, or security of Apple's services.</p>
-        <p>The App does not integrate any third-party analytics, advertising, or tracking services.</p>
-
-        <hr>
-
-        <h2>11. Termination</h2>
-        <p>You may stop using the App at any time by deleting it from your device and cancelling any active subscription.</p>
-        <p>We reserve the right to modify, suspend, or discontinue the App (or any part of it) at any time, with or without notice, without liability to you.</p>
-
-        <hr>
-
-        <h2>12. Changes to These Terms</h2>
-        <p>We may update these Terms from time to time. When we make changes, we will update the "Last updated" date at the top of this document.</p>
-        <p>Your continued use of the App after changes take effect constitutes your acceptance of the revised Terms. If you do not agree to the updated Terms, you must stop using the App.</p>
-
-        <hr>
-
-        <h2>13. Governing Law</h2>
-        <p>These Terms shall be governed by and construed in accordance with the laws of the State of Victoria, Australia, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of the App shall be subject to the exclusive jurisdiction of the courts of the State of Victoria, Australia.</p>
-
-        <hr>
-
-        <h2>14. Severability</h2>
-        <p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions will remain in full force and effect.</p>
-
-        <hr>
-
-        <h2>15. Entire Agreement</h2>
-        <p>These Terms, together with our <a href="privacy.html">Privacy Policy</a> and Apple's Licensed Application End User License Agreement, constitute the entire agreement between you and Ivan Ting regarding BudgetDaily.</p>
-
-        <hr>
-
-        <h2>16. Apple as Third-Party Beneficiary</h2>
-        <p>You acknowledge and agree that Apple, and Apple's subsidiaries, are third-party beneficiaries of these Terms, and that, upon your acceptance of these Terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third-party beneficiary thereof.</p>
-
-        <hr>
-
-        <h2>17. Contact Us</h2>
-        <p>If you have any questions about these Terms, please contact us at:</p>
-        <p><strong>Ivan Ting</strong><br>Email: <a href="mailto:budgetdaily@protonmail.com">budgetdaily@protonmail.com</a></p>
-
-        <div class="contact">
-            <p><em>These Terms of Service are effective as of April 2026.</em></p>
-        </div>
-
-    </div>
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script></body>
 </html>

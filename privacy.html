@@ -1,185 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — BudgetDaily</title>
-    <link rel="icon" type="image/png" href="icon.png">
-    <link rel="apple-touch-icon" href="icon.png">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --text: #1d1d1f;
-            --muted: #6e6e73;
-            --accent: #007aff;
-            --border: #d2d2d7;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #1d1d1f;
-                --text: #f5f5f7;
-                --muted: #a1a1a6;
-                --accent: #0a84ff;
-                --border: #424245;
-            }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — BudgetDaily</title>
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: oklch(0.13 0.006 150);
+  --dark2: oklch(0.18 0.008 150);
+  --sage: oklch(0.65 0.07 145);
+  --sage-light: oklch(0.78 0.05 145);
+  --sage-dim: oklch(0.65 0.07 145 / 0.12);
+  --bg: oklch(0.975 0.004 80);
+  --bg2: oklch(0.95 0.008 140);
+  --surface: oklch(1 0 0);
+  --border: oklch(0.9 0.006 140);
+  --text: oklch(0.16 0.006 150);
+  --text2: oklch(0.45 0.01 150);
+  --text3: oklch(0.65 0.008 150);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-        .container { max-width: 680px; margin: 0 auto; padding: 60px 24px; }
-        .back { display: inline-block; margin-bottom: 24px; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
-        .back:hover { text-decoration: underline; }
-        h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
-        .updated { font-size: 0.9rem; color: var(--muted); margin-bottom: 32px; }
-        .intro { font-size: 1rem; margin-bottom: 32px; color: var(--muted); }
-        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; }
-        h3 { font-size: 1.05rem; font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
-        p { margin-bottom: 12px; font-size: 0.95rem; }
-        ul { margin: 8px 0 12px 24px; font-size: 0.95rem; }
-        li { margin-bottom: 6px; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
-        strong { font-weight: 600; }
-        .contact { margin-top: 32px; font-size: 0.9rem; color: var(--muted); }
-    </style>
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  background: oklch(0.13 0.006 150 / 0.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid oklch(1 0 0 / 0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
+.nav-logo span { font-size: 0.92rem; font-weight: 700; color: white; letter-spacing: -0.01em; }
+.nav-back { font-size: 0.82rem; font-weight: 600; color: var(--sage); text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(--sage-light); }
+
+.page-wrap { max-width: 720px; margin: 0 auto; padding: 112px 32px 80px; }
+
+.page-header { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+.page-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+.page-title { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--text); margin-bottom: 14px; }
+.page-meta { font-size: 0.82rem; color: var(--text3); font-weight: 500; margin-bottom: 12px; }
+.page-intro { font-size: 1rem; color: var(--text2); line-height: 1.7; max-width: 580px; }
+
+/* Privacy highlight card */
+.privacy-highlight {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 28px 28px;
+  margin-bottom: 48px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.ph-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--sage-dim);
+  border: 1px solid oklch(0.65 0.07 145 / 0.3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.ph-icon svg { width: 18px; height: 18px; stroke: var(--sage-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ph-body h3 { font-family: var(--serif); font-size: 1.1rem; color: white; margin-bottom: 6px; }
+.ph-body p { font-size: 0.85rem; color: oklch(0.55 0.012 150); line-height: 1.65; }
+.ph-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.ph-tag { font-size: 0.68rem; font-weight: 700; color: var(--sage-light); background: oklch(0.65 0.07 145 / 0.15); border: 1px solid oklch(0.65 0.07 145 / 0.2); padding: 4px 10px; border-radius: 100px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+.doc-section { margin-bottom: 44px; }
+.doc-section h2 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.doc-section h3 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-top: 22px; margin-bottom: 8px; letter-spacing: -0.01em; }
+.doc-section p { font-size: 0.93rem; color: var(--text2); margin-bottom: 12px; line-height: 1.75; }
+.doc-section ul { margin: 8px 0 14px 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.doc-section li { font-size: 0.9rem; color: var(--text2); padding-left: 20px; position: relative; line-height: 1.65; }
+.doc-section li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+.doc-section a { color: var(--sage); text-decoration: none; font-weight: 500; }
+.doc-section a:hover { color: var(--sage-light); text-decoration: underline; }
+strong { font-weight: 700; color: var(--text); }
+
+footer {
+  background: var(--dark2);
+  border-top: 1px solid oklch(1 0 0 / 0.05);
+  padding: 28px 40px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  margin-top: 80px;
+}
+.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.footer-logo img { width: 26px; height: 26px; border-radius: 7px; }
+.footer-logo span { font-size: 0.85rem; font-weight: 700; color: oklch(0.7 0.01 150); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { color: oklch(0.45 0.01 150); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
+.footer-links a:hover { color: var(--sage-light); }
+.footer-copy { font-size: 0.72rem; color: oklch(0.35 0.008 150); }
+
+@media (max-width: 600px) {
+  .site-nav { padding: 14px 20px; }
+  .page-wrap { padding: 96px 20px 60px; }
+  .page-title { font-size: 2rem; }
+  .privacy-highlight { flex-direction: column; gap: 12px; }
+  footer { padding: 24px 20px; justify-content: center; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <a href="./" class="back">&larr; BudgetDaily</a>
-        <h1>Privacy Policy</h1>
-        <p class="updated"><strong>Last updated:</strong> April 2026</p>
-        <p class="intro">This Privacy Policy describes how BudgetDaily ("the App", "we", "our", or "us") handles your information. BudgetDaily is developed by Ivan Ting and is available on the Apple App Store. We built BudgetDaily with privacy as a core principle. Your financial data belongs to you — it stays on your device and, if you choose, in your private iCloud account. We do not collect, transmit, or sell your data.</p>
 
-        <hr>
+<nav class="site-nav">
+  <a href="./" class="nav-logo">
+    <img src="icon.png" alt="BudgetDaily">
+    <span>BudgetDaily</span>
+  </a>
+  <a href="./" class="nav-back">← Back</a>
+</nav>
 
-        <h2>1. Information We Collect</h2>
-        <p><strong>We do not collect any personal data.</strong> The App does not have external servers, analytics services, or advertising networks. No data is transmitted to us or any third party.</p>
-        <p>All information you enter into BudgetDaily — including accounts, transactions, budgets, and categories — is created and stored entirely on your device.</p>
+<div class="page-wrap">
+  <div class="page-header">
+    <p class="page-eyebrow">Legal</p>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Last updated: April 2026</p>
+    <p class="page-intro">BudgetDaily is built with privacy as a core principle. Your financial data belongs to you — it stays on your device and, if you choose, in your private iCloud account. We do not collect, transmit, or sell your data.</p>
+  </div>
 
-        <hr>
-
-        <h2>2. Data Storage</h2>
-
-        <h3>2.1 On-Device Storage</h3>
-        <p>All app data is stored locally on your device using Apple's SwiftData framework. This data remains under your control and is protected by your device's built-in security features (passcode, Face ID, Touch ID, and device encryption).</p>
-        <p>Sensitive credentials, such as your app lock PIN, are stored in the iOS Keychain, which provides hardware-backed encryption. Your PIN is never stored in plain text — it is hashed using SHA-256 with a unique salt via Apple's CryptoKit framework before storage.</p>
-
-        <h3>2.2 iCloud Sync (Pro Feature, Optional)</h3>
-        <p>If you subscribe to BudgetDaily Pro and enable iCloud Sync, your app data is synced to your private iCloud account using Apple's CloudKit framework. This data is:</p>
-        <ul>
-            <li>Stored in <strong>your personal iCloud account</strong>, not on any server we operate.</li>
-            <li>Protected by Apple's iCloud security and encryption standards.</li>
-            <li>Subject to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
-        </ul>
-        <p>You can disable iCloud Sync at any time in the App's settings. Disabling sync does not delete data already stored in your iCloud account — you can manage that through your device's iCloud settings.</p>
-
-        <h3>2.3 Auto Cloud Backup (Pro Feature, Optional)</h3>
-        <p>BudgetDaily Pro offers automatic cloud backups stored in your private iCloud container. These backups are accessible only to you and are governed by Apple's iCloud terms and security practices.</p>
-
-        <hr>
-
-        <h2>3. Budget Sharing</h2>
-        <p>BudgetDaily allows you to share budgets with other people you choose. When you share a budget:</p>
-        <ul>
-            <li>You explicitly select the recipients.</li>
-            <li>Shared budgets are transmitted via Apple's CloudKit framework.</li>
-            <li>Recipients receive <strong>read-only</strong> access to the shared budget data.</li>
-            <li>No data is sent to any server outside Apple's ecosystem.</li>
-        </ul>
-        <p>You can revoke sharing at any time. Only the data within the shared budget is visible to recipients — your other accounts, transactions, and personal information are never shared.</p>
-
-        <hr>
-
-        <h2>4. Biometric Data (Face ID / Touch ID)</h2>
-        <p>BudgetDaily offers an optional app lock feature using Face ID or Touch ID. When you enable this feature:</p>
-        <ul>
-            <li>Biometric authentication is handled entirely by Apple's Local Authentication framework.</li>
-            <li><strong>Your biometric data is never accessed, stored, or transmitted by BudgetDaily.</strong> The App only receives a success or failure response from the operating system.</li>
-            <li>Biometric data remains in the device's Secure Enclave and is never available to any app.</li>
-        </ul>
-
-        <hr>
-
-        <h2>5. Subscriptions and Purchases</h2>
-        <p>BudgetDaily Pro is offered as an auto-renewable subscription at AUD $1.49/month. Subscription transactions are processed entirely by Apple through the App Store. We do not have access to your payment information, Apple ID, or billing details.</p>
-        <p>Family Sharing is supported for up to 5 family members through Apple's Family Sharing system.</p>
-        <p>For information about how Apple handles purchase data, see <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
-
-        <hr>
-
-        <h2>6. Third-Party Services</h2>
-        <p>BudgetDaily does not integrate any third-party analytics, tracking, advertising, or data collection services.</p>
-        <p>The only third-party services involved are Apple platform services:</p>
-        <ul>
-            <li><strong>Apple CloudKit</strong> — for optional iCloud Sync, cloud backup, and budget sharing.</li>
-            <li><strong>Apple StoreKit</strong> — for subscription management and in-app purchases.</li>
-            <li><strong>Apple Local Authentication</strong> — for biometric app lock.</li>
-        </ul>
-        <p>These services are governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> and <a href="https://www.apple.com/legal/internet-services/itunes/">Apple's Terms of Service</a>.</p>
-
-        <hr>
-
-        <h2>7. Children's Privacy</h2>
-        <p>BudgetDaily is not directed at children under the age of 13 (or the applicable age of digital consent in your jurisdiction). We do not knowingly collect any information from children. Since the App does not collect data from any user, there is no risk of children's data being gathered.</p>
-        <p>If you are a parent or guardian and believe your child has used the App in a way that concerns you, please contact us at the address below.</p>
-
-        <hr>
-
-        <h2>8. Data Retention</h2>
-        <p>Since all data is stored locally on your device or in your private iCloud account, data retention is entirely under your control:</p>
-        <ul>
-            <li><strong>On-device data</strong> is retained until you delete it within the App, delete the App, or erase your device.</li>
-            <li><strong>iCloud data</strong> is retained in your iCloud account until you delete it through the App or through your iCloud account settings.</li>
-            <li><strong>We retain no data</strong> because we never receive any data.</li>
-        </ul>
-
-        <hr>
-
-        <h2>9. Your Rights</h2>
-        <p>Because BudgetDaily does not collect or store your data on any external server, traditional data-subject rights (access, correction, deletion, portability) are inherently satisfied — your data is already entirely in your possession.</p>
-        <p>You can:</p>
-        <ul>
-            <li><strong>View all your data</strong> directly within the App at any time.</li>
-            <li><strong>Delete any or all data</strong> within the App.</li>
-            <li><strong>Export your data</strong> using the App's backup features.</li>
-            <li><strong>Delete all cloud data</strong> by removing iCloud data through your device's Settings app.</li>
-            <li><strong>Stop all syncing</strong> by disabling iCloud Sync in the App's settings.</li>
-            <li><strong>Uninstall the App</strong> to remove all on-device data.</li>
-        </ul>
-
-        <hr>
-
-        <h2>10. Security Measures</h2>
-        <p>BudgetDaily employs the following security measures to protect your data:</p>
-        <ul>
-            <li><strong>iOS Keychain</strong> for encrypted storage of sensitive credentials.</li>
-            <li><strong>CryptoKit (SHA-256 + salt)</strong> for secure PIN hashing — your PIN is never stored in plain text.</li>
-            <li><strong>Apple's Secure Enclave</strong> for biometric authentication processing.</li>
-            <li><strong>Apple's iCloud encryption</strong> for any data you choose to sync.</li>
-            <li><strong>No external network calls</strong> — the App does not communicate with any server outside Apple's ecosystem.</li>
-        </ul>
-
-        <hr>
-
-        <h2>11. Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time. If we make material changes, we will notify you by updating the "Last updated" date at the top of this document and, where appropriate, through an in-app notice.</p>
-        <p>We encourage you to review this Privacy Policy periodically. Your continued use of the App after changes are posted constitutes your acceptance of the updated policy.</p>
-
-        <hr>
-
-        <h2>12. Contact Us</h2>
-        <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
-        <p><strong>Ivan Ting</strong><br>Email: <a href="mailto:budgetdaily@protonmail.com">budgetdaily@protonmail.com</a></p>
-
-        <div class="contact">
-            <p><em>This Privacy Policy is effective as of April 2026.</em></p>
-        </div>
+  <div class="privacy-highlight">
+    <div class="ph-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     </div>
-</body>
+    <div class="ph-body">
+      <h3>Your data never touches our servers</h3>
+      <p>We have no backend, no analytics, no advertising. Everything you enter stays on your device or in your own private iCloud account — never ours.</p>
+      <div class="ph-tags">
+        <span class="ph-tag">No servers</span>
+        <span class="ph-tag">No analytics</span>
+        <span class="ph-tag">No ads</span>
+        <span class="ph-tag">No tracking</span>
+        <span class="ph-tag">No third-party SDKs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>1. Information We Collect</h2>
+    <p><strong>We do not collect any personal data.</strong> The App does not have external servers, analytics services, or advertising networks. No data is transmitted to us or any third party.</p>
+    <p>All information you enter into BudgetDaily — including accounts, transactions, budgets, and categories — is created and stored entirely on your device.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Data Storage</h2>
+    <h3>On-Device Storage</h3>
+    <p>All app data is stored locally on your device using Apple's SwiftData framework. This data remains under your control and is protected by your device's built-in security features (passcode, Face ID, Touch ID, and device encryption).</p>
+    <p>Sensitive credentials, such as your app lock PIN, are stored in the iOS Keychain with hardware-backed encryption. Your PIN is hashed using SHA-256 with a unique salt via Apple's CryptoKit — never stored in plain text.</p>
+    <h3>iCloud Sync (Pro — Optional)</h3>
+    <p>If you enable iCloud Sync, your data is synced to your private iCloud account via Apple's CloudKit framework:</p>
+    <ul>
+      <li>Stored in <strong>your personal iCloud account</strong> — not on any server we operate.</li>
+      <li>Protected by Apple's iCloud security and encryption standards.</li>
+      <li>Subject to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
+    </ul>
+    <h3>Auto Cloud Backup (Pro — Optional)</h3>
+    <p>BudgetDaily Pro offers automatic cloud backups stored in your private iCloud container, accessible only to you and governed by Apple's iCloud terms.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Budget Sharing</h2>
+    <p>When you share a budget with someone you choose:</p>
+    <ul>
+      <li>You explicitly select the recipients.</li>
+      <li>Shared data is transmitted via Apple's CloudKit framework.</li>
+      <li>Recipients receive <strong>read-only</strong> access to that budget only.</li>
+      <li>Your other accounts, transactions, and personal data are never shared.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Biometric Data (Face ID / Touch ID)</h2>
+    <p>When you enable app lock, biometric authentication is handled entirely by Apple's Local Authentication framework. BudgetDaily only receives a success or failure response — your biometric data is never accessed, stored, or transmitted by the App. It remains in the device's Secure Enclave.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Subscriptions and Purchases</h2>
+    <p>Subscription transactions are processed entirely by Apple through the App Store. We do not have access to your payment information, Apple ID, or billing details. See <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> for details on how Apple handles purchase data.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Third-Party Services</h2>
+    <p>BudgetDaily does not integrate any third-party analytics, tracking, advertising, or data collection services. The only services used are Apple platform services:</p>
+    <ul>
+      <li><strong>Apple CloudKit</strong> — for optional iCloud Sync, cloud backup, and budget sharing.</li>
+      <li><strong>Apple StoreKit</strong> — for subscription management.</li>
+      <li><strong>Apple Local Authentication</strong> — for biometric app lock.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Children's Privacy</h2>
+    <p>BudgetDaily is not directed at children under 13. Since the App collects no data from any user, there is no risk of children's data being gathered.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Your Rights</h2>
+    <p>Because your data never leaves your device (or your own iCloud account), you have full control at all times:</p>
+    <ul>
+      <li>View all your data directly within the App.</li>
+      <li>Delete any or all data within the App.</li>
+      <li>Export your data via CSV backup.</li>
+      <li>Disable iCloud Sync at any time in Settings.</li>
+      <li>Delete all cloud data through your device's iCloud Settings.</li>
+      <li>Uninstall the App to remove all on-device data.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>9. Security Measures</h2>
+    <ul>
+      <li><strong>iOS Keychain</strong> for encrypted storage of sensitive credentials.</li>
+      <li><strong>CryptoKit (SHA-256 + salt)</strong> for secure PIN hashing.</li>
+      <li><strong>Apple's Secure Enclave</strong> for biometric authentication processing.</li>
+      <li><strong>Apple's iCloud encryption</strong> for any data you choose to sync.</li>
+      <li><strong>No external network calls</strong> — the App does not communicate with any server outside Apple's ecosystem.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be reflected by updating the "Last updated" date above. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>11. Contact Us</h2>
+    <p>Questions about this Privacy Policy? Reach us at <a href="/cdn-cgi/l/email-protection#2c4e59484b4958484d4540556c5c5e43584342414d4540024f4341"><span class="__cf_email__" data-cfemail="9efcebfaf9fbeafafff7f2e7deeeecf1eaf1f0f3fff7f2b0fdf1f3">[email&#160;protected]</span></a>.</p>
+    <p><strong>Ivan Ting</strong> — Developer, BudgetDaily</p>
+  </div>
+</div>
+
+<footer>
+  <a href="./" class="footer-logo">
+    <img src="icon.png" alt="BudgetDaily">
+    <span>BudgetDaily</span>
+  </a>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="support.html">Support</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Ivan Ting</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script></body>
 </html>
