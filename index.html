@@ -445,6 +445,70 @@ nav.scrolled {
 .daily-example .text-link { color: var(--sage-light); }
 .daily-example .text-link:hover { color: white; }
 
+.path-section {
+  background: var(--bg2);
+  padding: 88px 48px;
+}
+.path-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.path-header {
+  max-width: 620px;
+  margin-bottom: 40px;
+}
+.path-header .section-eyebrow {
+  text-align: left;
+  color: oklch(0.45 0.06 145);
+}
+.path-heading {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.14;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.path-heading em {
+  font-style: italic;
+  color: oklch(0.45 0.06 145);
+}
+.path-copy {
+  color: var(--text2);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.path-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 22px 20px;
+}
+.path-card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.path-card p {
+  color: var(--text2);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.path-actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
 .showcase {
   padding: 100px 48px;
   max-width: 1200px;
@@ -965,6 +1029,8 @@ footer {
   .loop-step:nth-last-child(-n+2) { border-bottom: none; }
   .daily-example { grid-template-columns: 1fr; }
   .example-balance { max-width: 220px; }
+  .path-section { padding: 72px 24px; }
+  .path-grid { grid-template-columns: 1fr 1fr; }
   .features-section, .privacy-section, .pricing-section, .final-cta { padding: 72px 24px; }
   .privacy-inner { grid-template-columns: 1fr; gap: 48px; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
@@ -984,6 +1050,8 @@ footer {
   .loop-step:last-child { border-bottom: none; }
   .daily-example { padding: 24px; }
   .loop-actions { align-items: flex-start; flex-direction: column; }
+  .path-grid { grid-template-columns: 1fr; }
+  .path-actions { align-items: flex-start; flex-direction: column; }
 }
 
 /* Lightbox */
@@ -1143,6 +1211,39 @@ footer {
         <span>Example balance</span>
         <strong>+$12</strong>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- STARTING POINTS -->
+<section class="path-section">
+  <div class="path-inner">
+    <div class="path-header reveal">
+      <p class="section-eyebrow">Make the most of it</p>
+      <h2 class="path-heading">Start simple.<br><em>Grow into power.</em></h2>
+      <p class="path-copy">You do not need to use every feature on day one. Start with one account and one budget, build the daily habit, then add more only when it helps.</p>
+    </div>
+    <div class="path-grid">
+      <div class="path-card reveal">
+        <h3>10-minute setup</h3>
+        <p>Add your main spending account, create one practical budget, and add recurring bills if they affect what you can spend.</p>
+      </div>
+      <div class="path-card reveal reveal-d1">
+        <h3>Daily habit</h3>
+        <p>Log purchases as they happen, check your Daily Balance, and use quick entry to keep the habit light.</p>
+      </div>
+      <div class="path-card reveal reveal-d2">
+        <h3>Weekly review</h3>
+        <p>Check budget pace, upcoming transactions, recurring costs, and whether app balances still match reality.</p>
+      </div>
+      <div class="path-card reveal reveal-d3">
+        <h3>When you're ready</h3>
+        <p>Add savings goals, loans, investments, shared budgets, widgets, backups, CSV, and reconciliation as your needs grow.</p>
+      </div>
+    </div>
+    <div class="path-actions reveal">
+      <a href="getting-started.html" class="text-link">Follow the full guide</a>
+      <a href="support.html" class="text-link">Browse common questions</a>
     </div>
   </div>
 </section>
