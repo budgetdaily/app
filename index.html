@@ -6,6 +6,7 @@
 <title>BudgetDaily — Your Private Budget Tracker for iOS</title>
 <meta name="description" content="BudgetDaily is a private, offline-first budget tracker for iPhone. Track spending across accounts, loans, and investments — no accounts, no servers, no ads.">
 <meta name="apple-itunes-app" content="app-id=6761750188">
+<link rel="canonical" href="https://budgetdaily.github.io/app/">
 <link rel="icon" type="image/png" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <meta property="og:title" content="BudgetDaily — Your Private Budget Tracker for iOS">
@@ -17,7 +18,23 @@
 <meta name="twitter:image" content="https://budgetdaily.github.io/app/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "BudgetDaily",
+  "operatingSystem": "iOS",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "AUD"
+  },
+  "url": "https://budgetdaily.github.io/app/",
+  "downloadUrl": "https://apps.apple.com/app/id6761750188",
+  "privacyPolicy": "https://budgetdaily.github.io/app/privacy.html"
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -227,6 +244,7 @@ nav.scrolled {
 }
 .phone-wrap img {
   width: 100%;
+  height: auto;
   border-radius: 36px;
   box-shadow: 0 32px 80px oklch(0 0 0 / 0.5), 0 8px 24px oklch(0 0 0 / 0.3);
   display: block;
@@ -287,6 +305,146 @@ nav.scrolled {
 }
 
 /* ─── FEATURE SHOWCASE ─── */
+.loop-section {
+  background: var(--bg);
+  padding: 96px 48px 88px;
+}
+.loop-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.loop-header {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+.loop-header .section-eyebrow {
+  text-align: left;
+  color: var(--sage);
+}
+.loop-heading {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+.loop-heading em {
+  font-style: italic;
+  color: oklch(0.45 0.06 145);
+}
+.loop-copy {
+  font-size: 1rem;
+  color: var(--text2);
+  line-height: 1.7;
+  max-width: 560px;
+}
+.loop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--surface);
+}
+.loop-step {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+}
+.loop-step:last-child { border-right: none; }
+.loop-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--sage-dim);
+  border: 1px solid oklch(0.65 0.07 145 / 0.25);
+  color: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.loop-step h3 {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.loop-step p {
+  font-size: 0.84rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+.daily-example {
+  margin-top: 32px;
+  background: var(--dark);
+  color: white;
+  border-radius: var(--r);
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+}
+.daily-example h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.daily-example p {
+  color: oklch(0.66 0.012 150);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  max-width: 620px;
+}
+.example-balance {
+  min-width: 180px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: oklch(1 0 0 / 0.06);
+  border: 1px solid oklch(1 0 0 / 0.08);
+  text-align: center;
+}
+.example-balance span {
+  display: block;
+  color: var(--sage-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.example-balance strong {
+  display: block;
+  color: white;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+}
+.loop-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.text-link {
+  color: oklch(0.45 0.06 145);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.text-link:hover { color: var(--sage); text-decoration: underline; }
+.daily-example .text-link { color: var(--sage-light); }
+.daily-example .text-link:hover { color: white; }
+
 .showcase {
   padding: 100px 48px;
   max-width: 1200px;
@@ -308,6 +466,7 @@ nav.scrolled {
 }
 .showcase-phone-img {
   width: 100%;
+  height: auto;
   max-width: 280px;
   border-radius: 44px;
   box-shadow: 0 24px 60px oklch(0 0 0 / 0.12), 0 4px 12px oklch(0 0 0 / 0.06);
@@ -799,6 +958,13 @@ footer {
   .showcase { padding: 64px 24px; }
   .showcase-row { grid-template-columns: 1fr; gap: 48px; margin-bottom: 72px; }
   .showcase-row.flip { direction: ltr; }
+  .loop-section { padding: 72px 24px; }
+  .loop-grid { grid-template-columns: 1fr 1fr; }
+  .loop-step { border-bottom: 1px solid var(--border); min-height: 0; }
+  .loop-step:nth-child(2n) { border-right: none; }
+  .loop-step:nth-last-child(-n+2) { border-bottom: none; }
+  .daily-example { grid-template-columns: 1fr; }
+  .example-balance { max-width: 220px; }
   .features-section, .privacy-section, .pricing-section, .final-cta { padding: 72px 24px; }
   .privacy-inner { grid-template-columns: 1fr; gap: 48px; }
   .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
@@ -806,6 +972,18 @@ footer {
   .trust-sep { display: none; }
   footer { padding: 28px 24px; justify-content: center; text-align: center; }
   .footer-links { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .loop-grid { grid-template-columns: 1fr; }
+  .loop-step,
+  .loop-step:nth-child(2n) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .loop-step:last-child { border-bottom: none; }
+  .daily-example { padding: 24px; }
+  .loop-actions { align-items: flex-start; flex-direction: column; }
 }
 
 /* Lightbox */
@@ -858,8 +1036,8 @@ footer {
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">
-    <img src="icon.png" alt="BudgetDaily">
+  <a href="./" class="nav-logo" aria-label="BudgetDaily home">
+    <img src="icon.png" alt="" width="32" height="32">
     <span>BudgetDaily</span>
   </a>
   <a href="https://apps.apple.com/app/id6761750188" class="nav-cta">
@@ -885,9 +1063,9 @@ footer {
       </div>
     </div>
     <div class="hero-phones hero-animate reveal-d2">
-      <div class="phone-wrap phone-l"><img src="frame-2.png" alt="Budgets screen" data-lightbox="1"></div>
-      <div class="phone-wrap phone-c"><img src="frame-1.png" alt="Accounts screen" data-lightbox="0"></div>
-      <div class="phone-wrap phone-r"><img src="frame-3.png" alt="Analytics screen" data-lightbox="2"></div>
+      <div class="phone-wrap phone-l"><img src="frame-2.png" alt="Budgets screen" width="2376" height="5162" decoding="async" data-lightbox="1" tabindex="0" role="button" aria-label="Open Budgets screenshot preview"></div>
+      <div class="phone-wrap phone-c"><img src="frame-1.png" alt="Accounts screen" width="1320" height="2868" decoding="async" data-lightbox="0" tabindex="0" role="button" aria-label="Open Accounts screenshot preview"></div>
+      <div class="phone-wrap phone-r"><img src="frame-3.png" alt="Analytics screen" width="1320" height="2868" decoding="async" data-lightbox="2" tabindex="0" role="button" aria-label="Open Analytics screenshot preview"></div>
     </div>
   </div>
 </header>
@@ -920,6 +1098,55 @@ footer {
   </span>
 </div>
 
+<!-- HOW IT WORKS -->
+<section class="loop-section">
+  <div class="loop-inner">
+    <div class="loop-header reveal">
+      <p class="section-eyebrow">How BudgetDaily works</p>
+      <h2 class="loop-heading">A trusted ledger for<br><em>daily spending decisions.</em></h2>
+      <p class="loop-copy">BudgetDaily is built for people who want deliberate, private control. Keep your real accounts mirrored in the app, log transactions as they happen, and let budgets, recurring commitments, analytics, widgets, and backups work from that source of truth.</p>
+    </div>
+
+    <div class="loop-grid">
+      <div class="loop-step reveal">
+        <div class="loop-num">1</div>
+        <h3>Mirror your accounts</h3>
+        <p>Add the accounts, loans, and investments you want to track. The app becomes a private ledger that reflects your real-world money.</p>
+      </div>
+      <div class="loop-step reveal reveal-d1">
+        <div class="loop-num">2</div>
+        <h3>Log spending quickly</h3>
+        <p>Record expenses, income, transfers, receipts, and split payments as they happen so your balances stay trusted.</p>
+      </div>
+      <div class="loop-step reveal reveal-d2">
+        <div class="loop-num">3</div>
+        <h3>Let budgets update</h3>
+        <p>Categorized transactions automatically update your weekly, fortnightly, or monthly budgets. No separate budget bookkeeping.</p>
+      </div>
+      <div class="loop-step reveal reveal-d3">
+        <div class="loop-num">4</div>
+        <h3>Know today's limit</h3>
+        <p>Daily Balance shows what you can safely spend now after rollover, overspending, and committed recurring expenses are accounted for.</p>
+      </div>
+    </div>
+
+    <div class="daily-example reveal">
+      <div>
+        <h3>The Daily Balance in plain English</h3>
+        <p>Set a $70 weekly grocery budget and BudgetDaily starts you at $10 per day. If it is Wednesday and you have spent $18, you are $12 ahead of pace. If you have spent $42, you are $12 behind and the app shows what it takes to recover.</p>
+        <div class="loop-actions">
+          <a href="getting-started.html" class="text-link">Read the getting started guide</a>
+          <a href="support.html" class="text-link">Browse common questions</a>
+        </div>
+      </div>
+      <div class="example-balance">
+        <span>Example balance</span>
+        <strong>+$12</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SHOWCASE SECTIONS -->
 <section class="showcase">
 
@@ -927,7 +1154,7 @@ footer {
   <div class="showcase-row reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-1.png" alt="Accounts screen" class="showcase-phone-img" data-lightbox="0">
+      <img src="frame-1.png" alt="Accounts screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="0" tabindex="0" role="button" aria-label="Open Accounts screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Accounts</p>
@@ -946,7 +1173,7 @@ footer {
   <div class="showcase-row flip reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-2.png" alt="Budgets screen" class="showcase-phone-img" data-lightbox="1">
+      <img src="frame-2.png" alt="Budgets screen" class="showcase-phone-img" width="2376" height="5162" loading="lazy" decoding="async" data-lightbox="1" tabindex="0" role="button" aria-label="Open Budgets screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Budgets</p>
@@ -965,7 +1192,7 @@ footer {
   <div class="showcase-row reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-3.png" alt="Analytics screen" class="showcase-phone-img" data-lightbox="2">
+      <img src="frame-3.png" alt="Analytics screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="2" tabindex="0" role="button" aria-label="Open Analytics screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Analytics</p>
@@ -983,7 +1210,7 @@ footer {
   <div class="showcase-row flip reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-6.png" alt="Budget detail screen" class="showcase-phone-img" data-lightbox="5">
+      <img src="frame-6.png" alt="Budget detail screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="5" tabindex="0" role="button" aria-label="Open Budget detail screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Budget Detail</p>
@@ -1170,8 +1397,8 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">
-    <img src="icon.png" alt="BudgetDaily">
+  <a href="./" class="footer-logo" aria-label="BudgetDaily home">
+    <img src="icon.png" alt="" width="28" height="28" loading="lazy" decoding="async">
     <span>BudgetDaily</span>
   </a>
   <div class="footer-links">
@@ -1224,6 +1451,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const lbNext = document.getElementById('lightbox-next');
   const lbCounter = document.getElementById('lightbox-counter');
   let cur = 0;
+  let lastFocused = null;
 
   function show(i) {
     cur = i;
@@ -1234,15 +1462,30 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     lbCounter.textContent = (i + 1) + ' / ' + allImgs.length;
   }
 
+  function openLightbox(i, trigger) {
+    lastFocused = trigger;
+    show(i);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
   document.querySelectorAll('[data-lightbox]').forEach(el => {
     el.addEventListener('click', () => {
-      show(parseInt(el.dataset.lightbox));
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      openLightbox(parseInt(el.dataset.lightbox), el);
+    });
+    el.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      openLightbox(parseInt(el.dataset.lightbox), el);
     });
   });
 
-  function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
   lbClose.addEventListener('click', close);
   lb.addEventListener('click', e => { if (e.target === lb) close(); });
   lbPrev.addEventListener('click', e => { e.stopPropagation(); if (cur > 0) show(cur - 1); });
@@ -1252,6 +1495,18 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (e.key === 'Escape') close();
     if (e.key === 'ArrowLeft' && cur > 0) show(cur - 1);
     if (e.key === 'ArrowRight' && cur < allImgs.length - 1) show(cur + 1);
+    if (e.key === 'Tab') {
+      const focusable = [lbClose, lbPrev, lbNext].filter(btn => !btn.disabled);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 })();
 </script>
