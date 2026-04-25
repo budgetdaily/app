@@ -287,5 +287,18 @@ footer {
   <p class="footer-copy">&copy; 2026 Ivan Ting</p>
 </footer>
 
+<script>
+const navBackLink = document.querySelector('.nav-back');
+if (navBackLink) {
+  navBackLink.addEventListener('click', event => {
+    const hasSameOriginReferrer = document.referrer && new URL(document.referrer).origin === window.location.origin;
+    if (window.history.length > 1 && hasSameOriginReferrer) {
+      event.preventDefault();
+      window.history.back();
+    }
+  });
+}
+</script>
+
 </body>
 </html>
