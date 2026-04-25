@@ -1047,6 +1047,8 @@ footer {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
+  /* Override the <=900px rule that removes borders for the last two cells. */
+  .loop-step:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
   .loop-step:last-child { border-bottom: none; }
   .daily-example { padding: 24px; }
   .loop-actions { align-items: flex-start; flex-direction: column; }
