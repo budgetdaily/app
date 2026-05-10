@@ -1053,14 +1053,15 @@ footer {
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    transform: translateY(16px);
+    transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    will-change: opacity, transform;
   }
   .reveal.in { opacity: 1; transform: none; }
-  .reveal-d1 { transition-delay: 0.08s; }
-  .reveal-d2 { transition-delay: 0.16s; }
-  .reveal-d3 { transition-delay: 0.24s; }
-  .reveal-d4 { transition-delay: 0.32s; }
+  .reveal-d1 { transition-delay: 0.06s; }
+  .reveal-d2 { transition-delay: 0.12s; }
+  .reveal-d3 { transition-delay: 0.18s; }
+  .reveal-d4 { transition-delay: 0.24s; }
 
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1203,9 +1204,9 @@ footer {
       </div>
     </div>
     <div class="hero-phones hero-animate reveal-d2">
-      <div class="phone-wrap phone-l"><img src="frame-2.jpg" alt="Budgets screen" width="2376" height="5162" decoding="async" data-lightbox="1" tabindex="0" role="button" aria-label="Open Budgets screenshot preview"></div>
-      <div class="phone-wrap phone-c"><img src="frame-1.jpg" alt="Accounts screen" width="1320" height="2868" decoding="async" data-lightbox="0" tabindex="0" role="button" aria-label="Open Accounts screenshot preview"></div>
-      <div class="phone-wrap phone-r"><img src="frame-3.jpg" alt="Analytics screen" width="1320" height="2868" decoding="async" data-lightbox="2" tabindex="0" role="button" aria-label="Open Analytics screenshot preview"></div>
+      <div class="phone-wrap phone-l"><img src="frame-2.png" alt="Budgets screen" width="800" height="1740" decoding="async" data-lightbox="1" tabindex="0" role="button" aria-label="Open Budgets screenshot preview"></div>
+      <div class="phone-wrap phone-c"><img src="frame-1.png" alt="Accounts screen" width="800" height="1740" decoding="async" data-lightbox="0" tabindex="0" role="button" aria-label="Open Accounts screenshot preview"></div>
+      <div class="phone-wrap phone-r"><img src="frame-3.png" alt="Analytics screen" width="800" height="1740" decoding="async" data-lightbox="2" tabindex="0" role="button" aria-label="Open Analytics screenshot preview"></div>
     </div>
   </div>
 </header>
@@ -1294,7 +1295,7 @@ footer {
   <div class="showcase-row reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-1.jpg" alt="Accounts screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="0" tabindex="0" role="button" aria-label="Open Accounts screenshot preview">
+      <img src="frame-1.png" alt="Accounts screen" class="showcase-phone-img" width="800" height="1740" loading="lazy" decoding="async" data-lightbox="0" tabindex="0" role="button" aria-label="Open Accounts screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Accounts</p>
@@ -1313,7 +1314,7 @@ footer {
   <div class="showcase-row flip reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-2.png" alt="Budgets screen" class="showcase-phone-img" width="2376" height="5162" loading="lazy" decoding="async" data-lightbox="1" tabindex="0" role="button" aria-label="Open Budgets screenshot preview">
+      <img src="frame-2.png" alt="Budgets screen" class="showcase-phone-img" width="800" height="1740" loading="lazy" decoding="async" data-lightbox="1" tabindex="0" role="button" aria-label="Open Budgets screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Budgets</p>
@@ -1332,7 +1333,7 @@ footer {
   <div class="showcase-row reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-3.jpg" alt="Analytics screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="2" tabindex="0" role="button" aria-label="Open Analytics screenshot preview">
+      <img src="frame-3.png" alt="Analytics screen" class="showcase-phone-img" width="800" height="1740" loading="lazy" decoding="async" data-lightbox="2" tabindex="0" role="button" aria-label="Open Analytics screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Analytics</p>
@@ -1350,7 +1351,7 @@ footer {
   <div class="showcase-row flip reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-4.jpg" alt="Recurring Tracker screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="3" tabindex="0" role="button" aria-label="Open Recurring Tracker screenshot preview">
+      <img src="frame-4.png" alt="Recurring Tracker screen" class="showcase-phone-img" width="800" height="1740" loading="lazy" decoding="async" data-lightbox="3" tabindex="0" role="button" aria-label="Open Recurring Tracker screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Recurring</p>
@@ -1368,7 +1369,7 @@ footer {
   <div class="showcase-row reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-5.jpg" alt="Spending pace alert screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="4" tabindex="0" role="button" aria-label="Open spending pace alert screenshot preview">
+      <img src="frame-5.png" alt="Spending pace alert screen" class="showcase-phone-img" width="800" height="1740" loading="lazy" decoding="async" data-lightbox="4" tabindex="0" role="button" aria-label="Open spending pace alert screenshot preview">
     </div>
     <div>
       <p class="showcase-label">Pacing</p>
@@ -1397,11 +1398,11 @@ footer {
     <div class="wealth-phones">
       <div class="wealth-phone">
         <span class="wealth-tag">Investment</span>
-        <img src="frame-6.jpg" alt="Investment tracking screen" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="5" tabindex="0" role="button" aria-label="Open Investment tracking screenshot preview">
+        <img src="frame-6.png" alt="Investment tracking screen" width="800" height="1740" loading="lazy" decoding="async" data-lightbox="5" tabindex="0" role="button" aria-label="Open Investment tracking screenshot preview">
       </div>
       <div class="wealth-phone wealth-phone-offset">
         <span class="wealth-tag">Loan</span>
-        <img src="frame-7.jpg" alt="Loan tracking screen" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="6" tabindex="0" role="button" aria-label="Open Loan tracking screenshot preview">
+        <img src="frame-7.png" alt="Loan tracking screen" width="800" height="1740" loading="lazy" decoding="async" data-lightbox="6" tabindex="0" role="button" aria-label="Open Loan tracking screenshot preview">
       </div>
     </div>
   </div>
@@ -1613,20 +1614,20 @@ window.addEventListener('scroll', () => {
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 }
 
 // Lightbox
 (function() {
   const allImgs = [
-    { src: 'frame-1.jpg', alt: 'Accounts' },
-    { src: 'frame-2.jpg', alt: 'Budgets' },
-    { src: 'frame-3.jpg', alt: 'Analytics' },
-    { src: 'frame-4.jpg', alt: 'Recurring Tracker' },
-    { src: 'frame-5.jpg', alt: 'Spending pace alert' },
-    { src: 'frame-6.jpg', alt: 'Investment tracking' },
-    { src: 'frame-7.jpg', alt: 'Loan tracking' },
+    { src: 'frame-1.png', alt: 'Accounts' },
+    { src: 'frame-2.png', alt: 'Budgets' },
+    { src: 'frame-3.png', alt: 'Analytics' },
+    { src: 'frame-4.png', alt: 'Recurring Tracker' },
+    { src: 'frame-5.png', alt: 'Spending pace alert' },
+    { src: 'frame-6.png', alt: 'Investment tracking' },
+    { src: 'frame-7.png', alt: 'Loan tracking' },
   ];
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
