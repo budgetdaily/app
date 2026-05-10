@@ -40,20 +40,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --dark: oklch(0.13 0.006 150);
-  --dark2: oklch(0.18 0.008 150);
-  --dark3: oklch(0.22 0.008 150);
+  --dark: oklch(0.14 0.018 250);
+  --dark2: oklch(0.20 0.02 250);
+  --dark3: oklch(0.26 0.02 250);
   --sage: oklch(0.65 0.07 145);
   --sage-light: oklch(0.78 0.05 145);
   --sage-dim: oklch(0.65 0.07 145 / 0.15);
   --sage-dimmer: oklch(0.65 0.07 145 / 0.08);
-  --bg: oklch(0.975 0.004 80);
-  --bg2: oklch(0.95 0.008 140);
-  --surface: oklch(1 0 0);
-  --border: oklch(0.9 0.006 140);
-  --text: oklch(0.16 0.006 150);
-  --text2: oklch(0.45 0.01 150);
-  --text3: oklch(0.65 0.008 150);
+  --bg: oklch(0.18 0.018 250);
+  --bg2: oklch(0.22 0.02 250);
+  --surface: oklch(0.24 0.022 250);
+  --border: oklch(0.32 0.018 250);
+  --text: oklch(0.97 0.005 250);
+  --text2: oklch(0.72 0.012 250);
+  --text3: oklch(0.55 0.012 250);
   --red: oklch(0.58 0.18 22);
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
@@ -81,14 +81,14 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 18px 40px;
-  background: oklch(0.13 0.006 150 / 0.88);
+  background: oklch(0.14 0.018 250 / 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid oklch(1 0 0 / 0.06);
   transition: background 0.3s;
 }
 nav.scrolled {
-  background: oklch(0.13 0.006 150 / 0.97);
+  background: oklch(0.14 0.018 250 / 0.97);
 }
 .nav-logo {
   display: flex;
@@ -309,6 +309,11 @@ nav.scrolled {
   background: var(--bg);
   padding: 96px 48px 88px;
 }
+.loop-grid { background: var(--surface); }
+.loop-step h3 { color: var(--text); }
+.loop-step p { color: var(--text2); }
+.path-card h3 { color: var(--text); }
+.path-card p { color: var(--text2); }
 .loop-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -533,14 +538,14 @@ nav.scrolled {
   height: auto;
   max-width: 280px;
   border-radius: 44px;
-  box-shadow: 0 24px 60px oklch(0 0 0 / 0.12), 0 4px 12px oklch(0 0 0 / 0.06);
+  box-shadow: 0 24px 60px oklch(0 0 0 / 0.5), 0 4px 12px oklch(0 0 0 / 0.3);
   display: block;
   margin: 0 auto;
 }
 .showcase-phone-bg {
   position: absolute;
   inset: -40px;
-  background: var(--sage-dimmer);
+  background: oklch(0.65 0.07 145 / 0.10);
   border-radius: 60px;
   z-index: -1;
 }
@@ -561,7 +566,56 @@ nav.scrolled {
   letter-spacing: -0.015em;
   color: var(--text);
 }
-.showcase-title em { font-style: italic; color: oklch(0.45 0.06 145); }
+.showcase-title em { font-style: italic; color: var(--sage-light); }
+
+/* ─── WEALTH ROW (split phones) ─── */
+.wealth-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 0;
+  padding-top: 40px;
+  border-top: 1px solid oklch(1 0 0 / 0.06);
+}
+.wealth-phones {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.wealth-phone {
+  position: relative;
+}
+.wealth-phone img {
+  width: 100%;
+  height: auto;
+  border-radius: 32px;
+  box-shadow: 0 24px 60px oklch(0 0 0 / 0.5), 0 4px 12px oklch(0 0 0 / 0.3);
+  display: block;
+  cursor: zoom-in;
+}
+.wealth-phone-offset { transform: translateY(40px); }
+.wealth-tag {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--sage);
+  color: oklch(0.13 0.018 250);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  z-index: 2;
+  white-space: nowrap;
+}
+@media (max-width: 880px) {
+  .wealth-row { grid-template-columns: 1fr; gap: 48px; padding-top: 0; border-top: none; }
+  .wealth-phone-offset { transform: translateY(20px); }
+}
 .showcase-desc {
   font-size: 1rem;
   color: var(--text2);
@@ -578,8 +632,8 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
+  background: oklch(1 0 0 / 0.05);
+  border: 1px solid oklch(1 0 0 / 0.1);
   color: var(--text);
   font-size: 0.78rem;
   font-weight: 600;
@@ -695,6 +749,20 @@ nav.scrolled {
   text-align: left;
   color: var(--text);
 }
+.path-heading { color: var(--text); }
+.path-heading em { color: var(--sage-light); }
+.path-copy { color: var(--text2); }
+.loop-heading { color: var(--text); }
+.loop-heading em { color: var(--sage-light); }
+.loop-copy { color: var(--text2); }
+.showcase-title { color: var(--text); }
+.showcase-title em { color: var(--sage-light); }
+.showcase-desc { color: var(--text2); }
+.price-plan { color: var(--text); }
+.price-amount { color: var(--text); }
+.privacy-copy p { color: var(--text2); }
+.text-link { color: var(--sage-light); }
+.text-link:hover { color: var(--sage); }
 .privacy-copy p {
   color: var(--text2);
   font-size: 1rem;
@@ -718,7 +786,7 @@ nav.scrolled {
 .priv-point-dot {
   width: 30px; height: 30px;
   border-radius: 50%;
-  background: var(--bg2);
+  background: oklch(1 0 0 / 0.05);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -822,6 +890,8 @@ nav.scrolled {
   padding: 36px 32px;
   position: relative;
 }
+.price-card .price-list li { color: var(--text); }
+.price-card .check-icon { background: oklch(1 0 0 / 0.06); }
 .price-card.pro {
   background: var(--dark);
   border-color: var(--sage);
@@ -1169,7 +1239,7 @@ footer {
 </div>
 
 <!-- HOW IT WORKS -->
-<section class="path-section">
+<section class="path-section" style="background:var(--bg)">
   <div class="loop-inner">
     <div class="loop-header reveal">
       <p class="section-eyebrow">How BudgetDaily works</p>
@@ -1218,7 +1288,7 @@ footer {
 </section>
 
 <!-- SHOWCASE SECTIONS -->
-<section class="showcase">
+<section class="showcase" style="background:var(--bg2)">
 
   <!-- Accounts -->
   <div class="showcase-row reveal">
@@ -1276,20 +1346,62 @@ footer {
     </div>
   </div>
 
-  <!-- Groceries detail -->
+  <!-- Recurring -->
   <div class="showcase-row flip reveal">
     <div class="showcase-phone">
       <div class="showcase-phone-bg"></div>
-      <img src="frame-6.png" alt="Budget detail screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="5" tabindex="0" role="button" aria-label="Open Budget detail screenshot preview">
+      <img src="frame-4.png" alt="Recurring Tracker screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="3" tabindex="0" role="button" aria-label="Open Recurring Tracker screenshot preview">
     </div>
     <div>
-      <p class="showcase-label">Budget Detail</p>
-      <h2 class="showcase-title">A forecast,<br><em>not just a ledger.</em></h2>
-      <p class="showcase-desc">See your running balance — cumulative, with any surplus or overspend carried forward from previous periods. The daily limit card recalculates as you spend, showing exactly how much you can spend per day to finish the period right on budget.</p>
+      <p class="showcase-label">Recurring</p>
+      <h2 class="showcase-title">Bills you'll see<br><em>before they hit.</em></h2>
+      <p class="showcase-desc">Every subscription, salary, and loan repayment in one place — with the exact date and amount queued up. Rate changing next month? The new period appears in advance, with the delta from the old one called out.</p>
       <div class="feature-pills">
-        <span class="pill"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 16 4-4 4 4 4-4"/></svg>Month projection</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Date countdowns</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 16 4-4 4 4 4-4"/></svg>Upcoming changes</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Net /mo at a glance</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pacing alerts -->
+  <div class="showcase-row reveal">
+    <div class="showcase-phone">
+      <div class="showcase-phone-bg"></div>
+      <img src="frame-5.png" alt="Spending pace alert screen" class="showcase-phone-img" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="4" tabindex="0" role="button" aria-label="Open spending pace alert screenshot preview">
+    </div>
+    <div>
+      <p class="showcase-label">Pacing</p>
+      <h2 class="showcase-title">Spending too fast?<br><em>You'll know.</em></h2>
+      <p class="showcase-desc">When a category drifts off pace, BudgetDaily tells you exactly how to recover — "spend nothing for 2 days," not vague warnings. Recovery extends across periods if you're carrying overspend forward.</p>
+      <div class="feature-pills">
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Recovery guidance</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Receipt capture</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Split expenses</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wealth: Investments + Loans -->
+  <div class="wealth-row reveal">
+    <div class="wealth-copy">
+      <p class="showcase-label">Wealth</p>
+      <h2 class="showcase-title">Beyond cash —<br><em>your whole picture.</em></h2>
+      <p class="showcase-desc">Track investment portfolios with cost basis and gain/loss. Track loans with payoff dates, interest, and progress bars. All in the same private ledger.</p>
+      <div class="feature-pills">
+        <span class="pill"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Investment history</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Loan progress</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Payoff projections</span>
+      </div>
+    </div>
+    <div class="wealth-phones">
+      <div class="wealth-phone">
+        <span class="wealth-tag">Investment</span>
+        <img src="frame-6.png" alt="Investment tracking screen" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="5" tabindex="0" role="button" aria-label="Open Investment tracking screenshot preview">
+      </div>
+      <div class="wealth-phone wealth-phone-offset">
+        <span class="wealth-tag">Loan</span>
+        <img src="frame-7.png" alt="Loan tracking screen" width="1320" height="2868" loading="lazy" decoding="async" data-lightbox="6" tabindex="0" role="button" aria-label="Open Loan tracking screenshot preview">
       </div>
     </div>
   </div>
@@ -1368,7 +1480,7 @@ footer {
 </section>
 
 <!-- PRIVACY -->
-<section class="privacy-section">
+<section class="privacy-section" style="background:var(--bg)">
   <div class="privacy-inner">
     <div class="privacy-copy reveal">
       <p class="section-eyebrow" style="text-align:left">Privacy</p>
@@ -1410,7 +1522,7 @@ footer {
 </section>
 
 <!-- PRICING -->
-<section class="pricing-section">
+<section class="pricing-section" style="background:var(--bg2)">
   <div class="pricing-inner">
     <p class="section-eyebrow reveal" style="color:oklch(0.45 0.06 145)">Pricing</p>
     <h2 class="section-heading reveal reveal-d1" style="color:var(--text)">Free to start.<br>Pro when you're ready.</h2>
@@ -1485,7 +1597,7 @@ footer {
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
   <button id="lightbox-close" class="lb-btn" aria-label="Close">✕</button>
   <button id="lightbox-prev" class="lb-btn" aria-label="Previous">&#8249;</button>
-  <img id="lightbox-img" src="" alt="">
+  <img id="lightbox-img" alt="">
   <button id="lightbox-next" class="lb-btn" aria-label="Next">&#8250;</button>
   <div id="lightbox-counter"></div>
 </div>
@@ -1512,8 +1624,9 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     { src: 'frame-2.png', alt: 'Budgets' },
     { src: 'frame-3.png', alt: 'Analytics' },
     { src: 'frame-4.png', alt: 'Recurring Tracker' },
-    { src: 'frame-5.png', alt: 'Analytics detail' },
-    { src: 'frame-6.png', alt: 'Budget detail' },
+    { src: 'frame-5.png', alt: 'Spending pace alert' },
+    { src: 'frame-6.png', alt: 'Investment tracking' },
+    { src: 'frame-7.png', alt: 'Loan tracking' },
   ];
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
