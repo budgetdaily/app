@@ -236,7 +236,7 @@ footer {
         <a href="#setup">10-minute setup</a>
         <a href="#daily-habit">Daily habit</a>
         <a href="#weekly-review">Weekly review</a>
-        <a href="#daily-balance">Daily Balance</a>
+        <a href="#daily-balance">Today's balance</a>
         <a href="#grow">Grow into power</a>
         <a href="#tips">Tips &amp; tricks</a>
       </div>
@@ -299,12 +299,12 @@ footer {
           </div>
           <div class="ongoing-body">
             <h4>Log your spending as it happens</h4>
-            <p>Add a transaction each time you spend. BudgetDaily updates your balances and budgets in real time, so the more consistently you log, the more useful the Daily Balance becomes.</p>
+            <p>Add a transaction each time you spend. BudgetDaily updates your balances and budgets in real time, so the more consistently you log, the more useful Today's balance becomes.</p>
           </div>
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p><strong>Check Daily Balance before spending.</strong> It tells you whether you are ahead of pace, behind pace, or right on track.</p>
+          <p><strong>Check Today's balance before spending.</strong> It tells you whether each budget is ahead of pace, behind pace, or right on track.</p>
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
@@ -332,7 +332,7 @@ footer {
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p><strong>Check upcoming transactions.</strong> Future-dated bills and scheduled payments help explain why a projected balance may differ from today's balance.</p>
+          <p><strong>Check upcoming transactions.</strong> Future-dated transactions and date-pending items help explain why a projected account balance may differ from today's account balance.</p>
         </div>
       </section>
 
@@ -340,20 +340,28 @@ footer {
 
       <!-- DAILY BALANCE -->
       <section class="doc-section" id="daily-balance">
-        <h2>The Daily Balance</h2>
-        <p class="section-sub">The core number BudgetDaily is built around</p>
+        <h2>Today's balance</h2>
+        <p class="section-sub">The live budget number BudgetDaily is built around</p>
         <div class="concept-card">
           <div class="concept-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
           <div class="concept-body">
-            <h3>What is the Daily Balance?</h3>
-            <p>How much you can safely spend right now and stay on pace. It's your accrued budget so far (daily rate × days elapsed) plus any rollover, minus what you've already spent. Positive = ahead of pace. Negative = spent more than accrued so far.</p>
+            <h3>What is Today's balance?</h3>
+            <p>Today is the visible rolling balance: how much you can safely spend right now and stay on pace. It is calculated from budget earned so far, carry-forward from previous cadence windows, goal movements, recurring commitments, due scheduled one-offs, refunds, and spending.</p>
           </div>
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p><strong>Daily rate:</strong> your budget limit ÷ days in the period, minus recurring committed expenses. A $70 weekly budget = $10/day base rate.</p>
+          <p><strong>Positive or negative:</strong> a positive Today balance means you are ahead of pace. A negative Today balance means you are behind; it keeps recovering by your Daily Change even when that recovery crosses a cadence boundary.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-dot"></div>
+          <p><strong>Daily Change:</strong> your budget limit divided by the days in its cadence, minus committed recurring expenses. A $70 weekly budget has a $10/day base pace; a $3/day subscription leaves a +$7 no-spend daily change.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-dot"></div>
+          <p><strong>Tomorrow:</strong> the no-spend forecast for what Today's balance becomes tomorrow if you spend nothing more in that budget.</p>
         </div>
       </section>
 
@@ -362,18 +370,26 @@ footer {
       <!-- BUDGETS -->
       <section class="doc-section" id="budgets">
         <h2>Budgets</h2>
-        <p class="section-sub">Track spending by category over a period</p>
+        <p class="section-sub">Track spending by category over a cadence</p>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p>Each budget tracks one category over a weekly, fortnightly, or monthly period. Unspent budget <strong>rolls over</strong> — overspending is <strong>carried forward</strong> as a deduction.</p>
+          <p>Each budget tracks one category, including an optional uncategorised catch-all, over a daily, weekly, fortnightly, monthly, yearly, every-weekday, or custom cadence.</p>
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p>The <strong>spending ring</strong> in budget detail shows how much of your period budget you've used. Green = under budget. Amber = within rollover savings. Red = exhausted.</p>
+          <p>Cadence windows are reporting and settlement buckets; they do not reset the live budget balance. Saved amounts and overspending <strong>carry forward</strong> into the rolling balance.</p>
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p><strong>Daily Limit</strong> = remaining budget ÷ days left including today. Higher than your base rate means you've been spending less than expected.</p>
+          <p>The <strong>spending ring</strong> in budget detail shows how much you've spent against the current total allocation, including carry-forward. Progress colour = within allocation. Warning colour = using carry-forward savings. Expense colour = exhausted.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-dot"></div>
+          <p><strong>Daily Room</strong> shows how much you can spend each remaining day to finish the current cadence window on budget, after committed recurring expenses.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-dot"></div>
+          <p><strong>Budget groups</strong> combine active child budgets and show a pooled Today's balance, Daily Change, and Tomorrow forecast.</p>
         </div>
       </section>
 
@@ -385,11 +401,11 @@ footer {
         <p class="section-sub">Your financial picture in one place</p>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p>The balance shows money in your account <strong>today</strong> — future-dated transactions are excluded so you see what you actually have right now.</p>
+          <p>The account balance shows the money currently in your account <strong>today</strong>. Future-dated transactions, pending one-off scheduled transactions, and recurring items that have not been recorded yet are excluded so the balance reflects what you actually have right now.</p>
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p>A <strong>~ projected balance</strong> appears below your current balance when future-dated transactions are scheduled to settle.</p>
+          <p>A <strong>~ projected balance</strong> appears below your current balance when future-dated transactions or date-pending items are scheduled to settle. The tilde means it is a projection, not a confirmed amount.</p>
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
@@ -409,7 +425,7 @@ footer {
         </div>
         <div class="tip">
           <div class="tip-dot"></div>
-          <p>Use <strong>recurring transactions</strong> for subscriptions and fixed bills — they count against your daily rate automatically.</p>
+          <p>Use <strong>recurring transactions</strong> for subscriptions and fixed bills — they count against your Daily Change automatically.</p>
         </div>
       </section>
 
@@ -438,7 +454,7 @@ footer {
             <div class="step-num">3</div>
             <div class="step-body">
               <h4>Shared budgets and widgets <span class="optional-tag">Pro</span></h4>
-              <p>Share read-only budget progress with someone you choose, or put balances and budgets on your Home Screen for faster check-ins.</p>
+              <p>Share read-only budget progress with someone you choose, or put Today's balances and budgets on your Home Screen for faster check-ins.</p>
             </div>
           </div>
           <div class="step">
