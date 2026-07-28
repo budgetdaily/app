@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BudgetDaily | Your Private Budget Tracker for iOS</title>
-<meta name="description" content="BudgetDaily is a private, offline-first budget tracker for iPhone. Track accounts, loans, investments, and budgets that show what you can spend today — no accounts, no analytics, no ads.">
+<meta name="description" content="BudgetDaily is a private, offline-first budget tracker for iPhone. Track accounts, loans, investments, and budgets that show what you can spend today — no accounts, no tracking, no ads.">
 <meta name="apple-itunes-app" content="app-id=6761750188">
 <link rel="canonical" href="https://budgetdaily.github.io/app/">
 <link rel="icon" type="image/png" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <meta property="og:title" content="BudgetDaily — Your Private Budget Tracker for iOS">
-<meta property="og:description" content="Track spending, manage rolling budgets, and see what you can spend today. Offline-first. No accounts. No analytics. No ads.">
+<meta property="og:description" content="Track spending, manage rolling budgets, and see what you can spend today. Offline-first. No accounts. No tracking. No ads.">
 <meta property="og:url" content="https://budgetdaily.github.io/app/">
 <meta property="og:image" content="https://budgetdaily.github.io/app/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -925,6 +925,10 @@ nav.scrolled {
   letter-spacing: -0.03em;
   margin-bottom: 4px;
 }
+.price-amount-local {
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+}
 .price-card.pro .price-amount { color: white; }
 .price-sub {
   font-size: 0.78rem;
@@ -1200,7 +1204,7 @@ footer {
           <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           Download on the App Store
         </a>
-        <p class="hero-note">Free to start &nbsp;·&nbsp; <strong>Pro from A$1.49/month</strong> &nbsp;·&nbsp; Family Sharing</p>
+        <p class="hero-note">Free to start &nbsp;·&nbsp; <strong>Pro pricing varies by region</strong> &nbsp;·&nbsp; Family Sharing</p>
       </div>
     </div>
     <div class="hero-phones hero-animate reveal-d2">
@@ -1319,12 +1323,14 @@ footer {
     <div>
       <p class="showcase-label">Budgets</p>
       <h2 class="showcase-title">Know your<br><em>Today balance.</em></h2>
-      <p class="showcase-desc">Set budgets on daily, weekly, fortnightly, monthly, yearly, weekday, or custom cadences. Each card shows Today's balance, Daily allowance, spent today, and a no-spend Tomorrow forecast. Move available budget room between active budgets or savings goals without changing account balances.</p>
+      <p class="showcase-desc">Set budgets on daily, weekly, fortnightly, monthly, yearly, weekday, or custom cadences. Each card shows Today's balance, Daily allowance, spent today, and a no-spend Tomorrow forecast. Plan a project or event with a one-off budget, or spread a large expense across the budget days it covers — without changing when money moves in your account.</p>
       <div class="feature-pills">
         <span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Today's balance</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Daily allowance</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>Budget groups</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Fund movements</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg>One-off budgets</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 16 4-4 3 3 5-6"/></svg>Spread expenses</span>
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Shared budgets (Pro)</span>
       </div>
     </div>
@@ -1339,11 +1345,12 @@ footer {
     <div>
       <p class="showcase-label">Analytics</p>
       <h2 class="showcase-title">Patterns that<br><em>tell the truth.</em></h2>
-      <p class="showcase-desc">Income vs expenses, budget performance, recurring overheads, and financial health — all in one analytics view that helps you understand where your money actually goes.</p>
+      <p class="showcase-desc">Compare income and expenses, find category and spending trends, understand your Recurring Margin, and look ahead with Cash Projection and Future Transactions. Customise Week, Month, and Year so each view answers the questions you care about.</p>
       <div class="feature-pills">
         <span class="pill"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Spending trends</span>
-        <span class="pill"><svg viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.5.5 0 0 1-.96 0L9.68 3.18a.5.5 0 0 0-.96 0l-2.35 8.36A2 2 0 0 1 4.44 13H2"/></svg>Financial health</span>
-        <span class="pill"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Recurring tracker</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.5.5 0 0 1-.96 0L9.68 3.18a.5.5 0 0 0-.96 0l-2.35 8.36A2 2 0 0 1 4.44 13H2"/></svg>Recurring Margin</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><polyline points="3 17 8 12 12 15 21 6"/><polyline points="15 6 21 6 21 12"/></svg>Cash projection</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>Your layout</span>
       </div>
     </div>
   </div>
@@ -1433,6 +1440,11 @@ footer {
         <p>Record expected expenses before they happen. Execute when ready.</p>
       </div>
       <div class="feat-cell reveal reveal-d3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div>
+        <h4>One-off Budgets</h4>
+        <p>Set a fixed total for a project or event and see exactly what remains.</p>
+      </div>
+      <div class="feat-cell reveal reveal-d3">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
         <h4>Account Tags</h4>
         <p>Tag and filter accounts by segment for quick focused views.</p>
@@ -1445,7 +1457,12 @@ footer {
       <div class="feat-cell reveal reveal-d1">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <h4>Home Screen Widgets</h4>
-        <p>Budgets, today's balances, pending confirmations, and scheduled transactions. <em style="color:oklch(0.65 0.07 145)">Pro</em></p>
+        <p>Budget and account balances, pending confirmations, scheduled activity, and recent transactions — with quick expense entry. <em style="color:oklch(0.65 0.07 145)">Pro</em></p>
+      </div>
+      <div class="feat-cell reveal reveal-d2">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 16 4-4 3 3 5-6"/></svg></div>
+        <h4>Spread Expenses</h4>
+        <p>Let a large purchase affect the budget days it covers while keeping the real account payment on its actual date.</p>
       </div>
       <div class="feat-cell reveal reveal-d2">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
@@ -1473,6 +1490,16 @@ footer {
         <p>Project balances forward with future-dated, date-pending, and recurring activity before it affects today's account balance.</p>
       </div>
       <div class="feat-cell reveal reveal-d3">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h4>Not Budgeted</h4>
+        <p>See spending outside an active budget, understand why, and create the right budget from the detail view.</p>
+      </div>
+      <div class="feat-cell reveal">
+        <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h4>Custom Analytics</h4>
+        <p>Reorder or hide cards independently for Week, Month, and Year views.</p>
+      </div>
+      <div class="feat-cell reveal reveal-d3">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
         <h4>350+ Category Icons</h4>
         <p>Curated icons with keyword search. Personalise every category.</p>
@@ -1487,7 +1514,7 @@ footer {
     <div class="privacy-copy reveal">
       <p class="section-eyebrow" style="text-align:left">Privacy</p>
       <h2 class="section-heading" style="text-align:left;color:var(--text)">Privacy isn't a feature.<br><em style="font-style:italic;color:oklch(0.45 0.06 145)">It's the foundation.</em></h2>
-      <p>No analytics, no tracking, no advertising. Your financial data stays on your device and in your private iCloud account. We never see it — by design.</p>
+      <p>No third-party analytics, no tracking, no advertising. Your financial data stays on your device and in your private iCloud account. We never see it — by design.</p>
       <div class="privacy-points">
         <div class="priv-point">
           <span class="priv-point-dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -1551,8 +1578,8 @@ footer {
       <div class="price-card pro reveal reveal-d1">
         <span class="pro-badge">Most Popular</span>
         <p class="price-plan">Pro</p>
-        <p class="price-amount">A$1.49<span style="font-size:1rem;font-weight:500;opacity:0.6">/mo</span></p>
-        <p class="price-sub">Family Sharing included for up to 5</p>
+        <p class="price-amount price-amount-local">Local price</p>
+        <p class="price-sub">Monthly subscription · shown in the App Store · Family Sharing included for up to 5</p>
         <ul class="price-list">
           <li><span class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Free</li>
         </ul>
