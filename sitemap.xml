@@ -7,6 +7,12 @@
     <loc>https://budgetdaily.github.io/app/getting-started.html</loc>
   </url>
   <url>
+    <loc>https://budgetdaily.github.io/app/guides/</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/set-up.html</loc>
+  </url>
+  <url>
     <loc>https://budgetdaily.github.io/app/privacy.html</loc>
   </url>
   <url>
@@ -14,5 +20,38 @@
   </url>
   <url>
     <loc>https://budgetdaily.github.io/app/support.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/log-spending.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/todays-balance.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/recurring-bills.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/savings-goals.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/split-expenses.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/refunds.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/payment-plans.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/reconcile.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/foreign-currency.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/not-budgeted.html</loc>
+  </url>
+  <url>
+    <loc>https://budgetdaily.github.io/app/guides/backup.html</loc>
   </url>
 </urlset>
