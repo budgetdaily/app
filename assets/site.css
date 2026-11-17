@@ -1,0 +1,2671 @@
+/* BudgetDaily — one stylesheet for every page.
+   Layers are declared up front so order in the file never decides who wins. */
+@layer reset, tokens, base, layout, components, pages, motion;
+
+/* ─── Fonts ───────────────────────────────────────────────────────────────
+   Plus Jakarta Sans (SIL OFL 1.1, see assets/fonts/OFL.txt). One variable file
+   per script, wght 200–800. Only the latin file is preloaded. */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/plus-jakarta-sans-cyrillic-ext.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/plus-jakarta-sans-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/plus-jakarta-sans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* A local face tuned to Plus Jakarta Sans's measured metrics (advance width,
+   ascent 1.038, descent 0.222 at 1000 upm), so the swap moves nothing. */
+@font-face {
+  font-family: "Jakarta Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Roboto");
+  size-adjust: 105%;
+  ascent-override: 98.9%;
+  descent-override: 21.1%;
+  line-gap-override: 0%;
+}
+
+/* ─── Reset ───────────────────────────────────────────────────────────────
+   Element-scoped on purpose: nothing is set on `*`. */
+@layer reset {
+  :where(html) {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  :where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
+    margin: 0;
+  }
+  :where(ol, ul)[class] {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  :where(a, article, aside, button, dd, details, dialog, div, dl, dt, figure, footer, header, input, li, main, nav, ol, p, section, span, summary, table, td, th, ul, video) {
+    box-sizing: border-box;
+  }
+  /* Replaced elements are inline by default, which leaves a gap under them. */
+  :where(img, picture, video, svg) {
+    display: block;
+    max-inline-size: 100%;
+  }
+  :where(img, video) {
+    block-size: auto;
+  }
+  :where(button, input) {
+    font: inherit;
+    color: inherit;
+  }
+  :where(table) {
+    border-collapse: collapse;
+  }
+}
+
+/* ─── Tokens ──────────────────────────────────────────────────────────────
+   The palette is the app icon: an ink-black object on a sage field. Sage is
+   the same in both schemes; paper and ink trade places.
+   Raw light and dark values are kept apart, then paired with light-dark().
+   Browsers without light-dark() keep the light scheme. */
+@layer tokens {
+  :root {
+    color-scheme: light dark;
+
+    /* The field is the app icon's own background colour, in either scheme. */
+    --sage: #b6b8a7;
+    --sage-lit: #c9cbbb;
+    --on-sage: #12140e;
+    --on-sage-2: #34382b;
+
+    --paper-l: #f1f2ea;
+    --paper-d: #0c0d0a;
+    --surface-l: #fbfbf7;
+    --surface-d: #171913;
+    --tint-l: #e2e4d8;
+    --tint-d: #1d1f18;
+    --ink-l: #12140e;
+    --ink-d: #ecede4;
+    --ink-2-l: #4b4f42;
+    --ink-2-d: #a8ab9c;
+    --line-l: #d6d8ca;
+    --line-d: #2a2c24;
+    --line-strong-l: #8a8d7b;
+    --line-strong-d: #5c5f51;
+    --up-l: #1b7739;
+    --up-d: #3ddc6c;
+    --down-l: #c0321e;
+    --down-d: #ff6b5c;
+    --slab-edge-l: #12140e;
+    --slab-edge-d: #2a2c24;
+
+    --paper: var(--paper-l);
+    --surface: var(--surface-l);
+    --tint: var(--tint-l);
+    --ink: var(--ink-l);
+    --ink-2: var(--ink-2-l);
+    --line: var(--line-l);
+    --line-strong: var(--line-strong-l);
+    --up: var(--up-l);
+    --down: var(--down-l);
+    --slab-edge: var(--slab-edge-l);
+
+    /* The slab is always dark, like the app. */
+    --slab: #11130d;
+    --slab-2: #1c1f17;
+    --slab-3: #272a20;
+    --slab-ink: #eef0e6;
+    --slab-ink-2: #a9ac9d;
+    --slab-up: #3ddc6c;
+    --slab-down: #ff6b5c;
+
+    --font: "Plus Jakarta Sans", "Jakarta Fallback", system-ui, sans-serif;
+    --font-app: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, system-ui, sans-serif;
+    /* Fluid sizes mix rem with vw so zoom still works. */
+    --size-h1: clamp(2.85rem, 1.35rem + 6.4vw, 6rem);
+    --size-h1-doc: clamp(2.25rem, 1.5rem + 3.2vw, 4.25rem);
+    --size-h2: clamp(2rem, 1.3rem + 2.9vw, 3.6rem);
+    --size-h3: clamp(1.3rem, 1.15rem + 0.6vw, 1.6rem);
+    --size-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3rem);
+    --size-small: 0.9rem;
+
+    --gutter: clamp(1rem, 4vw, 2.5rem);
+    --section: clamp(4.5rem, 10vw, 8.5rem);
+    --header-h: 5rem;
+    --radius-field: clamp(1.75rem, 4vw, 3rem);
+    --radius-card: 1.5rem;
+    --radius-small: 0.75rem;
+
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-device: 0 1.2rem 1.6rem -0.9rem rgb(15 17 10 / 0.5), 0 3.5rem 5rem -2rem rgb(15 17 10 / 0.45);
+  }
+
+  @supports (color: light-dark(#000, #fff)) {
+    :root {
+      --paper: light-dark(var(--paper-l), var(--paper-d));
+      --surface: light-dark(var(--surface-l), var(--surface-d));
+      --tint: light-dark(var(--tint-l), var(--tint-d));
+      --ink: light-dark(var(--ink-l), var(--ink-d));
+      --ink-2: light-dark(var(--ink-2-l), var(--ink-2-d));
+      --line: light-dark(var(--line-l), var(--line-d));
+      --line-strong: light-dark(var(--line-strong-l), var(--line-strong-d));
+      --up: light-dark(var(--up-l), var(--up-d));
+      --down: light-dark(var(--down-l), var(--down-d));
+      --slab-edge: light-dark(var(--slab-edge-l), var(--slab-edge-d));
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    :root {
+      --ink-2: var(--ink);
+      --on-sage-2: var(--on-sage);
+      --line: var(--line-strong);
+      --slab-ink-2: var(--slab-ink);
+    }
+  }
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    /* Anchors and focused controls land below the floating header. */
+    scroll-padding-block-start: calc(var(--header-h) + 1rem);
+    accent-color: var(--ink);
+
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    text-align: start;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 800;
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: var(--size-h1);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+  }
+  h2 {
+    font-size: var(--size-h2);
+    line-height: 1.02;
+    letter-spacing: -0.042em;
+  }
+  h3 {
+    font-size: var(--size-h3);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+  h4 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  p, li, dd {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.2em;
+  }
+  a:hover {
+    text-decoration-thickness: 0.14em;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  :where(a:any-link, button, summary, input, [tabindex]):focus-visible {
+    outline: 0.16rem solid currentColor;
+    outline-offset: 0.2rem;
+    border-radius: 0.3rem;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* Cross-fade between pages. Browsers without it navigate as usual. */
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
+  }
+}
+
+/* ─── Layout ──────────────────────────────────────────────────────────── */
+@layer layout {
+  .wrap {
+    inline-size: min(100% - 2 * var(--gutter), 72rem);
+    margin-inline: auto;
+  }
+
+  /* Document pages are one centred column. The text lines up with the words
+     inside the sage heading slab, not with the slab's edge. */
+  main.wrap:has(> .prose) {
+    --doc-pad: clamp(1.25rem, 5vw, 4rem);
+    max-inline-size: 52rem;
+
+    > .prose {
+      max-inline-size: none;
+      padding-inline: var(--doc-pad);
+    }
+  }
+  main.wrap:has(> .guide-body) {
+    max-inline-size: 54rem;
+  }
+  main.wrap:has(> .doc-layout) {
+    max-inline-size: 64rem;
+  }
+
+  .section {
+    margin-block-start: var(--section);
+  }
+
+  .section-head {
+    max-inline-size: 46rem;
+    margin-block-end: clamp(2.25rem, 5vw, 4rem);
+
+    p {
+      margin-block-start: 1.25rem;
+      font-size: var(--size-lead);
+      color: var(--ink-2);
+      max-inline-size: 58ch;
+    }
+  }
+
+  /* The field: a slab in the app icon's colour. The hero, the page headings
+     and the closing call to action all sit on one. */
+  .field {
+    container: field / inline-size;
+    margin-inline: clamp(0.5rem, 1.5vw, 1.25rem);
+    padding: clamp(1.75rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4.5rem);
+    border-radius: var(--radius-field);
+    background: var(--sage);
+    color: var(--on-sage);
+
+    /* Squircle corners where supported; plain rounded corners elsewhere. */
+    @supports (corner-shape: squircle) {
+      corner-shape: squircle;
+      border-radius: calc(var(--radius-field) * 1.7);
+    }
+  }
+  .field-ink {
+    background: var(--slab);
+    color: var(--slab-ink);
+    border: 1px solid var(--slab-edge);
+
+    a {
+      color: var(--slab-ink);
+    }
+  }
+  .field-inner {
+    inline-size: min(100%, 68rem);
+    margin-inline: auto;
+  }
+  .section.field {
+    margin-block-start: var(--section);
+  }
+
+  @media (forced-colors: active) {
+    .field {
+      border: 1px solid CanvasText;
+    }
+  }
+}
+
+/* ─── Components ──────────────────────────────────────────────────────── */
+@layer components {
+  .visually-hidden:not(:focus-within, :active) {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .skip-link {
+    position: fixed;
+    inset-block-start: 0.5rem;
+    inset-inline-start: 0.5rem;
+    z-index: 20;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-small);
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* Buttons */
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-block-size: 3.5rem;
+    padding: 0.7rem 1.75rem;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: background-color 0.15s, scale 0.15s;
+
+    svg {
+      inline-size: 1.25em;
+      block-size: 1.25em;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    &:hover {
+      background: color-mix(in oklab, var(--ink) 84%, var(--paper));
+    }
+    &:active {
+      scale: 0.98;
+    }
+  }
+  .button-small {
+    min-block-size: 2.5rem;
+    padding: 0.4rem 1.1rem;
+    font-size: var(--size-small);
+  }
+  .field:not(.field-ink) .button {
+    background: var(--on-sage);
+    color: var(--paper-l);
+
+    &:hover {
+      background: color-mix(in oklab, var(--on-sage) 84%, var(--sage));
+    }
+  }
+  @media (forced-colors: active) {
+    .button {
+      border: 1px solid ButtonText;
+    }
+  }
+
+  .text-link {
+    font-weight: 700;
+  }
+
+  /* Header: one floating capsule, like the app's own tab bar. */
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 10;
+    padding-block: 0.75rem;
+    /* Only the capsule takes clicks; the page shows through around it. */
+    pointer-events: none;
+    view-transition-name: site-header;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 1.25rem);
+    min-block-size: 3.5rem;
+    padding-inline: 0.75rem 0.5rem;
+    border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--surface) 90%, transparent);
+    -webkit-backdrop-filter: blur(18px) saturate(1.6);
+    backdrop-filter: blur(18px) saturate(1.6);
+    box-shadow: 0 0.75rem 1.75rem -1.25rem rgb(15 17 10 / 0.45);
+    pointer-events: auto;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+    margin-inline-end: auto;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    text-decoration: none;
+
+    img {
+      inline-size: 2rem;
+      block-size: 2rem;
+      border-radius: 23%;
+    }
+  }
+
+  /* Navigation. One list at every width. Without popover support it stays
+     an inline list and the Menu button stays hidden. */
+  .menu-button {
+    display: none;
+    min-block-size: 2.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: transparent;
+    font-size: var(--size-small);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .site-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 2.5rem;
+      padding-inline: 0.85rem;
+      border-radius: 999px;
+      font-size: var(--size-small);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        background: color-mix(in oklab, var(--ink) 8%, transparent);
+      }
+      /* Current page: a filled capsule and weight, not colour alone. */
+      &[aria-current] {
+        background: color-mix(in oklab, var(--ink) 10%, transparent);
+        font-weight: 800;
+      }
+    }
+  }
+
+  @supports selector(:popover-open) {
+    @media (width < 44rem) {
+      .menu-button {
+        display: inline-flex;
+        align-items: center;
+      }
+      .site-menu {
+        position: fixed;
+        inset: auto;
+        inset-block-start: calc(var(--header-h) - 0.25rem);
+        inset-inline-end: var(--gutter);
+        inline-size: min(100dvw - 2 * var(--gutter), 20rem);
+        max-block-size: calc(100dvh - var(--header-h) - 2rem);
+        margin: 0;
+        padding: 0.5rem;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-card);
+        background: var(--surface);
+        color: var(--ink);
+        overflow: auto;
+        flex-direction: column;
+        align-items: stretch;
+
+        &:not(:popover-open) {
+          display: none;
+        }
+        a {
+          min-block-size: 3rem;
+          padding-inline: 1rem;
+          border-radius: var(--radius-small);
+          font-size: 1rem;
+        }
+
+        /* Fades in; the short lift is skipped under reduced motion. */
+        opacity: 0;
+        transition-property: opacity, translate, display, overlay;
+        transition-duration: 0.15s;
+        transition-behavior: allow-discrete;
+
+        &:popover-open {
+          opacity: 1;
+
+          @starting-style {
+            opacity: 0;
+          }
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          translate: 0 -0.4rem;
+
+          &:popover-open {
+            translate: 0 0;
+
+            @starting-style {
+              translate: 0 -0.4rem;
+            }
+          }
+        }
+      }
+    }
+    @media (width >= 44rem) {
+      /* Inline at this width: undo what the popover attribute brings with it. */
+      .site-menu {
+        position: static;
+        inline-size: auto;
+        block-size: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        overflow: visible;
+      }
+    }
+  }
+
+  @media (width < 30rem) {
+    .header-inner {
+      gap: 0.4rem;
+      padding-inline: 0.6rem 0.4rem;
+    }
+    .logo {
+      gap: 0.5rem;
+    }
+    .menu-button, .site-header .button-small {
+      padding-inline: 0.85rem;
+    }
+  }
+  /* On the narrowest screens the header keeps the logo and the menu; the
+     download button is the first thing in the page below it. */
+  @media (width < 23rem) {
+    .site-header .button-small {
+      display: none;
+    }
+  }
+
+  /* Footer */
+  .site-footer {
+    margin-block-start: var(--section);
+    border-block-start: 1px solid var(--line);
+    font-size: var(--size-small);
+  }
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 2rem;
+    padding-block: 2.25rem;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.5rem;
+    }
+    li a {
+      display: inline-block;
+      padding-block: 0.4rem;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    p {
+      color: var(--ink-2);
+    }
+  }
+
+  /* A device: the frame every live or pinned screen sits in. Everything is
+     sized from --w, so one custom property scales the whole phone. */
+  .device {
+    --w: 18rem;
+    --bezel: calc(var(--w) * 0.03);
+    position: relative;
+    display: block;
+    inline-size: var(--w);
+    padding: var(--bezel);
+    border: 0;
+    border-radius: calc(var(--w) * 0.168);
+    background: #09090a;
+    box-shadow:
+      inset 0 0 0 1px #5b5b60,
+      inset 0 0 0 calc(var(--bezel) * 0.42) #1d1d20,
+      var(--shadow-device);
+    color: #fff;
+
+    /* The Dynamic Island. */
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: calc(var(--bezel) + var(--w) * 0.031);
+      inset-inline-start: 50%;
+      inline-size: calc(var(--w) * 0.292);
+      block-size: calc(var(--w) * 0.084);
+      translate: -50% 0;
+      border-radius: 999px;
+      background: #000;
+      pointer-events: none;
+    }
+  }
+  .device-screen {
+    position: relative;
+    display: block;
+    aspect-ratio: 800 / 1740;
+    border-radius: calc(var(--w) * 0.14);
+    background: #000;
+    overflow: hidden;
+    isolation: isolate;
+    /* 1cqw is 1% of the screen's width, so the UI inside scales with it. */
+    container-type: inline-size;
+  }
+
+  /* Screenshots. The image is a real link to the larger file; the script
+     turns the click into a dialog. */
+  .shot {
+    display: block;
+    padding: 0.4rem;
+    border-radius: 2.7rem;
+    background: #09090a;
+    box-shadow:
+      inset 0 0 0 1px #5b5b60,
+      0 1.5rem 2.25rem -1.5rem rgb(15 17 10 / 0.55);
+    cursor: zoom-in;
+
+    img {
+      inline-size: 100%;
+      border-radius: 2.3rem;
+    }
+  }
+  @media (forced-colors: active) {
+    .shot, .device {
+      border: 1px solid CanvasText;
+    }
+  }
+
+  /* Things you get, marked with a plus. The mark is decoration. */
+  .plus-list {
+    display: grid;
+    gap: 0.55rem 2rem;
+
+    li {
+      position: relative;
+      padding-inline-start: 1.5rem;
+
+      &::before {
+        content: "+";
+        content: "+" / "";
+        position: absolute;
+        inset-inline-start: 0;
+        font-weight: 800;
+        color: var(--up);
+      }
+    }
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.05rem 0.5rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.5;
+    vertical-align: 0.12em;
+  }
+
+  /* Short facts in a row, split by rules. */
+  .meta {
+    --pad: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0;
+    /* Every item carries a rule on its leading edge; the list is pulled back
+       and clipped by the same amount, so a rule never starts a line. */
+    margin-inline-start: calc(-1 * var(--pad) - 1px);
+    clip-path: inset(0 0 0 calc(var(--pad) + 1px));
+    font-size: var(--size-small);
+    font-weight: 600;
+    color: var(--ink-2);
+
+    li {
+      padding-inline: var(--pad);
+      border-inline-start: 1px solid var(--line-strong);
+    }
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    padding-block: 0.75rem 1rem;
+    font-size: var(--size-small);
+    font-weight: 600;
+
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.6rem;
+    }
+    li + li::before {
+      content: "/";
+      content: "/" / "";
+      margin-inline-end: 0.6rem;
+      color: var(--line-strong);
+    }
+    a {
+      display: inline-block;
+      padding-block: 0.3rem;
+      color: var(--ink-2);
+    }
+    [aria-current] {
+      color: var(--ink);
+      text-decoration: none;
+    }
+  }
+
+  /* Page heading block on the document pages: a sage slab, like the home hero. */
+  .page-head {
+    margin-block: 0.5rem clamp(2.5rem, 6vw, 4.5rem);
+    padding: clamp(1.75rem, 6vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
+    border-radius: var(--radius-field);
+    background: var(--sage);
+    color: var(--on-sage);
+
+    @supports (corner-shape: squircle) {
+      corner-shape: squircle;
+      border-radius: calc(var(--radius-field) * 1.7);
+    }
+
+    h1 {
+      font-size: var(--size-h1-doc);
+      line-height: 1;
+      max-inline-size: 16ch;
+    }
+    .page-intro {
+      margin-block-start: 1.5rem;
+      max-inline-size: 58ch;
+      font-size: var(--size-lead);
+      color: var(--on-sage-2);
+    }
+    .page-meta {
+      margin-block-start: 1rem;
+      font-size: var(--size-small);
+      font-weight: 600;
+      color: var(--on-sage-2);
+    }
+    .meta {
+      margin-block-start: 1.75rem;
+      color: var(--on-sage);
+
+      li {
+        border-inline-start-color: var(--on-sage-2);
+      }
+    }
+  }
+  @media (forced-colors: active) {
+    .page-head {
+      border: 1px solid CanvasText;
+    }
+  }
+
+  /* Running text */
+  .prose {
+    max-inline-size: 68ch;
+
+    h2 {
+      font-size: clamp(1.6rem, 1.35rem + 1vw, 2.15rem);
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+    }
+    h3 {
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      margin-block-start: 1.75rem;
+    }
+    :where(p, ul, ol) {
+      margin-block-start: 0.9rem;
+    }
+    :where(ul, ol):not([class]) {
+      padding-inline-start: 1.25rem;
+    }
+    :where(ul, ol):not([class]) > li + li {
+      margin-block-start: 0.4rem;
+    }
+    :where(p, li) {
+      color: var(--ink-2);
+    }
+    :where(p, li) strong {
+      color: var(--ink);
+    }
+    a {
+      color: var(--ink);
+      font-weight: 600;
+    }
+  }
+  .doc-section + .doc-section {
+    margin-block-start: clamp(2.5rem, 6vw, 3.5rem);
+    padding-block-start: clamp(2.5rem, 6vw, 3.5rem);
+    border-block-start: 1px solid var(--line);
+  }
+  .section-sub {
+    margin-block-start: 0.4rem;
+    color: var(--ink-2);
+  }
+
+  /* A set-apart note */
+  .callout {
+    max-inline-size: 68ch;
+    margin-block-end: clamp(2.5rem, 6vw, 3.5rem);
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border-radius: var(--radius-card);
+    background: var(--slab);
+    color: var(--slab-ink);
+    border: 1px solid var(--slab-edge);
+
+    h2, h3 {
+      font-size: 1.35rem;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+    p {
+      margin-block-start: 0.6rem;
+      color: var(--slab-ink-2);
+    }
+    a {
+      color: var(--slab-ink);
+      font-weight: 700;
+    }
+    .meta {
+      margin-block-start: 1.1rem;
+
+      li {
+        border-inline-start-color: var(--slab-3);
+        color: var(--slab-up);
+      }
+    }
+  }
+
+  /* Tips: a plain list with a square mark */
+  .tips {
+    display: grid;
+    margin-block-start: 1.25rem;
+    max-inline-size: 68ch;
+
+    li {
+      display: grid;
+      grid-template-columns: 0.4rem 1fr;
+      gap: 1rem;
+      margin: 0;
+      padding-block: 0.9rem;
+      border-block-start: 1px solid var(--line);
+      color: var(--ink-2);
+
+      &::before {
+        content: "";
+        inline-size: 0.4rem;
+        block-size: 0.4rem;
+        margin-block-start: 0.6em;
+        background: var(--ink);
+      }
+    }
+    p {
+      margin: 0;
+    }
+    li:last-child {
+      border-block-end: 1px solid var(--line);
+    }
+    strong {
+      color: var(--ink);
+    }
+    a {
+      color: var(--ink);
+      font-weight: 600;
+    }
+  }
+
+  /* Numbered steps. The list is ordered, so the numeral is decoration. */
+  .steps {
+    counter-reset: step;
+    display: grid;
+    margin-block-start: 1.5rem;
+  }
+  .step {
+    counter-increment: step;
+    container: step / inline-size;
+    padding-block: clamp(1.5rem, 4vw, 2.75rem);
+    border-block-start: 1px solid var(--line);
+
+    h3, h4 {
+      position: relative;
+      margin-block-start: 0;
+      padding-inline-start: 3.25rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 2.25rem;
+
+      /* The numeral sits in a sage disc: the icon's colour, at step size. */
+      &::before {
+        content: counter(step);
+        content: counter(step) / "";
+        position: absolute;
+        inset-inline-start: 0;
+        inline-size: 2.25rem;
+        block-size: 2.25rem;
+        border-radius: 50%;
+        background: var(--sage);
+        color: var(--on-sage);
+        font-size: 1rem;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0;
+        text-align: center;
+      }
+    }
+    p {
+      margin-block-start: 0.6rem;
+      margin-inline-start: 3.25rem;
+      max-inline-size: 58ch;
+      color: var(--ink-2);
+    }
+    strong {
+      color: var(--ink);
+    }
+    .shot {
+      inline-size: min(100%, 15rem);
+      margin-block-start: 1.5rem;
+      margin-inline-start: 3.25rem;
+    }
+  }
+  .step-inner {
+    display: grid;
+    gap: 0 clamp(1.5rem, 5cqi, 4rem);
+    align-items: center;
+  }
+  @container step (inline-size > 40rem) {
+    .step-inner:has(> .shot) {
+      grid-template-columns: minmax(0, 1fr) 15rem;
+
+      .shot {
+        margin: 0;
+      }
+    }
+  }
+
+  /* FAQ: plain details elements, more than one can be open. */
+  .faq {
+    max-inline-size: 68ch;
+    margin-block-start: 1.5rem;
+    border-block-end: 1px solid var(--line);
+
+    details {
+      border-block-start: 1px solid var(--line);
+    }
+    summary {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      padding-block: 1.2rem;
+      list-style: none;
+      font-weight: 700;
+      cursor: pointer;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+      /* The marker sits before the label and turns when open. */
+      &::before {
+        content: "";
+        flex-shrink: 0;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        border-inline-end: 0.14rem solid currentColor;
+        border-block-end: 0.14rem solid currentColor;
+        translate: 0 -0.15rem;
+        rotate: -45deg;
+      }
+      &:dir(rtl)::before {
+        rotate: 135deg;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        &::before {
+          transition: rotate 0.2s;
+        }
+      }
+    }
+    details[open] > summary::before {
+      rotate: 45deg;
+    }
+    .faq-answer {
+      padding-block-end: 1.25rem;
+      padding-inline-start: 1.35rem;
+      color: var(--ink-2);
+    }
+
+    /* Slides open where the browser can animate to an intrinsic height. */
+    details::details-content {
+      interpolate-size: allow-keywords;
+      overflow: clip;
+      contain: layout;
+    }
+    details:not([open])::details-content {
+      block-size: 0;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      details::details-content {
+        transition: block-size, content-visibility, display;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-in-out;
+        transition-behavior: allow-discrete;
+      }
+    }
+  }
+
+  /* Figures that roll. The script splits a figure into one column per digit;
+     without it the figure is plain text. */
+  .roll-view {
+    display: inline-flex;
+    align-items: flex-start;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .roll-c {
+    display: block;
+    block-size: 1em;
+  }
+  .roll-d {
+    display: block;
+    block-size: 1em;
+    overflow: hidden;
+
+    > span {
+      display: flex;
+      flex-direction: column;
+      translate: 0 calc(var(--d, 0) * -10%);
+      transition: translate 0.7s var(--ease-out);
+    }
+    i {
+      display: block;
+      block-size: 1em;
+      font-style: normal;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .roll-d > span {
+      transition: none;
+    }
+  }
+
+  /* Enlarged screenshot */
+  .zoom {
+    max-inline-size: min(100dvw - 2rem, 34rem);
+    max-block-size: calc(100dvh - 2rem);
+    padding: 0.75rem;
+    border: 1px solid var(--slab-3);
+    border-radius: 2rem;
+    background: var(--slab);
+    color: var(--slab-ink);
+    overflow: hidden;
+
+    &[open] {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 0.75rem;
+    }
+    img {
+      inline-size: auto;
+      max-inline-size: 100%;
+      max-block-size: calc(100dvh - 9rem);
+      margin-inline: auto;
+      border-radius: 1.4rem;
+    }
+    button {
+      min-inline-size: 2.75rem;
+      min-block-size: 2.75rem;
+      padding-inline: 1rem;
+      border: 1px solid var(--slab-ink-2);
+      border-radius: 999px;
+      background: transparent;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+    }
+  }
+  .zoom-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--size-small);
+
+    form {
+      margin-inline-start: auto;
+    }
+    p {
+      padding-inline: 0.5rem;
+      color: var(--slab-ink-2);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+  /* Keeps scroll gestures inside the dialog; the page itself is never locked. */
+  dialog:modal {
+    overscroll-behavior: contain;
+  }
+  dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+    background-color: rgb(10 12 7 / 0.78);
+  }
+  .zoom {
+    opacity: 0;
+    transition-property: opacity, scale, display, overlay;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-behavior: allow-discrete;
+
+    &[open] {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      scale: 0.96;
+
+      &[open] {
+        scale: 1;
+
+        @starting-style {
+          scale: 0.96;
+        }
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      transition-duration: 0.1s;
+    }
+  }
+}
+
+/* ─── Pages ───────────────────────────────────────────────────────────── */
+@layer pages {
+  /* ── Home: hero ──────────────────────────────────────────────────────
+     The app icon, opened up: a sage field with one black object on it.
+     The object is a working phone. The slab runs up behind the header. */
+  .hero {
+    position: relative;
+    margin-block-start: calc(-1 * var(--header-h) + 0.5rem);
+    padding-block-start: calc(var(--header-h) + clamp(1.5rem, 5vw, 4rem));
+    background:
+      radial-gradient(60% 70% at 82% 46%, var(--sage-lit), transparent 70%),
+      var(--sage);
+  }
+  .hero-grid {
+    display: grid;
+    /* minmax(0, …) so the swipeable chip row cannot widen the column. */
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(2.5rem, 8cqi, 5rem);
+    align-items: center;
+  }
+  .hero-copy {
+    min-inline-size: 0;
+
+    h1 {
+      font-size: clamp(2.85rem, 13.2cqi, 6.25rem);
+    }
+    .lead {
+      margin-block-start: 1.75rem;
+      max-inline-size: 33rem;
+      font-size: var(--size-lead);
+      color: var(--on-sage-2);
+    }
+    .button {
+      margin-block-start: 2rem;
+    }
+    .fine {
+      margin-block-start: 1rem;
+      font-size: var(--size-small);
+      font-weight: 600;
+      color: var(--on-sage-2);
+    }
+  }
+  .hero-device {
+    display: grid;
+    justify-items: center;
+    perspective: 110rem;
+  }
+  .hero-phone {
+    --w: clamp(15.5rem, 72cqi, 19rem);
+  }
+  @container field (inline-size > 56rem) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr) auto;
+      padding-inline-end: clamp(0rem, 4cqi, 3rem);
+    }
+    .hero-copy h1 {
+      font-size: clamp(3.5rem, 7.6cqi, 6.25rem);
+    }
+    .hero-phone {
+      --w: clamp(17rem, 27cqi, 21.5rem);
+      /* Turned a little toward the words. The script nudges these as the
+         pointer moves. */
+      transform: rotateX(var(--rx, 5deg)) rotateY(var(--ry, -14deg)) rotateZ(var(--rz, 1.5deg));
+      transform-style: preserve-3d;
+      box-shadow:
+        inset 0 0 0 1px #5b5b60,
+        inset 0 0 0 calc(var(--bezel) * 0.42) #1d1d20,
+        1.5rem 2rem 2rem -1rem rgb(15 17 10 / 0.45),
+        4rem 5rem 6rem -2rem rgb(15 17 10 / 0.5);
+    }
+  }
+
+  /* Try it: purchases to log on the phone. Revealed by the script. */
+  .try {
+    margin-block-start: clamp(2rem, 6cqi, 3.25rem);
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid color-mix(in oklab, var(--on-sage) 22%, transparent);
+    max-inline-size: 36rem;
+  }
+  .try-title {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .try-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-start: 0.9rem;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 2.75rem;
+    padding: 0.35rem 1rem 0.35rem 0.8rem;
+    border: 1.5px solid var(--on-sage);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--on-sage);
+    font-size: var(--size-small);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s, scale 0.15s;
+
+    /* The dot is the colour of the budget the purchase lands in. */
+    &::before {
+      content: "";
+      inline-size: 0.65rem;
+      block-size: 0.65rem;
+      border-radius: 50%;
+      background: var(--dot, currentColor);
+      box-shadow: 0 0 0 1.5px var(--on-sage);
+    }
+    span {
+      font-weight: 600;
+      opacity: 0.75;
+    }
+    &:hover {
+      background: var(--on-sage);
+      color: var(--paper-l);
+    }
+    &:active {
+      scale: 0.96;
+    }
+  }
+  .chip-next {
+    border-style: dashed;
+
+    &::before {
+      content: none;
+    }
+    svg {
+      inline-size: 1.1rem;
+      block-size: 1.1rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+  @container field (inline-size <= 56rem) {
+    .try {
+      max-inline-size: none;
+    }
+    .try-chips {
+      flex-wrap: nowrap;
+      /* Runs to both edges of the field, and scrolls sideways. */
+      margin-inline: calc(-1 * clamp(1.25rem, 5vw, 4.5rem));
+      padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+      padding-block: 0.25rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+    .chip {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+  }
+  .try-status {
+    margin-block-start: 0.9rem;
+    min-block-size: 3.2em;
+    font-size: var(--size-small);
+    font-weight: 600;
+    color: var(--on-sage-2);
+
+    button {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--on-sage);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      cursor: pointer;
+    }
+  }
+
+  /* ── The app, redrawn ────────────────────────────────────────────────
+     A working sketch of the Budgets tab. Every length is in cqw: 1cqw is
+     8px of the 800px-wide screenshots, so it matches them at any size. */
+  .app {
+    position: absolute;
+    inset: 0;
+    padding-inline: 4.1cqw;
+    font-family: var(--font-app);
+    font-size: 2.9cqw;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: #fff;
+    text-align: start;
+    -webkit-user-select: none;
+    user-select: none;
+
+    svg {
+      fill: currentColor;
+    }
+  }
+  .app-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    block-size: 15.25cqw;
+    padding-inline: 9.6cqw 4.2cqw;
+    padding-block-start: 1cqw;
+    font-size: 4.3cqw;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .app-status-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.6cqw;
+
+    svg {
+      block-size: 3cqw;
+      inline-size: auto;
+    }
+    svg:last-child {
+      block-size: 3.4cqw;
+    }
+  }
+  .app-bar {
+    display: flex;
+    justify-content: space-between;
+    block-size: 11.6cqw;
+  }
+  .app-seg, .app-actions {
+    display: flex;
+    align-items: center;
+    border-radius: 999px;
+    background: #1f1f21;
+    box-shadow: inset 0 0 0 0.13cqw rgb(255 255 255 / 0.14);
+  }
+  .app-seg {
+    padding: 0.9cqw;
+    font-size: 3.7cqw;
+    font-weight: 500;
+
+    span {
+      display: grid;
+      place-items: center;
+      block-size: 100%;
+      padding-inline: 4.6cqw;
+      border-radius: 999px;
+    }
+    .is-on {
+      background: #0b0b0c;
+    }
+  }
+  .app-actions {
+    gap: 6.5cqw;
+    padding-inline: 5.4cqw;
+
+    svg {
+      inline-size: 5cqw;
+      block-size: 5cqw;
+    }
+  }
+  .app-summary {
+    margin-block-start: 4.1cqw;
+    padding: 4cqw 3.9cqw 3.4cqw;
+    border-radius: 4.6cqw;
+    background: #1c1c1e;
+    box-shadow: inset 0 0 0 0.13cqw rgb(255 255 255 / 0.09);
+  }
+  .app-summary-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2cqw;
+  }
+  .app-caps {
+    color: #8e8e93;
+    font-size: 2.7cqw;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .app-sub {
+    color: #98989f;
+    font-size: 2.9cqw;
+  }
+  .app-summary-top > div:first-child {
+    padding-block-start: 3.3cqw;
+
+    .app-sub {
+      margin-block-start: 1cqw;
+    }
+  }
+  .app-total {
+    text-align: end;
+
+    .app-sub {
+      margin-block-start: 1.6cqw;
+    }
+  }
+  .app-total-value {
+    font-size: 8.4cqw;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .app-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.1cqw;
+    margin-block-start: 3.2cqw;
+  }
+  .app-tile {
+    padding: 2.6cqw 2.4cqw 2.5cqw;
+    border-radius: 2.6cqw;
+    background: #2a2a2d;
+    box-shadow: inset 0 0 0 0.13cqw rgb(255 255 255 / 0.08);
+  }
+  .app-tile-label {
+    display: flex;
+    align-items: center;
+    gap: 1.4cqw;
+    color: #a1a1a8;
+    font-size: 3cqw;
+
+    svg {
+      inline-size: 3.4cqw;
+      block-size: 3.4cqw;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    svg:last-child {
+      inline-size: 2.6cqw;
+      margin-inline-start: auto;
+      color: #6d6d73;
+    }
+  }
+  .app-tile-value {
+    margin-block-start: 1.8cqw;
+    font-size: 3.8cqw;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .app .is-up {
+    color: #30d158;
+  }
+  .app .is-down {
+    color: #ff453a;
+  }
+  .app-section {
+    margin-block: 6.2cqw 3.6cqw;
+    font-size: 2.85cqw;
+  }
+  .app-rows {
+    display: grid;
+    gap: 3cqw;
+  }
+  .app-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 3cqw;
+    block-size: 15.9cqw;
+    padding-inline: 3.9cqw 4.1cqw;
+    border-radius: 3.8cqw;
+    background: #1c1c1e;
+    box-shadow: inset 0 0 0 0.13cqw rgb(255 255 255 / 0.09);
+
+    > svg {
+      inline-size: 1.4cqw;
+      block-size: 2.5cqw;
+      fill: none;
+      stroke: #6d6d73;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+  .app-icon {
+    display: grid;
+    place-items: center;
+    inline-size: 10cqw;
+    block-size: 10cqw;
+    border-radius: 2.3cqw;
+    background: linear-gradient(#1f8fff, #0a6fe8);
+    color: #060607;
+
+    svg {
+      inline-size: 6.2cqw;
+      block-size: 6.2cqw;
+    }
+  }
+  .app-icon-orange {
+    background: linear-gradient(#ffa81f, #f08a00);
+  }
+  .app-icon-red {
+    background: linear-gradient(#ff7a45, #ee5a24);
+  }
+  .app-row-main, .app-row-end {
+    display: grid;
+    gap: 0.9cqw;
+    min-inline-size: 0;
+  }
+  .app-row-end {
+    justify-items: end;
+  }
+  .app-row-name {
+    font-size: 3.7cqw;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .app-row-value {
+    font-size: 4.2cqw;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .app-row .app-sub {
+    font-size: 2.75cqw;
+    white-space: nowrap;
+  }
+  .app-unbudgeted {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 3cqw;
+    margin-block-start: 8.4cqw;
+    padding-inline: 0.4cqw 0.6cqw;
+    font-size: 3.7cqw;
+    font-weight: 500;
+
+    svg:first-child {
+      inline-size: 4.6cqw;
+      block-size: 3.8cqw;
+      fill: none;
+      stroke: #a1a1a8;
+      stroke-width: 1.7;
+      stroke-linejoin: round;
+    }
+    span:last-of-type {
+      color: #8e8e93;
+      font-weight: 400;
+      font-variant-numeric: tabular-nums;
+    }
+    svg:last-child {
+      inline-size: 1.4cqw;
+      block-size: 2.5cqw;
+      fill: none;
+      stroke: #6d6d73;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+  .app-tabs {
+    position: absolute;
+    inset-inline: 5.4cqw;
+    inset-block-end: 5.5cqw;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    block-size: 14.9cqw;
+    padding: 0.9cqw;
+    border-radius: 999px;
+    background: rgb(38 38 41 / 0.92);
+    box-shadow: inset 0 0 0 0.13cqw rgb(255 255 255 / 0.14);
+  }
+  .app-tab {
+    position: relative;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1cqw;
+    border-radius: 999px;
+    font-size: 2.45cqw;
+    font-weight: 500;
+
+    svg {
+      inline-size: 6cqw;
+      block-size: 5cqw;
+    }
+    &.is-on {
+      background: #111113;
+      color: #2b8cff;
+    }
+  }
+  .app-tab-dot {
+    position: absolute;
+    inset-block-start: 2cqw;
+    inset-inline-end: 5.2cqw;
+    inline-size: 1.5cqw;
+    block-size: 1.5cqw;
+    border-radius: 50%;
+    background: #ff9f0a;
+  }
+
+  /* What just happened, said the way the phone would say it. */
+  .app-toast {
+    position: absolute;
+    inset-block-start: 15.25cqw;
+    inset-inline: 4.1cqw;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3cqw;
+    block-size: 11.6cqw;
+    padding-inline: 5.4cqw;
+    border-radius: 999px;
+    background: #2f2f33;
+    box-shadow:
+      inset 0 0 0 0.13cqw rgb(255 255 255 / 0.2),
+      0 3cqw 6cqw rgb(0 0 0 / 0.5);
+    font-size: 3.5cqw;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    translate: 0 -6cqw;
+    scale: 0.92;
+    transition: opacity 0.25s, translate 0.45s var(--ease-out), scale 0.45s var(--ease-out);
+
+    &.is-on {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+    }
+  }
+  /* A row answers the purchase that landed in it. */
+  .app-row.is-hit, .app-summary.is-hit {
+    animation: app-hit 0.9s ease-out;
+  }
+  @keyframes app-hit {
+    0% {
+      background-color: #3a3a3f;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .app-toast {
+      translate: 0 0;
+      scale: 1;
+      transition: opacity 0.1s;
+    }
+    .app-row.is-hit, .app-summary.is-hit {
+      animation: none;
+    }
+  }
+
+  /* ── Home: how it works ──────────────────────────────────────────────
+     The four steps on one side, one week of one budget on the other. */
+  .how-grid {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+
+    @media (width >= 60rem) {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    }
+  }
+  .how {
+    counter-reset: how;
+    display: grid;
+
+    li {
+      counter-increment: how;
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      column-gap: 0.5rem;
+      padding-block: 1.5rem;
+      border-block-start: 1px solid var(--line);
+
+      &::before {
+        content: counter(how);
+        content: counter(how) / "";
+        grid-row: 1 / span 2;
+        font-size: 2.75rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.05em;
+        font-variant-numeric: tabular-nums;
+        color: var(--line-strong);
+      }
+    }
+    li:last-child {
+      border-block-end: 1px solid var(--line);
+    }
+    h3 {
+      font-size: 1.25rem;
+    }
+    p {
+      grid-column: 2;
+      margin-block-start: 0.4rem;
+      color: var(--ink-2);
+    }
+  }
+  .more-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin-block-start: 2rem;
+  }
+  @media (width >= 60rem) {
+    .how-side {
+      position: sticky;
+      inset-block-start: calc(var(--header-h) + 1.5rem);
+    }
+  }
+
+  /* The ledger: a week of one budget, as a statement. */
+  .ledger {
+    container: ledger / inline-size;
+    padding: clamp(1.25rem, 4vw, 2.25rem);
+    border: 1px solid var(--slab-edge);
+    border-radius: 2rem;
+    background: var(--slab);
+    color: var(--slab-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .ledger-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    font-size: var(--size-small);
+    font-weight: 700;
+
+    span {
+      color: var(--slab-ink-2);
+      font-weight: 600;
+    }
+  }
+  .readout {
+    margin-block-start: 1.5rem;
+  }
+  .readout-label {
+    font-size: var(--size-small);
+    font-weight: 600;
+    color: var(--slab-ink-2);
+  }
+  .readout-value {
+    display: block;
+    margin-block-start: 0.35rem;
+    /* Sized from the card, with a viewport-based line first for old browsers. */
+    font-size: clamp(3.5rem, 2rem + 8vw, 6.5rem);
+    font-size: clamp(3.5rem, 22cqi, 7rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+  .readout-status {
+    margin-block-start: 0.75rem;
+    min-block-size: 3.2em;
+    color: var(--slab-ink-2);
+  }
+  .ledger [data-sign="up"] {
+    color: var(--slab-up);
+  }
+  .ledger [data-sign="down"] {
+    color: var(--slab-down);
+  }
+  .spend {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 1rem;
+    align-items: center;
+    margin-block-start: 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: 1.1rem;
+    background: var(--slab-2);
+    font-weight: 700;
+
+    input {
+      grid-column: 1 / -1;
+      inline-size: 100%;
+      min-block-size: 2rem;
+      margin: 0;
+      accent-color: var(--slab-ink);
+    }
+  }
+  /* The week as bars: the same seven balances the table lists below it.
+     Drawn by the script, so it is decoration for anyone reading the table. */
+  .week-bars:empty {
+    display: none;
+  }
+  .week-bars {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 6rem 2.5rem;
+    gap: 0 0.4rem;
+    margin-block-start: 1.5rem;
+
+    i {
+      grid-row: 1;
+      align-self: end;
+      block-size: calc(var(--v, 0) * 100%);
+      min-block-size: 2px;
+      border-radius: 0.4rem 0.4rem 0 0;
+      background: var(--slab-up);
+      transition: block-size 0.5s var(--ease-out);
+    }
+    i[data-sign="down"] {
+      grid-row: 2;
+      align-self: start;
+      border-radius: 0 0 0.4rem 0.4rem;
+      background: var(--slab-down);
+    }
+    /* Days still to come are projections, so they are drawn hollow. */
+    i.is-ahead {
+      background: transparent;
+      box-shadow: inset 0 0 0 1.5px currentColor;
+      color: var(--slab-up);
+    }
+    i.is-ahead[data-sign="down"] {
+      color: var(--slab-down);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .week-bars i {
+      transition: none;
+    }
+  }
+  .week {
+    inline-size: 100%;
+    margin-block-start: 0.75rem;
+    font-size: var(--size-small);
+
+    th, td {
+      padding: 0.55rem 0.5rem;
+      text-align: end;
+      font-weight: 600;
+    }
+    th:first-child {
+      text-align: start;
+    }
+    thead th {
+      color: var(--slab-ink-2);
+      font-weight: 600;
+    }
+    tbody tr {
+      border-block-start: 1px solid var(--slab-2);
+    }
+    tbody th {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .tag {
+      margin-inline-start: 0.35rem;
+    }
+    td:last-child {
+      font-weight: 800;
+    }
+    /* Today is a filled row; days still to come are quieter. */
+    .is-today {
+      background: var(--slab-2);
+    }
+    .is-ahead :where(th, td:not(:last-child)) {
+      color: var(--slab-ink-2);
+    }
+  }
+  .ledger-note {
+    margin-block-start: 0.9rem;
+    font-size: 0.8rem;
+    color: var(--slab-ink-2);
+  }
+  /* The table tightens with the card, not the viewport, so it never spills. */
+  @container ledger (inline-size < 21rem) {
+    .week {
+      font-size: 0.78rem;
+
+      th, td {
+        padding-inline: 0.25rem;
+      }
+    }
+  }
+  @container ledger (inline-size < 16rem) {
+    .week {
+      font-size: 0.72rem;
+
+      th, td {
+        padding-inline: 0.15rem;
+      }
+      /* Still read out, no longer drawn: the filled row already marks today. */
+      .tag {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+    }
+  }
+
+  /* ── Home: a closer look ─────────────────────────────────────────────
+     By default each feature carries its own screenshot. On a wide screen
+     the script pins one phone beside the list and changes its screen as
+     each feature reaches the middle of the window. */
+  .tour-list {
+    display: grid;
+    gap: clamp(4rem, 9vw, 7rem);
+  }
+  .feature {
+    /* The screenshot column has a set width, so nothing moves as images load. */
+    --shots: 17rem;
+    display: grid;
+    gap: 2rem clamp(2rem, 7vw, 6rem);
+    align-items: center;
+
+    &:has(figure + figure) {
+      --shots: 14rem;
+    }
+    > div:first-child {
+      max-inline-size: 34rem;
+    }
+    h3 {
+      font-size: clamp(1.75rem, 1.3rem + 1.9vw, 2.85rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+    p {
+      margin-block-start: 1rem;
+      color: var(--ink-2);
+    }
+    p:first-of-type {
+      font-size: var(--size-lead);
+    }
+  }
+  .feature-shots {
+    display: flex;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    align-items: start;
+    justify-content: center;
+    /* A stage in a tint of the field, so the dark screenshots stand off it. */
+    padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2.5rem);
+    border-radius: var(--radius-field);
+    background: var(--tint);
+
+    figure {
+      flex: 0 1 15rem;
+      min-inline-size: 0;
+    }
+    figcaption {
+      margin-block-start: 0.75rem;
+      font-size: var(--size-small);
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+  @media (width >= 52rem) {
+    /* Two equal halves: text in one, the screenshot centred in the other. */
+    .feature {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .feature-shots figure {
+      flex-basis: var(--shots);
+    }
+    /* Every second feature puts its screenshot first. Each feature holds one
+       focusable thing, so tab order still follows the page. */
+    .tour:not(.is-pinned) .feature:nth-child(even) {
+      > div:first-child {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      > .feature-shots {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+  }
+
+  .tour-stage {
+    display: none;
+  }
+  .tour.is-pinned {
+    --stage-h: min(100svh - var(--header-h) - 2rem, 46rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+    gap: clamp(2rem, 6vw, 6rem);
+
+    .tour-list {
+      gap: 0;
+      /* Lets the first and last feature reach the middle of the window. */
+      padding-block: calc(var(--stage-h) / 2 - 31svh);
+    }
+    .feature {
+      display: flex;
+      min-block-size: 62svh;
+      opacity: 0.28;
+      transition: opacity 0.4s;
+
+      &.is-active, &:focus-within {
+        opacity: 1;
+      }
+    }
+    .feature-shots {
+      display: none;
+    }
+    .tour-stage {
+      position: sticky;
+      inset-block-start: calc(var(--header-h) + 1rem);
+      display: grid;
+      place-items: center;
+      block-size: var(--stage-h);
+      border-radius: var(--radius-field);
+      background:
+        radial-gradient(70% 55% at 50% 42%, var(--sage-lit), transparent 75%),
+        var(--sage);
+      overflow: hidden;
+
+      @supports (corner-shape: squircle) {
+        corner-shape: squircle;
+        border-radius: calc(var(--radius-field) * 1.7);
+      }
+    }
+  }
+  .stage-devices {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .stage-device {
+    --w: calc((var(--stage-h) - 7.5rem) * 0.46);
+    grid-area: 1 / 1;
+    cursor: zoom-in;
+    transition: translate 0.6s var(--ease-out), scale 0.6s var(--ease-out), opacity 0.4s;
+
+    picture {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      scale: 1.04;
+      transition: opacity 0.45s, scale 0.7s var(--ease-out), visibility 0s 0.45s;
+    }
+    picture.is-on {
+      opacity: 1;
+      visibility: visible;
+      scale: 1;
+      transition-delay: 0s;
+    }
+    img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+    }
+  }
+  /* A second phone, for the one feature with two screens to show. */
+  .stage-device-b {
+    opacity: 0;
+    scale: 0.7;
+    visibility: hidden;
+    transition: translate 0.6s var(--ease-out), scale 0.6s var(--ease-out), opacity 0.4s, visibility 0s 0.4s;
+  }
+  .tour-stage.has-b {
+    .stage-device:not(.stage-device-b) {
+      translate: -37% -2%;
+      scale: 0.82;
+    }
+    .stage-device-b {
+      opacity: 1;
+      visibility: visible;
+      translate: 37% 3%;
+      scale: 0.82;
+      transition-delay: 0s;
+    }
+  }
+  .stage-caption {
+    position: absolute;
+    inset-block-end: 1.25rem;
+    inset-inline: 0;
+    color: var(--on-sage);
+    font-size: var(--size-small);
+    font-weight: 700;
+    text-align: center;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stage-device, .stage-device picture, .tour.is-pinned .feature {
+      transition: none;
+    }
+  }
+
+  /* ── Home: the details ─────────────────────────────────────────────── */
+  .more-list {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 0 2rem;
+    font-weight: 600;
+
+    li {
+      padding-block: 0.9rem;
+      border-block-start: 1px solid var(--line);
+
+      &::before {
+        inset-block-start: 0.9rem;
+      }
+    }
+  }
+
+  /* ── Home: privacy ─────────────────────────────────────────────────── */
+  .privacy-grid {
+    display: grid;
+    gap: clamp(2rem, 6cqi, 5rem);
+    align-items: center;
+
+    p {
+      margin-block-start: 1.25rem;
+      max-inline-size: 34rem;
+      color: var(--slab-ink-2);
+    }
+  }
+  @container field (inline-size > 52rem) {
+    .privacy-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    }
+  }
+  /* One zero, as large as it will go, and what there are none of. */
+  .zero {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(1rem, 4cqi, 2.5rem);
+    align-items: center;
+  }
+  .zero-figure {
+    font-size: clamp(7rem, 26cqi, 19rem);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.06em;
+    color: var(--slab-up);
+  }
+  .zeros {
+    li {
+      padding-block: 0.8rem;
+      border-block-start: 1px solid var(--slab-3);
+      font-weight: 700;
+    }
+    li:last-child {
+      border-block-end: 1px solid var(--slab-3);
+    }
+  }
+
+  /* ── Home: pricing ─────────────────────────────────────────────────── */
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+  .plan {
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    border: 1px solid var(--line);
+    border-radius: 2rem;
+    background: var(--surface);
+
+    h3 {
+      font-size: 1.2rem;
+    }
+    .price {
+      margin-block-start: 0.75rem;
+      font-size: clamp(3rem, 2rem + 4vw, 5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .price-long {
+      font-size: clamp(1.75rem, 1.4rem + 1.6vw, 2.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      text-wrap: balance;
+    }
+    .price-note {
+      margin-block-start: 0.75rem;
+      font-size: var(--size-small);
+      color: var(--ink-2);
+    }
+    .plus-list {
+      margin-block-start: 1.75rem;
+      padding-block-start: 1.75rem;
+      border-block-start: 1px solid var(--line);
+      font-weight: 500;
+    }
+  }
+  /* Pro is the inverse of the page: ink on a light page, sage on a dark one.
+     It reads as a step up without a badge saying so. */
+  .plan-pro {
+    border-color: var(--slab-edge);
+    background: var(--slab);
+    color: var(--slab-ink);
+
+    .price-note {
+      color: var(--slab-ink-2);
+    }
+    .plus-list {
+      border-block-start-color: var(--slab-3);
+
+      li::before {
+        color: var(--slab-up);
+      }
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .plan-pro {
+      border-color: var(--sage);
+      background: var(--sage);
+      color: var(--on-sage);
+
+      .price-note {
+        color: var(--on-sage-2);
+      }
+      .plus-list {
+        border-block-start-color: color-mix(in oklab, var(--on-sage) 25%, transparent);
+
+        li::before {
+          color: var(--on-sage);
+        }
+      }
+    }
+  }
+
+  /* ── Home: closing call to action ──────────────────────────────────── */
+  .closing {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+
+    h2 {
+      font-size: clamp(2.4rem, 9cqi, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+    p {
+      margin-block-start: 1.25rem;
+      font-size: var(--size-lead);
+      color: var(--on-sage-2);
+    }
+    .button {
+      margin-block-start: 2rem;
+    }
+    img {
+      inline-size: clamp(8rem, 26cqi, 16rem);
+      border-radius: 23%;
+      rotate: 6deg;
+      box-shadow: var(--shadow-device);
+    }
+  }
+  @container field (inline-size > 44rem) {
+    .closing {
+      grid-template-columns: minmax(0, 1fr) auto;
+      padding-inline-end: clamp(0rem, 5cqi, 4rem);
+    }
+  }
+
+  /* ── Getting started: contents beside the text ─────────────────────── */
+  .doc-layout {
+    display: grid;
+    gap: 2rem clamp(2rem, 6vw, 5rem);
+  }
+  .toc {
+    font-size: var(--size-small);
+
+    h2 {
+      font-size: var(--size-small);
+      letter-spacing: 0;
+      line-height: 1.6;
+    }
+    ol {
+      /* The browser tracks which section is in view. */
+      scroll-target-group: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.25rem;
+      margin-block-start: 0.5rem;
+    }
+    a {
+      display: inline-block;
+      padding-block: 0.35rem;
+      color: var(--ink-2);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--ink);
+        text-decoration: underline;
+      }
+      /* :is() keeps the rule alive where :target-current is unknown. */
+      &:is(:target-current, .target-current) {
+        color: var(--ink);
+        font-weight: 800;
+        text-decoration: underline;
+        text-decoration-thickness: 0.14em;
+      }
+    }
+  }
+  @media (width >= 60rem) {
+    .doc-layout {
+      grid-template-columns: 13rem minmax(0, 1fr);
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      inset-block-start: calc(var(--header-h) + 1.5rem);
+
+      ol {
+        flex-direction: column;
+      }
+    }
+  }
+
+  /* ── Terms: contents list ──────────────────────────────────────────── */
+  .contents {
+    max-inline-size: 68ch;
+    margin-block-end: clamp(2.5rem, 6vw, 3.5rem);
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border-radius: var(--radius-card);
+    background: var(--tint);
+
+    h2 {
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+    }
+    ol {
+      columns: 2 14rem;
+      column-gap: 2rem;
+      margin-block-start: 0.75rem;
+      font-size: var(--size-small);
+    }
+    a {
+      display: inline-block;
+      padding-block: 0.3rem;
+    }
+  }
+
+  /* ── Guides: index ─────────────────────────────────────────────────── */
+  .guide-group + .guide-group {
+    margin-block-start: clamp(3rem, 7vw, 4.5rem);
+  }
+  .guide-group h2 {
+    font-size: clamp(1.6rem, 1.35rem + 1vw, 2.15rem);
+    letter-spacing: -0.03em;
+  }
+  @media (width >= 60rem) {
+    .guide-group {
+      display: grid;
+      grid-template-columns: 15rem minmax(0, 1fr);
+      grid-template-rows: auto 1fr;
+      column-gap: clamp(2rem, 4vw, 4rem);
+      padding-block-start: clamp(2rem, 4vw, 3rem);
+      border-block-start: 1px solid var(--line);
+
+      h2, .section-sub {
+        grid-column: 1;
+      }
+      .guide-list {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        margin-block-start: 0;
+      }
+    }
+  }
+  .guide-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: 1rem;
+    margin-block-start: 1.5rem;
+  }
+  .guide-link {
+    display: block;
+    block-size: 100%;
+    border-radius: var(--radius-card);
+    text-decoration: none;
+  }
+  .guide-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    block-size: 100%;
+    padding: 1.6rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+
+    h3 {
+      font-size: 1.25rem;
+    }
+    p {
+      margin-block-start: 0.5rem;
+      font-size: var(--size-small);
+      color: var(--ink-2);
+      transition: color 0.2s;
+    }
+    .meta {
+      margin-block-start: 1.5rem;
+      transition: color 0.2s;
+    }
+  }
+  /* A guide under the pointer turns into the field. */
+  .guide-link:hover .guide-card {
+    border-color: var(--sage);
+    background: var(--sage);
+    color: var(--on-sage);
+
+    p, .meta {
+      color: var(--on-sage-2);
+    }
+    .meta li {
+      border-inline-start-color: var(--on-sage-2);
+    }
+  }
+
+  /* ── Guides: the recording ─────────────────────────────────────────── */
+  .watch {
+    container: watch / inline-size;
+    padding: clamp(1.25rem, 4vw, 2.25rem);
+    border: 1px solid var(--slab-edge);
+    border-radius: 2rem;
+    background: var(--slab);
+    color: var(--slab-ink);
+
+    video {
+      inline-size: min(100%, 17rem);
+      border: 0.4rem solid #09090a;
+      border-radius: 2.7rem;
+      background: #000;
+      box-shadow: 0 0 0 1px #5b5b60;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 1.35rem + 1vw, 2.15rem);
+      letter-spacing: -0.03em;
+    }
+    p {
+      margin-block-start: 0.6rem;
+      color: var(--slab-ink-2);
+    }
+    ol {
+      margin-block: 1rem 0;
+      padding-inline-start: 1.25rem;
+      color: var(--slab-ink-2);
+    }
+    li + li {
+      margin-block-start: 0.3rem;
+    }
+  }
+  .watch-inner {
+    display: grid;
+    gap: 1.5rem clamp(1.5rem, 6cqi, 3.5rem);
+    align-items: center;
+  }
+  @container watch (inline-size > 36rem) {
+    .watch-inner {
+      grid-template-columns: 17rem minmax(0, 1fr);
+    }
+  }
+  .guide-section {
+    margin-block-start: clamp(3rem, 7vw, 4.5rem);
+
+    > h2 {
+      font-size: clamp(1.6rem, 1.35rem + 1vw, 2.15rem);
+      letter-spacing: -0.03em;
+    }
+  }
+  .guide-body {
+    max-inline-size: 54rem;
+  }
+
+  /* ── Guides: previous and next ─────────────────────────────────────── */
+  .pager {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+    margin-block-start: clamp(3rem, 7vw, 4.5rem);
+    padding-block-start: 2rem;
+    border-block-start: 1px solid var(--line);
+
+    a {
+      display: block;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      background: var(--surface);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+
+      &:hover {
+        border-color: var(--sage);
+        background: var(--sage);
+        color: var(--on-sage);
+
+        span {
+          color: var(--on-sage-2);
+        }
+      }
+      span {
+        display: block;
+        font-size: var(--size-small);
+        font-weight: 600;
+        color: var(--ink-2);
+        letter-spacing: 0;
+      }
+    }
+    .pager-next {
+      text-align: end;
+    }
+  }
+
+  /* ── Not found ─────────────────────────────────────────────────────── */
+  .lost {
+    display: grid;
+    align-content: center;
+    min-block-size: 60svh;
+
+    .button {
+      margin-block-start: 2rem;
+      background: var(--on-sage);
+      color: var(--paper-l);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .ledger, .watch, .zoom, .plan, .callout {
+      border: 1px solid CanvasText;
+    }
+    [data-sign], .zero-figure, .plus-list li::before {
+      color: CanvasText;
+    }
+    .chip {
+      border: 1px solid ButtonText;
+    }
+  }
+}
+
+/* ─── Motion ──────────────────────────────────────────────────────────────
+   One sequence, once, as the home page opens: the phone turns to face you
+   and the day's allowance lands (the script rolls the figures). The words
+   are simply there from the first paint. Nothing else on the site moves
+   until you move it. Nothing is ever hidden waiting for an animation. */
+@layer motion {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-phone {
+      animation: arrive 1.2s var(--ease-out) backwards;
+    }
+    @container field (inline-size > 56rem) {
+      .hero-phone {
+        animation-name: arrive-turned;
+        animation-duration: 1.5s;
+        transition: transform 0.5s var(--ease-out);
+      }
+    }
+  }
+  @keyframes arrive {
+    from {
+      translate: 0 2.5rem;
+    }
+  }
+  @keyframes arrive-turned {
+    from {
+      transform: translateY(3.5rem) rotateX(14deg) rotateY(-40deg) rotateZ(4deg);
+    }
+  }
+}

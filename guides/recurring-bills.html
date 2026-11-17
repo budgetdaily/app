@@ -3,126 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 <title>Set up bills and confirm them when due — BudgetDaily</title>
 <meta name="description" content="How to add a recurring bill or subscription in BudgetDaily and confirm each payment when it is due, with screenshots of every step.">
 <link rel="canonical" href="https://budgetdaily.github.io/app/guides/recurring-bills.html">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1f2ea">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0d0a">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <meta property="og:title" content="Set up bills and confirm them when due">
 <meta property="og:description" content="Add a bill or subscription once, then confirm each payment from Pending when it falls due.">
 <meta property="og:url" content="https://budgetdaily.github.io/app/guides/recurring-bills.html">
 <meta property="og:image" content="https://budgetdaily.github.io/app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="../icon.png">
-<link rel="apple-touch-icon" href="../icon.png">
-<link rel="stylesheet" href="../fonts/fonts.css">
-<link rel="stylesheet" href="guides.css">
+<meta name="twitter:image" content="https://budgetdaily.github.io/app/og-image.png">
+<link rel="preload" href="../assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script defer src="../assets/site.js"></script>
+<script type="speculationrules">
+{"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[data-zoom]"}}]}, "eagerness": "moderate"}]}
+</script>
 </head>
 <body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
 
-<header class="site-nav">
-  <a href="../index.html" class="nav-logo">
-    <img src="../icon.png" alt="" width="28" height="28">
-    <span>BudgetDaily</span>
-  </a>
-  <a href="index.html" class="nav-back">← All guides</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/icon-96.png" alt="" width="32" height="32">
+      BudgetDaily
+    </a>
+    <nav aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" aria-controls="site-menu">Menu</button>
+      <ul id="site-menu" class="site-menu" popover>
+        <li><a href="index.html" aria-current="true">Guides</a></li>
+        <li><a href="../getting-started.html">Getting started</a></li>
+        <li><a href="../support.html">Support</a></li>
+      </ul>
+    </nav>
+    <a class="button button-small" href="https://apps.apple.com/app/id6761750188">Download<span class="visually-hidden"> on the App Store</span></a>
+  </div>
 </header>
 
-<main class="page">
+<main id="content" tabindex="-1" class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol class="breadcrumb-list">
+      <li><a href="index.html">Guides</a></li>
+      <li><a href="recurring-bills.html" aria-current="page">Set up bills and confirm them when due</a></li>
+    </ol>
+  </nav>
 
-  <div class="page-header">
-    <p class="page-eyebrow">Guide</p>
-    <h1 class="page-title">Set up bills and confirm them when due</h1>
+  <div class="guide-body">
+
+  <header class="page-head">
+    <h1>Set up bills and confirm them when due</h1>
     <p class="page-intro">Rent, subscriptions and bills repeat, so enter them once. BudgetDaily then lists what is coming up and asks you to confirm each payment when it is due.</p>
-    <div class="meta">
-      <span>About 4 minutes</span>
-      <span>5 steps</span>
-    </div>
-  </div>
+    <ul class="meta">
+      <li>About 4 minutes</li>
+      <li>5 steps</li>
+    </ul>
+  </header>
 
-  <section>
+  <section class="guide-section">
     <h2>Step by step</h2>
     <p class="section-sub">One screen at a time</p>
 
     <ol class="steps">
-      <li class="step">
+      <li class="step"><div class="step-inner">
         <div>
-          <div class="step-head"><span class="step-num">1</span><h3>Start an expense and turn on Recurring</h3></div>
+          <h3>Start an expense and turn on Recurring</h3>
           <p>On <strong>Accounts</strong>, tap the minus on the account the bill is paid from and type the amount. Then press and hold the category to open the full form.</p>
           <p>Give it a title and switch on <strong>Recurring</strong>.</p>
         </div>
-        <img class="phone" src="media/recurring/01-rule.png" alt="Add Expense form with the title Cloud storage and the Recurring switch on" width="804" height="1748" loading="lazy">
-      </li>
+        <a class="shot" href="media/recurring/01-rule.jpg" data-zoom aria-label="Enlarge screenshot: Add Expense form with the title Cloud storage and the Recurring switch on"><picture><source type="image/avif" srcset="media/recurring/01-rule.avif"><img src="media/recurring/01-rule.jpg" alt="Add Expense form with the title Cloud storage and the Recurring switch on" width="804" height="1748" fetchpriority="high" decoding="async"></picture></a>
+      </div></li>
 
-      <li class="step">
+      <li class="step"><div class="step-inner">
         <div>
-          <div class="step-head"><span class="step-num">2</span><h3>Choose how it repeats</h3></div>
+          <h3>Choose how it repeats</h3>
           <p>Set <strong>Repeat</strong> (weekly, fortnightly, monthly and more), add an end date if it has one, and choose a reminder if you want a nudge.</p>
           <p><strong>Confirm automatically</strong> records each payment for you when it falls due. Leave it off for bills where the amount changes, so you can check each one.</p>
           <p>Tap <strong>Save Transaction</strong>.</p>
         </div>
-        <img class="phone" src="media/recurring/02-rule-options.png" alt="Recurring options: Repeat, end date, Confirm automatically and Reminder" width="804" height="1748" loading="lazy">
-      </li>
+        <a class="shot" href="media/recurring/02-rule-options.jpg" data-zoom aria-label="Enlarge screenshot: Recurring options: Repeat, end date, Confirm automatically and Reminder"><picture><source type="image/avif" srcset="media/recurring/02-rule-options.avif"><img src="media/recurring/02-rule-options.jpg" alt="Recurring options: Repeat, end date, Confirm automatically and Reminder" width="804" height="1748" loading="lazy" decoding="async"></picture></a>
+      </div></li>
 
-      <li class="step">
+      <li class="step"><div class="step-inner">
         <div>
-          <div class="step-head"><span class="step-num">3</span><h3>Open the Recurring tab</h3></div>
+          <h3>Open the Recurring tab</h3>
           <p><strong>Pending</strong> lists payments that are due and waiting for you. <strong>Upcoming</strong> shows what falls due in the next seven days. Below that are all your rules.</p>
           <p>The figure at the top is your recurring income minus recurring expenses.</p>
         </div>
-        <img class="phone" src="media/recurring/03-recurring-tab.png" alt="Recurring tab with Pending and Upcoming sections above the list of rules" width="804" height="1748" loading="lazy">
-      </li>
+        <a class="shot" href="media/recurring/03-recurring-tab.jpg" data-zoom aria-label="Enlarge screenshot: Recurring tab with Pending and Upcoming sections above the list of rules"><picture><source type="image/avif" srcset="media/recurring/03-recurring-tab.avif"><img src="media/recurring/03-recurring-tab.jpg" alt="Recurring tab with Pending and Upcoming sections above the list of rules" width="804" height="1748" loading="lazy" decoding="async"></picture></a>
+      </div></li>
 
-      <li class="step">
+      <li class="step"><div class="step-inner">
         <div>
-          <div class="step-head"><span class="step-num">4</span><h3>Tap a pending payment</h3></div>
+          <h3>Tap a pending payment</h3>
           <p>Check the amount, the date it was paid, and the account. Change any of them to match what actually happened; the change applies to this payment only.</p>
           <p>Tap <strong>Confirm Transaction</strong>. If you did not pay it this time, tap <strong>Skip This Occurrence</strong>.</p>
         </div>
-        <img class="phone" src="media/recurring/04-confirm.png" alt="Confirm Transaction sheet for Water with amount, date paid and account" width="804" height="1748" loading="lazy">
-      </li>
+        <a class="shot" href="media/recurring/04-confirm.jpg" data-zoom aria-label="Enlarge screenshot: Confirm Transaction sheet for Water with amount, date paid and account"><picture><source type="image/avif" srcset="media/recurring/04-confirm.avif"><img src="media/recurring/04-confirm.jpg" alt="Confirm Transaction sheet for Water with amount, date paid and account" width="804" height="1748" loading="lazy" decoding="async"></picture></a>
+      </div></li>
 
-      <li class="step">
+      <li class="step"><div class="step-inner">
         <div>
-          <div class="step-head"><span class="step-num">5</span><h3>Done</h3></div>
+          <h3>Done</h3>
           <p>The payment leaves Pending and is recorded as an expense in the account. The rule stays in place for next time.</p>
         </div>
-        <img class="phone" src="media/recurring/05-confirmed.png" alt="Recurring tab with one fewer pending confirmation" width="804" height="1748" loading="lazy">
-      </li>
+        <a class="shot" href="media/recurring/05-confirmed.jpg" data-zoom aria-label="Enlarge screenshot: Recurring tab with one fewer pending confirmation"><picture><source type="image/avif" srcset="media/recurring/05-confirmed.avif"><img src="media/recurring/05-confirmed.jpg" alt="Recurring tab with one fewer pending confirmation" width="804" height="1748" loading="lazy" decoding="async"></picture></a>
+      </div></li>
     </ol>
   </section>
 
-  <section>
+  <section class="guide-section">
     <h2>What to do next</h2>
     <p class="section-sub">Related tips and guides</p>
-    <div class="tip">
-      <div class="tip-dot"></div>
-      <p><strong>The dot on the Recurring tab</strong> means something is waiting for you there.</p>
-    </div>
-    <div class="tip">
-      <div class="tip-dot"></div>
-      <p><strong>Paying something off in parts?</strong> <a href="payment-plans.html">Pay in instalments</a> covers one purchase paid over several dates.</p>
-    </div>
-    <div class="tip">
-      <div class="tip-dot"></div>
-      <p><strong>Add your pay the same way.</strong> Use the green plus on an account and switch on Recurring.</p>
-    </div>
+    <ul class="tips">
+    <li><p><strong>The dot on the Recurring tab</strong> means something is waiting for you there.</p></li>
+    <li><p><strong>Paying something off in parts?</strong> <a href="payment-plans.html">Pay in instalments</a> covers one purchase paid over several dates.</p></li>
+    <li><p><strong>Add your pay the same way.</strong> Use the green plus on an account and switch on Recurring.</p></li>
+    </ul>
   </section>
+
+  </div>
+
+  <nav class="pager" aria-label="More guides">
+    <a class="pager-prev" href="todays-balance.html" rel="prev"><span>Previous guide</span>Read Today&#x27;s balance</a>
+    <a class="pager-next" href="payment-plans.html" rel="next"><span>Next guide</span>Pay in instalments</a>
+  </nav>
 
 </main>
 
-<footer>
-  <a href="../index.html" class="footer-logo">
-    <img src="../icon.png" alt="" width="26" height="26">
-    <span>BudgetDaily</span>
-  </a>
-  <div class="footer-links">
-    <a href="../getting-started.html">Getting Started</a>
-    <a href="index.html">Guides</a>
-    <a href="../privacy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms of Service</a>
-    <a href="../support.html">Support</a>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="../index.html">
+      <img src="../assets/img/icon-96.png" alt="" width="32" height="32" loading="lazy">
+      BudgetDaily
+    </a>
+    <ul class="footer-links">
+      <li><a href="../getting-started.html">Getting started</a></li>
+      <li><a href="index.html">Guides</a></li>
+      <li><a href="../privacy.html">Privacy Policy</a></li>
+      <li><a href="../terms.html">Terms of Service</a></li>
+      <li><a href="../support.html">Support</a></li>
+    </ul>
+    <p>&copy; 2026 Ivan Ting</p>
   </div>
-  <p class="footer-copy">&copy; 2026 Ivan Ting</p>
 </footer>
 
 </body>

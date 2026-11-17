@@ -3,167 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 <title>Privacy Policy — BudgetDaily</title>
 <meta name="description" content="BudgetDaily's privacy policy explains local storage, local backup and restore, optional iCloud Sync, budget sharing, app lock, subscriptions, and why the app collects no personal data.">
 <link rel="canonical" href="https://budgetdaily.github.io/app/privacy.html">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1f2ea">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0d0a">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta property="og:title" content="Privacy Policy — BudgetDaily">
 <meta property="og:description" content="BudgetDaily is built without servers, analytics, ads, or tracking. Your financial data stays on your device or in your private iCloud account.">
 <meta property="og:url" content="https://budgetdaily.github.io/app/privacy.html">
 <meta property="og:image" content="https://budgetdaily.github.io/app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="icon.png">
-<link rel="apple-touch-icon" href="icon.png">
-<link rel="stylesheet" href="fonts/fonts.css">
-<style>
-:root {
-  --dark: oklch(0.14 0.018 250);
-  --dark2: oklch(0.20 0.02 250);
-  --dark3: oklch(0.26 0.02 250);
-  --sage: oklch(0.65 0.07 145);
-  --sage-light: oklch(0.78 0.05 145);
-  --sage-dim: oklch(0.65 0.07 145 / 0.15);
-  --bg: oklch(0.18 0.018 250);
-  --bg2: oklch(0.22 0.02 250);
-  --surface: oklch(0.24 0.022 250);
-  --border: oklch(0.32 0.018 250);
-  --text: oklch(0.97 0.005 250);
-  --text2: oklch(0.72 0.012 250);
-  --text3: oklch(0.55 0.012 250);
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-.site-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 40px;
-  background: oklch(0.14 0.018 250 / 0.88);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid oklch(1 0 0 / 0.06);
-}
-.nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
-.nav-logo span { font-size: 0.92rem; font-weight: 700; color: white; letter-spacing: -0.01em; }
-.nav-back { font-size: 0.82rem; font-weight: 600; color: var(--sage); text-decoration: none; transition: color 0.2s; }
-.nav-back:hover { color: var(--sage-light); }
-
-.page-wrap { max-width: 720px; margin: 0 auto; padding: 112px 32px 80px; }
-
-.page-header { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-.page-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
-.page-title { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; color: var(--text); margin-bottom: 14px; }
-.page-meta { font-size: 0.82rem; color: var(--text3); font-weight: 500; margin-bottom: 12px; }
-.page-intro { font-size: 1rem; color: var(--text2); line-height: 1.7; max-width: 580px; }
-
-/* Privacy highlight card */
-.privacy-highlight {
-  background: var(--dark);
-  border-radius: 20px;
-  padding: 28px 28px;
-  margin-bottom: 48px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-}
-.ph-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--sage-dim);
-  border: 1px solid oklch(0.65 0.07 145 / 0.3);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.ph-icon svg { width: 18px; height: 18px; stroke: var(--sage-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.ph-body h3 { font-family: var(--serif); font-size: 1.1rem; color: white; margin-bottom: 6px; }
-.ph-body p { font-size: 0.85rem; color: oklch(0.55 0.012 150); line-height: 1.65; }
-.ph-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
-.ph-tag { font-size: 0.68rem; font-weight: 700; color: var(--sage-light); background: oklch(0.65 0.07 145 / 0.15); border: 1px solid oklch(0.65 0.07 145 / 0.2); padding: 4px 10px; border-radius: 100px; letter-spacing: 0.04em; text-transform: uppercase; }
-
-.doc-section { margin-bottom: 44px; }
-.doc-section h2 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; color: var(--text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-.doc-section h3 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-top: 22px; margin-bottom: 8px; letter-spacing: -0.01em; }
-.doc-section p { font-size: 0.93rem; color: var(--text2); margin-bottom: 12px; line-height: 1.75; }
-.doc-section ul { margin: 8px 0 14px 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.doc-section li { font-size: 0.9rem; color: var(--text2); padding-left: 20px; position: relative; line-height: 1.65; }
-.doc-section li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
-.doc-section a { color: var(--sage); text-decoration: none; font-weight: 500; }
-.doc-section a:hover { color: var(--sage-light); text-decoration: underline; }
-strong { font-weight: 700; color: var(--text); }
-
-footer {
-  background: var(--dark2);
-  border-top: 1px solid oklch(1 0 0 / 0.05);
-  padding: 28px 40px;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-  margin-top: 80px;
-}
-.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.footer-logo img { width: 26px; height: 26px; border-radius: 7px; }
-.footer-logo span { font-size: 0.85rem; font-weight: 700; color: oklch(0.7 0.01 150); }
-.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.footer-links a { color: oklch(0.45 0.01 150); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
-.footer-links a:hover { color: var(--sage-light); }
-.footer-copy { font-size: 0.72rem; color: oklch(0.35 0.008 150); }
-
-@media (max-width: 600px) {
-  .site-nav { padding: 14px 20px; }
-  .page-wrap { padding: 96px 20px 60px; }
-  .page-title { font-size: 2rem; }
-  .privacy-highlight { flex-direction: column; gap: 12px; }
-  footer { padding: 24px 20px; justify-content: center; text-align: center; }
-  .footer-links { justify-content: center; }
-}
-</style>
+<meta name="twitter:image" content="https://budgetdaily.github.io/app/og-image.png">
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script defer src="assets/site.js"></script>
+<script type="speculationrules">
+{"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[data-zoom]"}}]}, "eagerness": "moderate"}]}
+</script>
 </head>
 <body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
 
-<nav class="site-nav">
-  <a href="./" class="nav-logo">
-    <img src="icon.png" alt="" width="28" height="28">
-    <span>BudgetDaily</span>
-  </a>
-  <a href="./" class="nav-back">← Back</a>
-</nav>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="./">
+      <img src="assets/img/icon-96.png" alt="" width="32" height="32">
+      BudgetDaily
+    </a>
+    <nav aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" aria-controls="site-menu">Menu</button>
+      <ul id="site-menu" class="site-menu" popover>
+        <li><a href="guides/index.html">Guides</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+    <a class="button button-small" href="https://apps.apple.com/app/id6761750188">Download<span class="visually-hidden"> on the App Store</span></a>
+  </div>
+</header>
 
-<div class="page-wrap">
-  <div class="page-header">
-    <p class="page-eyebrow">Legal</p>
-    <h1 class="page-title">Privacy Policy</h1>
+<main id="content" tabindex="-1" class="wrap">
+
+  <header class="page-head">
+    <h1>Privacy Policy</h1>
     <p class="page-meta">Last updated: April 2026</p>
     <p class="page-intro">BudgetDaily is built with privacy as a core principle. Your financial data belongs to you — it stays on your device and, if you choose, in your private iCloud account. We do not collect, transmit, or sell your data.</p>
+  </header>
+
+  <div class="prose">
+
+  <div class="callout">
+    <h2>Your data never touches our servers</h2>
+    <p>We have no backend, no analytics, no advertising. Everything you enter stays on your device or in your own private iCloud account — never ours.</p>
+    <ul class="meta"><li>No servers</li><li>No analytics</li><li>No ads</li><li>No tracking</li><li>No third-party SDKs</li></ul>
   </div>
 
-  <div class="privacy-highlight">
-    <div class="ph-icon">
-      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    </div>
-    <div class="ph-body">
-      <h3>Your data never touches our servers</h3>
-      <p>We have no backend, no analytics, no advertising. Everything you enter stays on your device or in your own private iCloud account — never ours.</p>
-      <div class="ph-tags">
-        <span class="ph-tag">No servers</span>
-        <span class="ph-tag">No analytics</span>
-        <span class="ph-tag">No ads</span>
-        <span class="ph-tag">No tracking</span>
-        <span class="ph-tag">No third-party SDKs</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>1. Information We Collect</h2>
     <p><strong>We do not collect any personal data.</strong> The App does not have external servers, analytics services, or advertising networks. No data is transmitted to us or any third party.</p>
     <p>All information you enter into BudgetDaily — including accounts, transactions, budgets, and categories — is created and stored entirely on your device.</p>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>2. Data Storage</h2>
     <h3>On-Device Storage</h3>
     <p>All app data is stored locally on your device using Apple's SwiftData framework. This data remains under your control and is protected by your device's built-in security features (passcode, Face ID, Touch ID, and device encryption).</p>
@@ -179,9 +86,9 @@ footer {
     <p>BudgetDaily Pro offers automatic cloud backups saved to your iCloud Drive. These backups are accessible only through your Apple account and are governed by Apple's iCloud terms.</p>
     <h3>Local Backup and Restore</h3>
     <p>You can create local backup files and restore them later. These files are generated on your device and are only shared or stored where you choose to save them.</p>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>3. Budget Sharing</h2>
     <p>Sharing a budget is a Pro feature. When you share a budget with someone you choose:</p>
     <ul>
@@ -190,19 +97,19 @@ footer {
       <li>Recipients receive <strong>read-only</strong> access to that budget only.</li>
       <li>Your other accounts, transactions, and personal data are never shared.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>4. Biometric Data (Face ID / Touch ID)</h2>
     <p>When you enable app lock, biometric authentication is handled entirely by Apple's Local Authentication framework. BudgetDaily only receives a success or failure response — your biometric data is never accessed, stored, or transmitted by the App. It remains in the device's Secure Enclave.</p>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>5. Subscriptions and Purchases</h2>
     <p>Subscription transactions are processed entirely by Apple through the App Store. We do not have access to your payment information, Apple ID, or billing details. See <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> for details on how Apple handles purchase data.</p>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>6. Third-Party Services</h2>
     <p>BudgetDaily does not integrate any third-party analytics, tracking, advertising, or data collection services. The only services used are Apple platform services:</p>
     <ul>
@@ -211,14 +118,14 @@ footer {
       <li><strong>Apple StoreKit</strong> — for subscription management.</li>
       <li><strong>Apple Local Authentication</strong> — for biometric app lock.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>7. Children's Privacy</h2>
     <p>BudgetDaily is not directed at children under 13. Since the App collects no data from any user, there is no risk of children's data being gathered.</p>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>8. Your Rights</h2>
     <p>Because your data never leaves your device (or your own iCloud account), you have full control at all times:</p>
     <ul>
@@ -230,9 +137,9 @@ footer {
       <li>Delete all cloud data through your device's iCloud Settings.</li>
       <li>Uninstall the App to remove all on-device data.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>9. Security Measures</h2>
     <ul>
       <li><strong>iOS Keychain</strong> for encrypted storage of sensitive credentials.</li>
@@ -241,46 +148,37 @@ footer {
       <li><strong>Apple's iCloud encryption</strong> for any data you choose to sync.</li>
       <li><strong>No external network calls</strong> — the App does not communicate with any server outside Apple's ecosystem.</li>
     </ul>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>10. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. Changes will be reflected by updating the "Last updated" date above. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
-  </div>
+  </section>
 
-  <div class="doc-section">
+  <section class="doc-section">
     <h2>11. Contact Us</h2>
     <p>Questions about this Privacy Policy? Reach us at <a href="mailto:budgetdaily@protonmail.com">budgetdaily@protonmail.com</a>.</p>
+  </section>
   </div>
-</div>
 
-<footer>
-  <a href="./" class="footer-logo">
-    <img src="icon.png" alt="" width="26" height="26" loading="lazy" decoding="async">
-    <span>BudgetDaily</span>
-  </a>
-  <div class="footer-links">
-    <a href="getting-started.html">Getting Started</a>
-    <a href="guides/index.html">Guides</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
-    <a href="support.html">Support</a>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="./">
+      <img src="assets/img/icon-96.png" alt="" width="32" height="32" loading="lazy">
+      BudgetDaily
+    </a>
+    <ul class="footer-links">
+      <li><a href="getting-started.html">Getting started</a></li>
+      <li><a href="guides/index.html">Guides</a></li>
+      <li><a href="privacy.html" aria-current="page">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <p>&copy; 2026 Ivan Ting</p>
   </div>
-  <p class="footer-copy">&copy; 2026 Ivan Ting</p>
 </footer>
-
-<script>
-const navBackLink = document.querySelector('.nav-back');
-if (navBackLink) {
-  navBackLink.addEventListener('click', event => {
-    const hasSameOriginReferrer = document.referrer && new URL(document.referrer).origin === window.location.origin;
-    if (window.history.length > 1 && hasSameOriginReferrer) {
-      event.preventDefault();
-      window.history.back();
-    }
-  });
-}
-</script>
 
 </body>
 </html>

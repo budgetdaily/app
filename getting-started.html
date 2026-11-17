@@ -3,576 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 <title>Getting Started — BudgetDaily</title>
 <meta name="description" content="Learn how to make the most of BudgetDaily: start with one account and one budget, build a daily habit, review weekly, and grow into advanced tools.">
 <link rel="canonical" href="https://budgetdaily.github.io/app/getting-started.html">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1f2ea">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0d0a">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta property="og:title" content="Getting Started — BudgetDaily">
 <meta property="og:description" content="A practical guide to starting simple, building a daily budgeting habit, reviewing weekly, and growing into BudgetDaily's advanced tools.">
 <meta property="og:url" content="https://budgetdaily.github.io/app/getting-started.html">
 <meta property="og:image" content="https://budgetdaily.github.io/app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="icon.png">
-<link rel="apple-touch-icon" href="icon.png">
-<link rel="stylesheet" href="fonts/fonts.css">
-<style>
-:root {
-  --dark: oklch(0.14 0.018 250);
-  --dark2: oklch(0.20 0.02 250);
-  --dark3: oklch(0.26 0.02 250);
-  --sage: oklch(0.65 0.07 145);
-  --sage-light: oklch(0.78 0.05 145);
-  --sage-dim: oklch(0.65 0.07 145 / 0.15);
-  --bg: oklch(0.18 0.018 250);
-  --bg2: oklch(0.22 0.02 250);
-  --surface: oklch(0.24 0.022 250);
-  --border: oklch(0.32 0.018 250);
-  --text: oklch(0.97 0.005 250);
-  --text2: oklch(0.72 0.012 250);
-  --text3: oklch(0.55 0.012 250);
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── NAV ── */
-.site-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 40px;
-  background: oklch(0.14 0.018 250 / 0.88);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid oklch(1 0 0 / 0.06);
-}
-.nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
-.nav-logo span { font-size: 0.92rem; font-weight: 700; color: white; letter-spacing: -0.01em; }
-.nav-back { font-size: 0.82rem; font-weight: 600; color: var(--sage); text-decoration: none; transition: color 0.2s; }
-.nav-back:hover { color: var(--sage-light); }
-
-/* ── PAGE LAYOUT ── */
-.page-outer { padding-top: 72px; }
-.page-inner { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
-
-/* Sidebar hidden by default; two-column grid on wide screens only */
-.sidebar { display: none; }
-
-@media (min-width: 900px) {
-  .page-inner {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-  .sidebar {
-    display: block;
-    position: sticky;
-    top: 96px;
-    padding: 32px 0;
-  }
-}
-
-/* ── SIDEBAR ── */
-.sidebar-label {
-  font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--text3); margin-bottom: 10px; padding-left: 10px;
-}
-.sidebar-links { display: flex; flex-direction: column; gap: 1px; }
-.sidebar-links a {
-  display: block; font-size: 0.82rem; font-weight: 500;
-  color: var(--text2); text-decoration: none;
-  padding: 6px 10px; border-radius: 8px;
-  border-left: 2px solid transparent;
-  transition: color 0.15s, background 0.15s, border-color 0.15s;
-}
-.sidebar-links a:hover { color: var(--text); background: var(--bg2); }
-.sidebar-links a.active { color: var(--sage); border-left-color: var(--sage); background: var(--sage-dim); }
-
-/* ── CONTENT ── */
-.content { padding: 32px 0 80px; min-width: 0; }
-
-.page-header { margin-bottom: 52px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-.page-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
-.page-title { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; }
-.page-intro { font-size: 1rem; color: var(--text2); line-height: 1.7; max-width: 520px; }
-
-.doc-section { margin-bottom: 60px; scroll-margin-top: 112px; }
-.doc-section h2 { font-family: var(--serif); font-size: 1.55rem; font-weight: 400; color: var(--text); margin-bottom: 4px; letter-spacing: -0.015em; }
-.section-sub { font-size: 0.88rem; color: var(--text3); margin-bottom: 24px; }
-.section-divider { height: 1px; background: var(--border); margin-bottom: 60px; }
-
-.subsection-label {
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--text3);
-  margin: 32px 0 14px;
-}
-
-/* ── STEP CARDS ── */
-.step-list { display: flex; flex-direction: column; gap: 10px; }
-.step {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 16px 18px; background: var(--surface);
-  border: 1px solid var(--border); border-radius: 12px;
-}
-.step-num {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--sage-dim); border: 1px solid oklch(0.65 0.07 145 / 0.25);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.72rem; font-weight: 700; color: var(--sage); flex-shrink: 0; margin-top: 1px;
-}
-.step-body h4 { font-size: 0.87rem; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.4; }
-.step-body p { font-size: 0.81rem; color: var(--text2); line-height: 1.6; }
-.optional-tag {
-  display: inline-block; font-size: 0.64rem; font-weight: 700;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  color: var(--text3); background: var(--bg2);
-  border: 1px solid var(--border); border-radius: 100px;
-  padding: 2px 7px; margin-left: 6px; vertical-align: middle; line-height: 1.6;
-}
-
-/* ── ONGOING CARD ── */
-.ongoing-card {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 20px; background: var(--bg2);
-  border: 1.5px dashed var(--border); border-radius: 12px;
-}
-.ongoing-icon {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--surface); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
-}
-.ongoing-icon svg { width: 12px; height: 12px; stroke: var(--sage); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.ongoing-body h4 { font-size: 0.87rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-.ongoing-body p { font-size: 0.81rem; color: var(--text2); line-height: 1.6; }
-
-/* ── CONCEPT CARD ── */
-.concept-card {
-  background: var(--dark); border-radius: 18px; padding: 24px;
-  margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start;
-}
-.concept-icon {
-  width: 38px; height: 38px; border-radius: 10px;
-  background: var(--sage-dim); border: 1px solid oklch(0.65 0.07 145 / 0.3);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.concept-icon svg { width: 17px; height: 17px; stroke: var(--sage-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.concept-body h3 { font-family: var(--serif); font-size: 1.05rem; color: white; margin-bottom: 6px; }
-.concept-body p { font-size: 0.84rem; color: oklch(0.55 0.012 150); line-height: 1.65; }
-
-/* ── TIP ROW ── */
-.tip {
-  display: flex; gap: 12px; align-items: flex-start;
-  padding: 14px 16px; background: var(--bg2);
-  border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px;
-}
-.tip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); flex-shrink: 0; margin-top: 7px; }
-.tip p { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
-.tip strong { color: var(--text); font-weight: 600; }
-
-/* ── DAILY HABIT SECTION ── */
-#daily-habit {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-#daily-habit .section-sub {
-  margin-bottom: 10px;
-}
-#daily-habit .tip {
-  margin-bottom: 0;
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--dark2); border-top: 1px solid oklch(1 0 0 / 0.05);
-  padding: 28px 40px; display: flex; align-items: center;
-  justify-content: space-between; flex-wrap: wrap; gap: 16px;
-}
-.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.footer-logo img { width: 26px; height: 26px; border-radius: 7px; }
-.footer-logo span { font-size: 0.85rem; font-weight: 700; color: oklch(0.7 0.01 150); }
-.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.footer-links a { color: oklch(0.45 0.01 150); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
-.footer-links a:hover { color: var(--sage-light); }
-.footer-copy { font-size: 0.72rem; color: oklch(0.35 0.008 150); }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 600px) {
-  .site-nav { padding: 14px 20px; }
-  .page-inner { padding: 0 20px; }
-  .page-title { font-size: 2rem; }
-  footer { padding: 24px 20px; justify-content: center; text-align: center; }
-  .footer-links { justify-content: center; }
-}
-</style>
+<meta name="twitter:image" content="https://budgetdaily.github.io/app/og-image.png">
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script defer src="assets/site.js"></script>
+<script type="speculationrules">
+{"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[data-zoom]"}}]}, "eagerness": "moderate"}]}
+</script>
 </head>
 <body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
 
-<header class="site-nav">
-  <a href="./" class="nav-logo">
-    <img src="icon.png" alt="" width="28" height="28">
-    <span>BudgetDaily</span>
-  </a>
-  <a href="./" class="nav-back">← Back</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="./">
+      <img src="assets/img/icon-96.png" alt="" width="32" height="32">
+      BudgetDaily
+    </a>
+    <nav aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" aria-controls="site-menu">Menu</button>
+      <ul id="site-menu" class="site-menu" popover>
+        <li><a href="guides/index.html">Guides</a></li>
+        <li><a href="getting-started.html" aria-current="page">Getting started</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+    <a class="button button-small" href="https://apps.apple.com/app/id6761750188">Download<span class="visually-hidden"> on the App Store</span></a>
+  </div>
 </header>
 
-<div class="page-outer">
-  <div class="page-inner">
+<main id="content" tabindex="-1" class="wrap">
 
-    <aside class="sidebar">
-      <p class="sidebar-label">On this page</p>
-      <div class="sidebar-links">
-        <a href="#setup">10-minute setup</a>
-        <a href="#daily-habit">Daily habit</a>
-        <a href="#weekly-review">Weekly review</a>
-        <a href="#daily-balance">Today's balance</a>
-        <a href="#budgets">Budgets</a>
-        <a href="#analytics">Insights</a>
-        <a href="#grow">Grow into power</a>
-        <a href="#tips">Tips &amp; tricks</a>
-      </div>
-    </aside>
+  <header class="page-head">
+    <h1>Make the most of BudgetDaily</h1>
+    <p class="page-intro">Start with one account and one budget. That is enough to begin. BudgetDaily requires iOS 26.1 or later. As the habit becomes useful, add recurring bills, one-off projects, Insights, savings goals, widgets, backups, and the deeper tools only when they help. Insights is included on the free plan.</p>
+  </header>
 
-    <main class="content">
+  <div class="doc-layout">
 
-      <div class="page-header">
-        <p class="page-eyebrow">Getting Started</p>
-        <h1 class="page-title">Make the most of BudgetDaily</h1>
-        <p class="page-intro">Start with one account and one budget. That is enough to begin. BudgetDaily requires iOS 26.1 or later. As the habit becomes useful, add recurring bills, one-off projects, Insights, savings goals, widgets, backups, and the deeper tools only when they help. Insights is included on the free plan.</p>
-      </div>
+    <nav class="toc" aria-labelledby="toc-title" data-toc>
+      <h2 id="toc-title">On this page</h2>
+      <ol class="toc-list">
+        <li><a href="#setup">10-minute setup</a></li>
+        <li><a href="#daily-habit">Daily habit</a></li>
+        <li><a href="#weekly-review">Weekly review</a></li>
+        <li><a href="#daily-balance">Today's balance</a></li>
+        <li><a href="#budgets">Budgets</a></li>
+        <li><a href="#accounts">Accounts</a></li>
+        <li><a href="#transactions">Adding transactions</a></li>
+        <li><a href="#analytics">Insights</a></li>
+        <li><a href="#grow">Grow into power</a></li>
+        <li><a href="#tips">Tips and tricks</a></li>
+      </ol>
+    </nav>
 
-      <!-- SETUP -->
-      <section class="doc-section" id="setup">
+    <div class="prose">
+
+      <section class="doc-section" id="setup" tabindex="-1">
         <h2>10-minute setup</h2>
-        <p class="section-sub">The smallest useful setup. <a href="guides/set-up.html" style="color: var(--sage);">Watch it step by step →</a></p>
-
-        <div class="step-list">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <h4>Add your main spending account</h4>
-              <p>Create the account you use most often and make sure the starting balance matches your real account balance. BudgetDaily is designed to mirror real balances so missing or duplicated transactions show up as discrepancies you can catch and fix quickly.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <h4>Create one practical budget</h4>
-              <p>Pick one category you want to control first, like Groceries, Eating Out, or Transport. A weekly budget is easiest to learn with.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <h4>Add recurring income or bills <span class="optional-tag">Optional</span></h4>
-              <p>If you have regular salary, subscriptions, rent, or fixed bills, add them as recurring transactions so your daily limit accounts for committed money.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-body">
-              <h4>Log your first transaction</h4>
-              <p>Add one real purchase or income item. Once transactions have categories, BudgetDaily can update matching budgets automatically.</p>
-            </div>
-          </div>
-        </div>
+        <p class="section-sub">The smallest useful setup. <a href="guides/set-up.html">Watch it step by step</a>.</p>
+        <ol class="steps">
+          <li class="step">
+            <h3>Add your main spending account</h3>
+            <p>Create the account you use most often and make sure the starting balance matches your real account balance. BudgetDaily is designed to mirror real balances so missing or duplicated transactions show up as discrepancies you can catch and fix quickly.</p>
+          </li>
+          <li class="step">
+            <h3>Create one practical budget</h3>
+            <p>Pick one category you want to control first, like Groceries, Eating Out, or Transport. A weekly budget is easiest to learn with.</p>
+          </li>
+          <li class="step">
+            <h3>Add recurring income or bills <span class="tag">Optional</span></h3>
+            <p>If you have regular salary, subscriptions, rent, or fixed bills, add them as recurring transactions so your daily limit accounts for committed money.</p>
+          </li>
+          <li class="step">
+            <h3>Log your first transaction</h3>
+            <p>Add one real purchase or income item. Once transactions have categories, BudgetDaily can update matching budgets automatically.</p>
+          </li>
+        </ol>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- DAILY HABIT -->
-      <section class="doc-section" id="daily-habit">
+      <section class="doc-section" id="daily-habit" tabindex="-1">
         <h2>Daily habit</h2>
         <p class="section-sub">A few seconds when money moves</p>
-        <div class="ongoing-card">
-          <div class="ongoing-icon">
-            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
-          </div>
-          <div class="ongoing-body">
-            <h4>Log your spending as it happens</h4>
-            <p>Add a transaction each time you spend. BudgetDaily updates your balances and budgets in real time, so the more consistently you log, the more useful Today's balance becomes.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Check Today's balance before spending.</strong> It tells you whether each budget is ahead of pace, behind pace, or right on track.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Use quick entry.</strong> Long-press any category or account chip in the transaction form to save instantly after entering an amount.</p>
-        </div>
+        <h3>Log your spending as it happens</h3>
+        <p>Add a transaction each time you spend. BudgetDaily updates your balances and budgets in real time, so the more consistently you log, the more useful Today's balance becomes.</p>
+        <ul class="tips">
+          <li><p><strong>Check Today's balance before spending.</strong> It tells you whether each budget is ahead of pace, behind pace, or right on track.</p></li>
+          <li><p><strong>Use quick entry.</strong> Long-press any category or account chip in the transaction form to save instantly after entering an amount.</p></li>
+        </ul>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- WEEKLY REVIEW -->
-      <section class="doc-section" id="weekly-review">
+      <section class="doc-section" id="weekly-review" tabindex="-1">
         <h2>Weekly review</h2>
         <p class="section-sub">Keep the system honest and useful</p>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Compare balances.</strong> Check that BudgetDaily still matches your real account balances. If something is off, look for a missing or duplicated transaction.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Review budget pace.</strong> If a budget is always too tight or too loose, adjust the limit instead of forcing an unrealistic plan.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Look at recurring costs.</strong> Subscriptions and fixed bills shape what you can safely spend each day, so keep them current.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Check upcoming transactions.</strong> Future-dated transactions and date-pending items help explain why a projected account balance may differ from today's account balance.</p>
-        </div>
+        <ul class="tips">
+          <li><p><strong>Compare balances.</strong> Check that BudgetDaily still matches your real account balances. If something is off, look for a missing or duplicated transaction.</p></li>
+          <li><p><strong>Review budget pace.</strong> If a budget is always too tight or too loose, adjust the limit instead of forcing an unrealistic plan.</p></li>
+          <li><p><strong>Look at recurring costs.</strong> Subscriptions and fixed bills shape what you can safely spend each day, so keep them current.</p></li>
+          <li><p><strong>Check upcoming transactions.</strong> Future-dated transactions and date-pending items help explain why a projected account balance may differ from today's account balance.</p></li>
+        </ul>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- DAILY BALANCE -->
-      <section class="doc-section" id="daily-balance">
+      <section class="doc-section" id="daily-balance" tabindex="-1">
         <h2>Today's balance</h2>
         <p class="section-sub">The live budget number BudgetDaily is built around</p>
-        <div class="concept-card">
-          <div class="concept-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <div class="concept-body">
-            <h3>What is Today's balance?</h3>
-            <p>Today is the visible rolling balance: how much you can safely spend right now and stay on pace. It is calculated from budget earned so far, carry-forward from previous cadence windows, goal movements, recurring commitments, due scheduled one-offs, refunds, and spending.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Positive or negative:</strong> a positive Today balance means you are ahead of pace. A negative Today balance means you are behind; it keeps recovering by your Daily allowance even when that recovery crosses a cadence boundary.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Daily allowance:</strong> your budget pace after committed recurring expenses and any spread expenses for the day. A $70 weekly budget has a $10/day base pace; a $3/day subscription leaves a +$7 no-spend daily allowance.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Tomorrow:</strong> the no-spend forecast for what Today's balance becomes tomorrow if you spend nothing more in that budget.</p>
-        </div>
+        <h3>What is Today's balance?</h3>
+        <p>Today is the visible rolling balance: how much you can safely spend right now and stay on pace. It is calculated from budget earned so far, carry-forward from previous cadence windows, goal movements, recurring commitments, due scheduled one-offs, refunds, and spending.</p>
+        <ul class="tips">
+          <li><p><strong>Positive or negative:</strong> a positive Today balance means you are ahead of pace. A negative Today balance means you are behind; it keeps recovering by your Daily allowance even when that recovery crosses a cadence boundary.</p></li>
+          <li><p><strong>Daily allowance:</strong> your budget pace after committed recurring expenses and any spread expenses for the day. A $70 weekly budget has a $10/day base pace; a $3/day subscription leaves a +$7 no-spend daily allowance.</p></li>
+          <li><p><strong>Tomorrow:</strong> the no-spend forecast for what Today's balance becomes tomorrow if you spend nothing more in that budget.</p></li>
+        </ul>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- BUDGETS -->
-      <section class="doc-section" id="budgets">
+      <section class="doc-section" id="budgets" tabindex="-1">
         <h2>Budgets</h2>
         <p class="section-sub">Track spending by category over a cadence</p>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Each budget tracks one category, including an optional uncategorised catch-all, over a daily, weekly, fortnightly, monthly, yearly, every-weekday, or custom cadence.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Cadence windows are reporting and settlement buckets; they do not reset the live budget balance. Saved amounts and overspending <strong>carry forward</strong> into the rolling balance.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>The <strong>spending ring</strong> in budget detail shows how much you've spent against the current total allocation, including carry-forward. Progress colour = within allocation. Warning colour = using carry-forward savings. Expense colour = exhausted.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Daily allowance</strong> shows the signed day-by-day guidance after recurring commitments and any spread expenses. Tap into the budget detail to see what makes up a particular day's amount.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Budget groups</strong> combine active child budgets and show a pooled Today's balance, Daily allowance, and Tomorrow forecast.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>One-off budgets</strong> track a fixed total for a project or event. They show what remains across the dates you choose, but do not move money or guarantee it is available in your accounts.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Spread an expense</strong> when a large purchase should count across several budget days. The full payment still stays in Accounts on its real payment date.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Not budgeted</strong> highlights expenses with no active budget covering their category or date, so you can see what needs a budget instead of mistaking it for an account-balance change.</p>
-        </div>
+        <ul class="tips">
+          <li><p>Each budget tracks one category, including an optional uncategorised catch-all, over a daily, weekly, fortnightly, monthly, yearly, every-weekday, or custom cadence.</p></li>
+          <li><p>Cadence windows are reporting and settlement buckets; they do not reset the live budget balance. Saved amounts and overspending <strong>carry forward</strong> into the rolling balance.</p></li>
+          <li><p>The <strong>spending ring</strong> in budget detail shows how much you've spent against the current total allocation, including carry-forward. Progress colour = within allocation. Warning colour = using carry-forward savings. Expense colour = exhausted.</p></li>
+          <li><p><strong>Daily allowance</strong> shows the signed day-by-day guidance after recurring commitments and any spread expenses. Tap into the budget detail to see what makes up a particular day's amount.</p></li>
+          <li><p><strong>Budget groups</strong> combine active child budgets and show a pooled Today's balance, Daily allowance, and Tomorrow forecast.</p></li>
+          <li><p><strong>One-off budgets</strong> track a fixed total for a project or event. They show what remains across the dates you choose, but do not move money or guarantee it is available in your accounts.</p></li>
+          <li><p><strong>Spread an expense</strong> when a large purchase should count across several budget days. The full payment still stays in Accounts on its real payment date.</p></li>
+          <li><p><strong>Not budgeted</strong> highlights expenses with no active budget covering their category or date, so you can see what needs a budget instead of mistaking it for an account-balance change.</p></li>
+        </ul>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- ACCOUNTS -->
-      <section class="doc-section" id="accounts">
+      <section class="doc-section" id="accounts" tabindex="-1">
         <h2>Accounts</h2>
         <p class="section-sub">Your financial picture in one place</p>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>The account balance shows the money currently in your account <strong>today</strong>. Future-dated transactions, pending one-off scheduled transactions, and recurring items that have not been recorded yet are excluded so the balance reflects what you actually have right now.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>A <strong>~ projected balance</strong> appears below your current balance when future-dated transactions or date-pending items are scheduled to settle. The tilde means it is a projection, not a confirmed amount.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>BudgetDaily supports <strong>loan</strong> and <strong>investment</strong> accounts — net worth is calculated automatically across all types.</p>
-        </div>
+        <ul class="tips">
+          <li><p>The account balance shows the money currently in your account <strong>today</strong>. Future-dated transactions, pending one-off scheduled transactions, and recurring items that have not been recorded yet are excluded so the balance reflects what you actually have right now.</p></li>
+          <li><p>A <strong>~ projected balance</strong> appears below your current balance when future-dated transactions or date-pending items are scheduled to settle. The tilde means it is a projection, not a confirmed amount.</p></li>
+          <li><p>BudgetDaily supports <strong>loan</strong> and <strong>investment</strong> accounts — net worth is calculated automatically across all types.</p></li>
+        </ul>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- TRANSACTIONS -->
-      <section class="doc-section" id="transactions">
+      <section class="doc-section" id="transactions" tabindex="-1">
         <h2>Adding transactions</h2>
         <p class="section-sub">Log spending quickly</p>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Long-press</strong> any category or account chip in the transaction form to instantly save — no extra taps. Fill in the amount first.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Use the <strong>Recurring</strong> tab for bills, subscriptions, and pay. Confirm, skip, or reschedule a scheduled amount before it enters your ledger. Recurring commitments are reflected in your Daily allowance.</p>
-        </div>
+        <ul class="tips">
+          <li><p><strong>Long-press</strong> any category or account chip in the transaction form to instantly save — no extra taps. Fill in the amount first.</p></li>
+          <li><p>Use the <strong>Recurring</strong> tab for bills, subscriptions, and pay. Confirm, skip, or reschedule a scheduled amount before it enters your ledger. Recurring commitments are reflected in your Daily allowance.</p></li>
+        </ul>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- INSIGHTS -->
-      <section class="doc-section" id="analytics">
+      <section class="doc-section" id="analytics" tabindex="-1">
         <h2>Insights</h2>
         <p class="section-sub">Review the patterns behind the day-to-day decisions</p>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Insights brings together net worth, income vs expenses, spending by category, spending trends, Recurring Margin, Cash Projection, Future Transactions, and savings.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Make each period yours.</strong> Week, Month, and Year can each have their own card order and hidden sections, so the view stays focused on what you want to review.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p><strong>Look ahead, not just back.</strong> Cash Projection and Future Transactions make upcoming bills, pay runs, and scheduled activity visible before they affect today's account balance.</p>
-        </div>
+        <ul class="tips">
+          <li><p>Insights brings together net worth, income vs expenses, spending by category, spending trends, Recurring Margin, Cash Projection, Future Transactions, and savings.</p></li>
+          <li><p><strong>Make each period yours.</strong> Week, Month, and Year can each have their own card order and hidden sections, so the view stays focused on what you want to review.</p></li>
+          <li><p><strong>Look ahead, not just back.</strong> Cash Projection and Future Transactions make upcoming bills, pay runs, and scheduled activity visible before they affect today's account balance.</p></li>
+        </ul>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- GROW INTO POWER -->
-      <section class="doc-section" id="grow">
+      <section class="doc-section" id="grow" tabindex="-1">
         <h2>Grow into power</h2>
         <p class="section-sub">Optional tools for when the basics are working</p>
-        <div class="step-list">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              <h4>Savings goals and fund movements</h4>
-              <p>Set targets for things you are working toward. You can link a budget so unspent surplus flows toward a goal automatically, or move available budget room between active budgets and savings goals when plans change.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              <h4>Loans and investments</h4>
-              <p>Add these when you want net worth, debt, and investment value changes in the same private financial picture.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-body">
-              <h4>Shared budgets and widgets <span class="optional-tag">Pro</span></h4>
-              <p>Share one budget, read-only, with people you choose. They cannot edit it, and your other accounts and transactions stay private. Or put budget and account balances, pending confirmations, scheduled activity, and recent transactions on your Home Screen. Both are Pro.</p>
-              <p>The Pending Confirmations widget is read-only. Tap either widget size to open Recurring, where you can review and confirm pending transactions.</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-body">
-              <h4>Backups, CSV, and reconciliation</h4>
-              <p>Use local backup and restore, CSV import/export, activity history, and reconciliation when accuracy and recovery matter more than a simple daily setup.</p>
-            </div>
-          </div>
-        </div>
+        <ol class="steps">
+          <li class="step">
+            <h3>Savings goals and fund movements</h3>
+            <p>Set targets for things you are working toward. You can link a budget so unspent surplus flows toward a goal automatically, or move available budget room between active budgets and savings goals when plans change.</p>
+          </li>
+          <li class="step">
+            <h3>Loans and investments</h3>
+            <p>Add these when you want net worth, debt, and investment value changes in the same private financial picture.</p>
+          </li>
+          <li class="step">
+            <h3>Shared budgets and widgets <strong class="tag">Pro</strong></h3>
+            <p>Share one budget, read-only, with people you choose. They cannot edit it, and your other accounts and transactions stay private. Or put budget and account balances, pending confirmations, scheduled activity, and recent transactions on your Home Screen. Both are Pro.</p>
+            <p>The Pending Confirmations widget is read-only. Tap either widget size to open Recurring, where you can review and confirm pending transactions.</p>
+          </li>
+          <li class="step">
+            <h3>Backups, CSV, and reconciliation</h3>
+            <p>Use local backup and restore, CSV import/export, activity history, and reconciliation when accuracy and recovery matter more than a simple daily setup.</p>
+          </li>
+        </ol>
       </section>
 
-      <div class="section-divider"></div>
-
-      <!-- TIPS -->
-      <section class="doc-section" id="tips">
-        <h2>Tips &amp; tricks</h2>
+      <section class="doc-section" id="tips" tabindex="-1">
+        <h2>Tips and tricks</h2>
         <p class="section-sub">A few things worth knowing early</p>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Enable <strong>iCloud Sync</strong> (Pro) to keep data across devices. Your data goes to your private Apple account — never our servers.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Use <strong>account tags</strong> (Pro) to group accounts (for example Personal or Business) and filter your dashboard. Transactions do not have tags.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Link a budget to a <strong>savings goal</strong> — surplus at cadence end flows automatically to the goal.</p>
-        </div>
-        <div class="tip">
-          <div class="tip-dot"></div>
-          <p>Use <strong>Move Funds</strong> to shift budget room between active budgets or savings goals. It changes budget and goal balances only; account balances stay unchanged.</p>
-        </div>
+        <ul class="tips">
+          <li><p>Enable <strong>iCloud Sync</strong> (Pro) to keep data across devices. Your data goes to your private Apple account — never our servers.</p></li>
+          <li><p>Use <strong>account tags</strong> (Pro) to group accounts (for example Personal or Business) and filter your dashboard. Transactions do not have tags.</p></li>
+          <li><p>Link a budget to a <strong>savings goal</strong> — surplus at cadence end flows automatically to the goal.</p></li>
+          <li><p>Use <strong>Move Funds</strong> to shift budget room between active budgets or savings goals. It changes budget and goal balances only; account balances stay unchanged.</p></li>
+        </ul>
       </section>
 
-    </main>
+    </div>
   </div>
-</div>
 
-<footer>
-  <a href="./" class="footer-logo">
-    <img src="icon.png" alt="" width="26" height="26" loading="lazy" decoding="async">
-    <span>BudgetDaily</span>
-  </a>
-  <div class="footer-links">
-    <a href="getting-started.html">Getting Started</a>
-    <a href="guides/index.html">Guides</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
-    <a href="support.html">Support</a>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="./">
+      <img src="assets/img/icon-96.png" alt="" width="32" height="32" loading="lazy">
+      BudgetDaily
+    </a>
+    <ul class="footer-links">
+      <li><a href="getting-started.html" aria-current="page">Getting started</a></li>
+      <li><a href="guides/index.html">Guides</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <p>&copy; 2026 Ivan Ting</p>
   </div>
-  <p class="footer-copy">&copy; 2026 Ivan Ting</p>
 </footer>
-
-<script>
-const navBackLink = document.querySelector('.nav-back');
-if (navBackLink) {
-  navBackLink.addEventListener('click', event => {
-    const hasSameOriginReferrer = document.referrer && new URL(document.referrer).origin === window.location.origin;
-    if (window.history.length > 1 && hasSameOriginReferrer) {
-      event.preventDefault();
-      window.history.back();
-    }
-  });
-}
-
-(function () {
-  const links = Array.from(document.querySelectorAll('.sidebar-links a'));
-  const sections = links
-    .map(a => document.querySelector(a.getAttribute('href')))
-    .filter(Boolean);
-
-  function setActive(id) {
-    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-  }
-
-  window.addEventListener('scroll', () => {
-    const mid = window.innerHeight * 0.4;
-    let current = sections[0].id;
-    sections.forEach(s => { if (s.getBoundingClientRect().top < mid) current = s.id; });
-    setActive(current);
-  }, { passive: true });
-})();
-</script>
 
 </body>
 </html>

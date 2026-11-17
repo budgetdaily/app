@@ -3,428 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
 <title>Support — BudgetDaily</title>
 <meta name="description" content="Get help with BudgetDaily, including data storage, local backup and restore, iCloud Sync, subscription management, sharing, and CSV export.">
 <link rel="canonical" href="https://budgetdaily.github.io/app/support.html">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1f2ea">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0d0a">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta property="og:title" content="Support — BudgetDaily">
 <meta property="og:description" content="Find answers to common BudgetDaily questions or contact support directly.">
 <meta property="og:url" content="https://budgetdaily.github.io/app/support.html">
 <meta property="og:image" content="https://budgetdaily.github.io/app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="icon.png">
-<link rel="apple-touch-icon" href="icon.png">
-<link rel="stylesheet" href="fonts/fonts.css">
-<style>
-:root {
-  --dark: oklch(0.14 0.018 250);
-  --dark2: oklch(0.20 0.02 250);
-  --dark3: oklch(0.26 0.02 250);
-  --sage: oklch(0.65 0.07 145);
-  --sage-light: oklch(0.78 0.05 145);
-  --sage-dim: oklch(0.65 0.07 145 / 0.15);
-  --bg: oklch(0.18 0.018 250);
-  --bg2: oklch(0.22 0.02 250);
-  --surface: oklch(0.24 0.022 250);
-  --border: oklch(0.32 0.018 250);
-  --text: oklch(0.97 0.005 250);
-  --text2: oklch(0.72 0.012 250);
-  --text3: oklch(0.55 0.012 250);
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* NAV */
-.site-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 40px;
-  background: oklch(0.14 0.018 250 / 0.88);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid oklch(1 0 0 / 0.06);
-}
-.nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
-.nav-logo span { font-size: 0.92rem; font-weight: 700; color: white; letter-spacing: -0.01em; }
-.nav-back {
-  font-size: 0.82rem; font-weight: 600;
-  color: var(--sage); text-decoration: none; transition: color 0.2s;
-}
-.nav-back:hover { color: var(--sage-light); }
-
-/* LAYOUT */
-.page-wrap {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 112px 32px 80px;
-}
-
-/* HERO HEADER */
-.page-header {
-  margin-bottom: 48px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--border);
-}
-.page-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--sage);
-  margin-bottom: 12px;
-}
-.page-title {
-  font-family: var(--serif);
-  font-size: 2.6rem;
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 14px;
-}
-.page-intro {
-  font-size: 1rem;
-  color: var(--text2);
-  line-height: 1.7;
-  max-width: 560px;
-}
-
-/* SECTIONS */
-.doc-section {
-  margin-bottom: 48px;
-}
-.doc-section h2 {
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: var(--text);
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-}
-.doc-section h3 {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-top: 20px;
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-.doc-section p {
-  font-size: 0.95rem;
-  color: var(--text2);
-  margin-bottom: 12px;
-  line-height: 1.75;
-}
-.doc-section ul {
-  margin: 8px 0 14px 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.doc-section li {
-  font-size: 0.92rem;
-  color: var(--text2);
-  padding-left: 20px;
-  position: relative;
-  line-height: 1.65;
-}
-.doc-section li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 10px;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--sage);
-}
-.doc-section a { color: var(--sage); text-decoration: none; font-weight: 500; }
-.doc-section a:hover { color: var(--sage-light); text-decoration: underline; }
-strong { font-weight: 700; color: var(--text); }
-
-/* FAQ CARDS */
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.faq-item {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.faq-q {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 18px 20px;
-  font-family: var(--sans);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--text);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  transition: background 0.15s;
-}
-.faq-q:hover { background: var(--bg2); }
-.faq-q svg {
-  width: 16px; height: 16px;
-  stroke: var(--text3); fill: none;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-  flex-shrink: 0;
-  transition: transform 0.2s;
-}
-.faq-item.open .faq-q svg { transform: rotate(45deg); }
-.faq-a {
-  display: none;
-  padding: 0 20px 18px;
-  font-size: 0.9rem;
-  color: var(--text2);
-  line-height: 1.7;
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-}
-.faq-item.open .faq-a { display: block; }
-
-/* CONTACT CARD */
-.contact-card {
-  background: var(--dark);
-  border-radius: 20px;
-  padding: 36px 32px;
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  margin-top: 32px;
-}
-.contact-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  background: var(--sage-dim);
-  border: 1px solid oklch(0.65 0.07 145 / 0.3);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.contact-icon svg {
-  width: 20px; height: 20px;
-  stroke: var(--sage-light); fill: none;
-  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
-}
-.contact-body h3 {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: white;
-  margin-bottom: 6px;
-}
-.contact-body p { font-size: 0.88rem; color: oklch(0.55 0.012 150); margin-bottom: 12px; }
-.contact-body a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--sage);
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 9px 18px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.contact-body a:hover { background: var(--sage-light); }
-
-/* FOOTER */
-footer {
-  background: var(--dark2);
-  border-top: 1px solid oklch(1 0 0 / 0.05);
-  padding: 28px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 80px;
-}
-.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
-.footer-logo img { width: 26px; height: 26px; border-radius: 7px; }
-.footer-logo span { font-size: 0.85rem; font-weight: 700; color: oklch(0.7 0.01 150); }
-.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-.footer-links a { color: oklch(0.45 0.01 150); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
-.footer-links a:hover { color: var(--sage-light); }
-.footer-copy { font-size: 0.72rem; color: oklch(0.35 0.008 150); }
-
-@media (max-width: 600px) {
-  .site-nav { padding: 14px 20px; }
-  .page-wrap { padding: 96px 20px 60px; }
-  .page-title { font-size: 2rem; }
-  footer { padding: 24px 20px; justify-content: center; text-align: center; }
-  .footer-links { justify-content: center; }
-  .contact-card { flex-direction: column; gap: 14px; }
-}
-</style>
+<meta name="twitter:image" content="https://budgetdaily.github.io/app/og-image.png">
+<link rel="preload" href="assets/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script defer src="assets/site.js"></script>
+<script type="speculationrules">
+{"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"selector_matches": "[data-zoom]"}}]}, "eagerness": "moderate"}]}
+</script>
 </head>
 <body>
+<a class="skip-link visually-hidden" href="#content">Skip to content</a>
 
-<nav class="site-nav">
-  <a href="./" class="nav-logo">
-    <img src="icon.png" alt="" width="28" height="28">
-    <span>BudgetDaily</span>
-  </a>
-  <a href="./" class="nav-back">← Back</a>
-</nav>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="./">
+      <img src="assets/img/icon-96.png" alt="" width="32" height="32">
+      BudgetDaily
+    </a>
+    <nav aria-label="Primary">
+      <button class="menu-button" type="button" popovertarget="site-menu" aria-controls="site-menu">Menu</button>
+      <ul id="site-menu" class="site-menu" popover>
+        <li><a href="guides/index.html">Guides</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+      </ul>
+    </nav>
+    <a class="button button-small" href="https://apps.apple.com/app/id6761750188">Download<span class="visually-hidden"> on the App Store</span></a>
+  </div>
+</header>
 
-<div class="page-wrap">
-  <div class="page-header">
-    <p class="page-eyebrow">Support</p>
-    <h1 class="page-title">How can we help?</h1>
+<main id="content" tabindex="-1" class="wrap">
+
+  <header class="page-head">
+    <h1>How can we help?</h1>
     <p class="page-intro">Find answers to common questions below, or reach out directly — we're happy to help. BudgetDaily requires iOS 26.1 or later.</p>
+  </header>
+
+  <div class="prose">
+
+    <section class="doc-section">
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Where is my data stored?</summary>
+          <p class="faq-answer">All your data is stored locally on your device. If you subscribe to BudgetDaily Pro and enable iCloud Sync, your data is also stored in your private iCloud account. We never have access to your data.</p>
+        </details>
+        <details>
+          <summary>How do I restore my data on a new device?</summary>
+          <p class="faq-answer">You can restore from a local backup file you previously saved. If you have iCloud Sync enabled, sign in with the same Apple Account on your new device and your data will sync automatically. Pro users can also restore from an iCloud Drive backup in Settings → iCloud → Manage Backups. If you need to discard this device's local database and re-download the current iCloud copy, use Settings → iCloud → Advanced → Replace This Device with iCloud.</p>
+        </details>
+        <details>
+          <summary>How do I cancel my subscription?</summary>
+          <p class="faq-answer">Subscriptions are managed through the App Store. Go to Settings → your name → Subscriptions on your device to manage or cancel your BudgetDaily Pro subscription.</p>
+        </details>
+        <details>
+          <summary>Can I share a budget with someone?</summary>
+          <p class="faq-answer">Yes, with BudgetDaily Pro. You can invite people you choose to view a budget, or a budget group, through iCloud. Recipients get read-only access to that shared budget only. They cannot edit it, and your other accounts and transactions stay private.</p>
+        </details>
+        <details>
+          <summary>What does Today's balance mean?</summary>
+          <p class="faq-answer">Today's balance is the rolling budget amount you can safely spend right now while staying on pace. It includes budget earned so far, carry-forward, goal movements, recurring commitments, due scheduled one-offs, refunds, and spending. Positive means ahead of pace; negative means behind, with no-spend recovery guidance.</p>
+        </details>
+        <details>
+          <summary>Can I move funds between budgets?</summary>
+          <p class="faq-answer">Yes. Move Funds lets you shift available budget room between active budgets, from a budget to a savings goal, or from a savings goal back to a budget. The source is limited by its available Today balance or funded goal amount. These movements adjust budget and goal balances only; they do not change account balances or create bank transfers.</p>
+        </details>
+        <details>
+          <summary>What does “Not budgeted” mean?</summary>
+          <p class="faq-answer">Not budgeted groups expenses that have no active budget covering their category or date. It may mean you have not created a budget for that category yet, or the transaction sits before or after that budget’s dates. It does not change the transaction or your account balance; use the detail view to review the spending or create the right budget.</p>
+        </details>
+        <details>
+          <summary>How do I export my data?</summary>
+          <p class="faq-answer">You can create a local backup file for restore later, or export CSV files from Settings → Export Data. Local backup/restore and CSV export/import work on both Free and Pro plans. Pro users can also enable automatic iCloud Drive backups.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>Useful links</h2>
+      <ul>
+        <li><a href="guides/index.html">Step-by-step guides</a></li>
+        <li><a href="getting-started.html">Getting started</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="https://apps.apple.com/app/id6761750188">BudgetDaily on the App Store</a></li>
+      </ul>
+    </section>
+
+    <section class="doc-section">
+      <div class="callout">
+        <h2>Still need help?</h2>
+        <p>Send us an email and we'll get back to you within 48 hours.</p>
+        <p><a href="mailto:budgetdaily@protonmail.com">budgetdaily@protonmail.com</a></p>
+      </div>
+    </section>
+
   </div>
 
-  <div class="doc-section">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <button class="faq-q" id="faq-q-storage" aria-expanded="true" aria-controls="faq-a-storage">
-          Where is my data stored?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-storage" role="region" aria-labelledby="faq-q-storage">All your data is stored locally on your device. If you subscribe to BudgetDaily Pro and enable iCloud Sync, your data is also stored in your private iCloud account. We never have access to your data.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" id="faq-q-restore" aria-expanded="false" aria-controls="faq-a-restore">
-          How do I restore my data on a new device?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-restore" role="region" aria-labelledby="faq-q-restore">You can restore from a local backup file you previously saved. If you have iCloud Sync enabled, sign in with the same Apple Account on your new device and your data will sync automatically. Pro users can also restore from an iCloud Drive backup in Settings → iCloud → Manage Backups. If you need to discard this device's local database and re-download the current iCloud copy, use Settings → iCloud → Advanced → Replace This Device with iCloud.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" id="faq-q-cancel" aria-expanded="false" aria-controls="faq-a-cancel">
-          How do I cancel my subscription?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-cancel" role="region" aria-labelledby="faq-q-cancel">Subscriptions are managed through the App Store. Go to Settings → your name → Subscriptions on your device to manage or cancel your BudgetDaily Pro subscription.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" id="faq-q-share" aria-expanded="false" aria-controls="faq-a-share">
-          Can I share a budget with someone?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-share" role="region" aria-labelledby="faq-q-share">Yes, with BudgetDaily Pro. You can invite people you choose to view a budget, or a budget group, through iCloud. Recipients get read-only access to that shared budget only. They cannot edit it, and your other accounts and transactions stay private.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" id="faq-q-today-balance" aria-expanded="false" aria-controls="faq-a-today-balance">
-          What does Today's balance mean?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-today-balance" role="region" aria-labelledby="faq-q-today-balance">Today's balance is the rolling budget amount you can safely spend right now while staying on pace. It includes budget earned so far, carry-forward, goal movements, recurring commitments, due scheduled one-offs, refunds, and spending. Positive means ahead of pace; negative means behind, with no-spend recovery guidance.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" id="faq-q-fund-movements" aria-expanded="false" aria-controls="faq-a-fund-movements">
-          Can I move funds between budgets?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-fund-movements" role="region" aria-labelledby="faq-q-fund-movements">Yes. Move Funds lets you shift available budget room between active budgets, from a budget to a savings goal, or from a savings goal back to a budget. The source is limited by its available Today balance or funded goal amount. These movements adjust budget and goal balances only; they do not change account balances or create bank transfers.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" id="faq-q-not-budgeted" aria-expanded="false" aria-controls="faq-a-not-budgeted">
-          What does “Not budgeted” mean?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-not-budgeted" role="region" aria-labelledby="faq-q-not-budgeted">Not budgeted groups expenses that have no active budget covering their category or date. It may mean you have not created a budget for that category yet, or the transaction sits before or after that budget’s dates. It does not change the transaction or your account balance; use the detail view to review the spending or create the right budget.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" id="faq-q-export" aria-expanded="false" aria-controls="faq-a-export">
-          How do I export my data?
-          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a" id="faq-a-export" role="region" aria-labelledby="faq-q-export">You can create a local backup file for restore later, or export CSV files from Settings → Export Data. Local backup/restore and CSV export/import work on both Free and Pro plans. Pro users can also enable automatic iCloud Drive backups.</div>
-      </div>
-    </div>
-  </div>
+</main>
 
-  <div class="doc-section">
-    <h2>Useful Links</h2>
-    <ul>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="./">
+      <img src="assets/img/icon-96.png" alt="" width="32" height="32" loading="lazy">
+      BudgetDaily
+    </a>
+    <ul class="footer-links">
+      <li><a href="getting-started.html">Getting started</a></li>
+      <li><a href="guides/index.html">Guides</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Service</a></li>
-      <li><a href="https://apps.apple.com/app/id6761750188">BudgetDaily on the App Store</a></li>
+      <li><a href="support.html" aria-current="page">Support</a></li>
     </ul>
+    <p>&copy; 2026 Ivan Ting</p>
   </div>
-
-  <div class="contact-card">
-    <div class="contact-icon">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    </div>
-    <div class="contact-body">
-      <h3>Still need help?</h3>
-      <p>Send us an email and we'll get back to you within 48 hours.</p>
-      <a href="mailto:budgetdaily@protonmail.com">budgetdaily@protonmail.com</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <a href="./" class="footer-logo">
-    <img src="icon.png" alt="" width="26" height="26" loading="lazy" decoding="async">
-    <span>BudgetDaily</span>
-  </a>
-  <div class="footer-links">
-    <a href="getting-started.html">Getting Started</a>
-    <a href="guides/index.html">Guides</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
-    <a href="support.html">Support</a>
-  </div>
-  <p class="footer-copy">&copy; 2026 Ivan Ting</p>
 </footer>
 
-<script>
-const navBackLink = document.querySelector('.nav-back');
-if (navBackLink) {
-  navBackLink.addEventListener('click', event => {
-    const hasSameOriginReferrer = document.referrer && new URL(document.referrer).origin === window.location.origin;
-    if (window.history.length > 1 && hasSameOriginReferrer) {
-      event.preventDefault();
-      window.history.back();
-    }
-  });
-}
-
-document.querySelectorAll('.faq-q').forEach(btn => {
-  function toggleFaq() {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => {
-      i.classList.remove('open');
-      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  }
-
-  btn.addEventListener('click', toggleFaq);
-  btn.addEventListener('keydown', e => {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    e.preventDefault();
-    toggleFaq();
-  });
-});
-</script>
 </body>
 </html>
