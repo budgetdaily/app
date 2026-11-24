@@ -14,6 +14,36 @@ if (menu && 'popover' in HTMLElement.prototype) {
   });
 }
 
+// The header slides away while scrolling down and comes back on any scroll
+// up. It stays put near the top, while its menu is open, or while it has focus.
+const header = document.querySelector('.site-header');
+if (header) {
+  const NEAR_TOP = 80;
+  const SLACK = 8;
+  let lastY = scrollY;
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const y = Math.max(scrollY, 0);
+    const delta = y - lastY;
+    if (Math.abs(delta) < SLACK) return;
+    const held = y < NEAR_TOP
+      || header.contains(document.activeElement)
+      || menu?.matches(':popover-open');
+    header.classList.toggle('is-tucked', !held && delta > 0);
+    lastY = y;
+  };
+
+  addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  header.addEventListener('focusin', () => header.classList.remove('is-tucked'));
+}
+
 // ── Figures that roll ───────────────────────────────────────────────────
 // roll(element, text) shows text in the element, turning each digit like a
 // counter wheel. The plain text stays in the element for screen readers.

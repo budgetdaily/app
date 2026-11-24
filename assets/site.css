@@ -434,6 +434,18 @@
     /* Only the capsule takes clicks; the page shows through around it. */
     pointer-events: none;
     view-transition-name: site-header;
+    transition: translate 0.35s var(--ease-out);
+
+    /* Set by site.js: slides away while scrolling down, back on scroll up. */
+    &.is-tucked {
+      translate: 0 -100%;
+      .header-inner {
+        pointer-events: none;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
   .header-inner {
     display: flex;
